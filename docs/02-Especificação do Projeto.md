@@ -28,11 +28,13 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 ### Análise da Situação Atual
 
-Apresente aqui os problemas existentes que viabilizam sua proposta. Apresente o modelo do sistema como ele funciona hoje. Caso sua proposta seja inovadora e não existam processos claramente definidos, apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente, mesmo que não se utilize tecnologia computacional. 
+Atualmente, a escola utiliza um sistema manual para registro de notas e controle de presença, onde os professores anotam dados em planilhas de papel e cadernos de chamada. Esse processo é ineficiente, sujeito a erros humanos e à perda de documentos, além de consumir tempo que poderia ser dedicado a atividades pedagógicas. A falta de tecnologia dificulta a organização e a comunicação ágil com os pais, atrasando o acompanhamento do desempenho dos alunos. A digitalização desses processos visa solucionar esses problemas, aumentando a eficiência e a segurança das operações escolares.
 
 ### Descrição Geral da Proposta
 
-Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
+A proposta é desenvolver um aplicativo mobile que digitalize o registro de notas e controle de presença, substituindo o processo manual da escola. Professores poderão registrar dados de forma eficiente, e pais acompanharão remotamente o desempenho dos alunos. A solução reduzirá erros, otimizará tempo administrativo e garantirá a segurança dos dados.
+
+Embora exija treinamento da equipe e acesso à tecnologia, o projeto está alinhado com a estratégia de modernização da escola, oferecendo melhorias como maior transparência, agilidade na geração de relatórios e melhor comunicação entre a escola e os pais.
 
 ### Processo 1 – NOME DO PROCESSO
 
