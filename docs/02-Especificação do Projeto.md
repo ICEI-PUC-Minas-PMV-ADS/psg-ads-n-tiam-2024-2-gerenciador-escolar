@@ -57,7 +57,7 @@ Usar o seguinte modelo:
 ![image](https://github.com/user-attachments/assets/52e3b767-38a8-4be6-b6ad-b3c19aeb27de)
 
 
-![Indicadores de Desempenho](img/02-indic-desemp.png)
+
 Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriori. 
 
 ## Requisitos
