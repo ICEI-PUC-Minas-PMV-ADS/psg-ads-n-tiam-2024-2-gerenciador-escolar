@@ -85,22 +85,6 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-006| Desempenho:A resposta ao usuário (tempo de carregamento) deve ser menor a 5 segundos para ações comuns (login, visualização de notas, etc.). | MÉDIA | 
 |RNF-007| Escalabilidade:O sistema deve ser escalável para adicionar novas funcionalidades sem precisar de grandes revisões estruturais. | MÉDIA | 
 
-
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
-
 ## Restrições
 
 O projeto está restrito pelos itens apresentados na tabela a seguir.
@@ -110,11 +94,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |01| O sistema deve ser entregue até a data final de entrega do semestre. |
 |02| Todos os membros do grupo devem participar ativamente do desenvolvimento. |
 |03| Os envios de artefatos devem ser feitos no GitHub. |
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
 
 ## Diagrama de Casos de Uso
 
