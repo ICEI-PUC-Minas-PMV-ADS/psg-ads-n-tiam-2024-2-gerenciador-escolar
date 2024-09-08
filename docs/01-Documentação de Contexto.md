@@ -46,5 +46,3 @@ O desenvolvimento desta aplicação se justifica pela necessidade de otimizar o 
  - **Conhecimentos Prévios:** Conhecimento intermediário a avançado em gestão escolar e tecnologia.
  - **Relação com a Tecnologia:** Familiarizados com ferramentas digitais para gestão e comunicação.
  - **Função:** Supervisão e coordenação das operações escolares e implementação de novas tecnologias.
-
-`Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.`
