@@ -36,17 +36,18 @@ A proposta é desenvolver um aplicativo mobile que digitalize o registro de nota
 
 Embora exija treinamento da equipe e acesso à tecnologia, o projeto está alinhado com a estratégia de modernização da escola, oferecendo melhorias como maior transparência, agilidade na geração de relatórios e melhor comunicação entre a escola e os pais.
 
-### Processo 1 – NOME DO PROCESSO
+### Processo 1 – LANÇAMENTO DE NOTAS E PRESENÇAS DOS ALUNOS
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN. 
+O modelo visa otimizar o fluxo e processo de lançamento de notas e presenças. 
 
-![Processo 1](img/02-bpmn-proc1.png)
+![Processo 1](img/LancamentoDeNotasEPresencas.png)
 
-### Processo 2 – NOME DO PROCESSO
+### Processo 2 – VISUALIZAÇÃO DAS INFORMAÇÕES DOS ALUNOS
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.
+O modelo visa otimizar o fluxo e processo de visualização das informações dos alunos.
 
-![Processo 2](img/02-bpmn-proc2.png)
+![Processo 2](img/VisualizacaoDasInformacoes.png)
+
 
 ## Indicadores de Desempenho
 
