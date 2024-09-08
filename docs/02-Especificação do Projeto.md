@@ -51,9 +51,8 @@ O modelo visa otimizar o fluxo e processo de visualização das informações do
 
 ## Indicadores de Desempenho
 
-Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores. 
+Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores.
 
-Usar o seguinte modelo: 
 ![image](https://github.com/user-attachments/assets/4c65a06a-c940-40cd-8c6c-bdcf0724e0c8)
 
 
