@@ -9,19 +9,38 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
 ## Diagrama de Fluxo
 
-![Diagrama de Fluxo](img/diagramafluxo.jpg)
+![diagramadefluxo](https://github.com/user-attachments/assets/2eb28f7a-0241-424d-8b02-1498092b3cf8)
 
 ## Wireframes
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+### Telas do Sistema
+<p float="left">
+ <img src="https://github.com/user-attachments/assets/3a9fa580-2c97-49df-a339-a7533a21a402" />
+</p>
 
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
- 
-> **Links Úteis**:
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
+### Telas do Professor
+
+<p float="left">
+ <img src="https://github.com/user-attachments/assets/39bf4d6b-85bb-42f0-b0d6-cb2d52d520a3" />
+ <img src="https://github.com/user-attachments/assets/9e0e1a27-7094-40e2-978f-43df554071c3" />
+ <img src="https://github.com/user-attachments/assets/d67274f5-efcc-45f3-b4a4-7772fbf19c78" />
+</p>
+
+<p float="left">
+ <img src="https://github.com/user-attachments/assets/97d5700a-e493-4b69-83da-83ffe289bdfd" />
+ <img src="https://github.com/user-attachments/assets/ae6bc0de-b501-4fd8-9803-8e7511847530" />
+ <img src="https://github.com/user-attachments/assets/429428c2-9cd6-4fa9-8347-99bc2da1eca5" />
+</p>
+
+
+
+### Telas do Responsável
+
+<p float="left">
+ <img src="https://github.com/user-attachments/assets/ea604d82-6026-4e6a-a074-d01402068f55" />
+ <img src="https://github.com/user-attachments/assets/340f5f1a-40cd-4c8d-9557-b68dd1cc44cc" />
+</p>
+
+### Protótipo Interativo
+
+Para ter acesso ao protótipo interativo dos wireframes [clique aqui](https://www.figma.com/proto/cD2BeiYZ47vNbz9xEJwZBb/Untitled?node-id=0-1&t=zVhDenWs6QzYeCOh-1).
