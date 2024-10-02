@@ -1,11 +1,13 @@
 # Arquitetura da Solução
 ## Diagrama de Classes
 
-[Untitled.pdf](https://github.com/user-attachments/files/17230533/Untitled.pdf)
+![Untitled (1)](https://github.com/user-attachments/assets/1655012a-bc3a-46ad-b77b-6022671425bf)
+
 
 
 ## Modelo ER
-[Untitled (1).pdf](https://github.com/user-attachments/files/17230535/Untitled.1.pdf)
+![Untitled](https://github.com/user-attachments/assets/825adafb-0b31-4429-ae92-3b3807a38997)
+
 
 
 
