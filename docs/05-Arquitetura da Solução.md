@@ -20,25 +20,73 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Esquema Rel
 > - [Criando um modelo relacional - Documentação da IBM](https://www.ibm.com/docs/pt-br/cognos-analytics/10.2.2?topic=designer-creating-relational-model)
 
 ## Modelo Físico
+```sql
+CREATE TABLE aluno (
+    id_aluno INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    endereco VARCHAR(255) NOT NULL,
+    telefone VARCHAR(20),
+    email VARCHAR(100)
+);
 
-Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do banco de dados. Este arquivo deverá ser incluído dentro da pasta src\bd.
+CREATE TABLE professor (
+    id_professor INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    email VARCHAR(100),
+    telefone VARCHAR(20)
+);
 
+CREATE TABLE disciplina (
+    id_disciplina INT PRIMARY KEY AUTO_INCREMENT,
+    nome_disciplina VARCHAR(100) NOT NULL,
+    descricao TEXT
+);
+
+CREATE TABLE turma (
+    id_turma INT PRIMARY KEY AUTO_INCREMENT,
+    nome_turma VARCHAR(50) NOT NULL,
+    descricao TEXT
+);
+
+CREATE TABLE nota (
+    id_nota INT PRIMARY KEY AUTO_INCREMENT,
+    id_aluno INT,
+    id_disciplina INT,
+    nota FLOAT NOT NULL,
+    data_registro DATE NOT NULL,
+    FOREIGN KEY (id_aluno) REFERENCES aluno(id_aluno),
+    FOREIGN KEY (id_disciplina) REFERENCES disciplina(id_disciplina)
+);
+
+CREATE TABLE presenca (
+    id_presenca INT PRIMARY KEY AUTO_INCREMENT,
+    id_aluno INT,
+    id_turma INT,
+    data_presenca DATE NOT NULL,
+    status_presenca ENUM('presente', 'ausente') NOT NULL,
+    FOREIGN KEY (id_aluno) REFERENCES aluno(id_aluno),
+    FOREIGN KEY (id_turma) REFERENCES turma(id_turma)
+);
+
+CREATE TABLE professor_disciplina (
+    id_professor INT,
+    id_disciplina INT,
+    PRIMARY KEY (id_professor, id_disciplina),
+    FOREIGN KEY (id_professor) REFERENCES professor(id_professor),
+    FOREIGN KEY (id_disciplina) REFERENCES disciplina(id_disciplina)
+);
+
+```
 ## Tecnologias Utilizadas
 
-Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
+Backend: Python (Flask) para lidar com as APIs que se comunicam com o Firebase, permitindo o acesso e manipulação dos dados.
 
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+Banco de Dados: Firebase para armazenar as informações de alunos, notas, presenças, etc.
 
-## Hospedagem
-
-Explique como a hospedagem e o lançamento da plataforma foi feita.
-
-> **Links Úteis**:
->
-> - [Website com GitHub Pages](https://pages.github.com/)
-> - [Programação colaborativa com Repl.it](https://repl.it/)
-> - [Getting Started with Heroku](https://devcenter.heroku.com/start)
-> - [Publicando Seu Site No Heroku](http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html)
+Frontend: React Native para o desenvolvimento do aplicativo mobile.
 
 ## Qualidade de Software
 
