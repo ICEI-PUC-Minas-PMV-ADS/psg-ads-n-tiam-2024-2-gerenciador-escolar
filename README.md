@@ -13,7 +13,7 @@ O objetivo do aplicativo é digitalizar esses processos, permitindo que os profe
 ## Integrantes
 
 * David Silva Barbosa
-* Gabriel Henrique Penida de Jesus
+* Gabriel Henrique Penido de Jesus
 * Gustavo Coelho Reis
 * Luiz Felipe Almeida Oliveira
 * João Pedro Bomfim Victor
