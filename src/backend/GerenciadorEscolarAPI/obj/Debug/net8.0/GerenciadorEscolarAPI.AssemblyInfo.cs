@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GerenciadorEscolarAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6db1c0883e932fd1daf5c9eed1ba6d5c1059b010")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a140f06c9a3f16b5e68c6be0e6128b9abce8fa3a")]
 [assembly: System.Reflection.AssemblyProductAttribute("GerenciadorEscolarAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GerenciadorEscolarAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

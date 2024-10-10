@@ -38,7 +38,6 @@ C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-g
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\GerenciadorEscolarAPI\obj\Debug\net8.0\GerenciadorEscolarAPI.pdb
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\GerenciadorEscolarAPI\obj\Debug\net8.0\GerenciadorEscolarAPI.genruntimeconfig.cache
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\GerenciadorEscolarAPI\obj\Debug\net8.0\ref\GerenciadorEscolarAPI.dll
-C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\GerenciadorEscolarAPI\bin\Debug\net8.0\serviceAccountKeyDevelop.json
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\GerenciadorEscolarAPI\bin\Debug\net8.0\Google.Api.CommonProtos.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\GerenciadorEscolarAPI\bin\Debug\net8.0\Google.Api.Gax.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\GerenciadorEscolarAPI\bin\Debug\net8.0\Google.Api.Gax.Grpc.dll
