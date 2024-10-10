@@ -78,7 +78,7 @@ namespace GerenciadorEscolarAPI.Controllers
                     return Ok(user);
                 }
 
-                return BadRequest("Este e-mail já está sendo utilizado.");
+                return BadRequest("Este e-mail já está sendo utilizado. ");
             }
             catch (Exception ex)
             {
