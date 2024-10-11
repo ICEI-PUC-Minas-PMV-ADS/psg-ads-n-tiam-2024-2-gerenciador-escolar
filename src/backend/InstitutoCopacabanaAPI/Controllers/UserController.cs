@@ -13,11 +13,13 @@ namespace InstitutoCopacabanaAPI.Controllers
     {
         private readonly IFirebaseClient _firebaseClient;
         private readonly IUserService _userService;
+        private readonly IPasswordService _passwordService;
 
-        public UserController(ContextDb contextDb, IUserService userService)
+        public UserController(ContextDb contextDb, IUserService userService, IPasswordService passwordService)
         {
             _firebaseClient = contextDb.GetClient();
             _userService = userService;
+            _passwordService = passwordService;
         }
 
         [HttpGet]
@@ -81,8 +83,14 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                 if (await _userService.VerifyPostEmail(user.Email))
                 {
-                    SetResponse response = await _firebaseClient.SetAsync("users/" + IdGenerate, user);
-                    return Ok(user);
+                    if (!_passwordService.ValidatePassword(user.Password))
+                        return BadRequest("A senha não atende os padrões.");
+
+                    string hashedPassword = _passwordService.HashPassword(user.Password);
+
+                    var finalUser = await _userService.PostUser(user, hashedPassword);
+
+                    return Ok(finalUser);
                 }
 
                 return Conflict("Este e-mail já está sendo utilizado.");
@@ -106,9 +114,15 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                 if (await _userService.VerifyPutEmail(user.Email, user.Id))
                 {
-                    FirebaseResponse response = await _firebaseClient.UpdateAsync("users/" + userId, user);
 
-                    return Ok(user);
+                    if (!_passwordService.ValidatePassword(user.Password))
+                        return BadRequest("A senha não atende os padrões.");
+
+                    string hashedPassword = _passwordService.HashPassword(user.Password);
+
+                    var finalUser = await _userService.PutUser(user, hashedPassword);                    
+                    
+                    return Ok(finalUser);
                 }
 
                 return Conflict("Este e-mail já está sendo utilizado.");

@@ -15,9 +15,46 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             _firebaseClient = contextDb.GetClient();
         }
 
+        public async Task<UserModel> PostUser(UserModel user, string hashedPassword)
+        {
+            UserModel finalUser = new UserModel
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                Password = hashedPassword,
+                UserType = user.UserType
+            };
+
+
+            FirebaseResponse response = await _firebaseClient.SetAsync("users/" + user.Id, finalUser);
+
+            return finalUser;
+        }
+
+        public async Task<UserModel> PutUser(UserModel user, string hashedPassword)
+        {
+            UserModel finalUser = new UserModel
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                Password = hashedPassword,
+                UserType = user.UserType
+            };
+
+
+            FirebaseResponse response = await _firebaseClient.UpdateAsync("users/" + user.Id, finalUser);
+
+            return finalUser;
+        }
+
         public async Task<bool> VerifyPostEmail(string email)
         {
             FirebaseResponse response = await _firebaseClient.GetAsync("users");
+
+            if (response.Body == "null")
+                return true;
 
             var users = response.ResultAs<Dictionary<string, UserModel>>();
 

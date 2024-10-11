@@ -13,7 +13,8 @@ namespace InstitutoCopacabanaAPI
 
             // Add services to the container.
             builder.Services.AddSingleton<ContextDb>();
-            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IUserService, UserService>(); 
+            builder.Services.AddScoped<IPasswordService, PasswordService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
