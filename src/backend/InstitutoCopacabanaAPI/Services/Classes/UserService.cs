@@ -15,7 +15,7 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             _firebaseClient = contextDb.GetClient();
         }
 
-        public async Task<bool> VerifyEmail(string email)
+        public async Task<bool> VerifyPostEmail(string email)
         {
             FirebaseResponse response = await _firebaseClient.GetAsync("users");
 
@@ -25,6 +25,21 @@ namespace InstitutoCopacabanaAPI.Services.Classes
                 return false;
 
             return true;
+        }
+
+        public async Task<bool> VerifyPutEmail(string email, string id)
+        {
+            FirebaseResponse response = await _firebaseClient.GetAsync("users/" + id);
+            
+            var user = response.ResultAs<UserModel>();
+
+            if (user.Email == email) 
+                return true;
+
+            if(await VerifyPostEmail(email))
+                return true;
+
+            return false;
         }
     }
 }

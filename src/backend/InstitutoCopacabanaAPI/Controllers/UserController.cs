@@ -27,14 +27,20 @@ namespace InstitutoCopacabanaAPI.Controllers
             {
                 FirebaseResponse response = await _firebaseClient.GetAsync("users");
 
-                return Ok(response);
+                if (response.Body == "null") 
+                    return NotFound("Nenhum usuário foi encontrado.");
+
+                var userDictonary = response.ResultAs<Dictionary<string, UserModel>>();
+
+                var usersList = userDictonary.Values.ToList();
+
+                return Ok(usersList);
 
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
             }
-
         }
 
         [HttpGet("{id}")]
@@ -44,9 +50,9 @@ namespace InstitutoCopacabanaAPI.Controllers
             {
                 FirebaseResponse response = await _firebaseClient.GetAsync("users/" + id);
 
-                if (response.Body == "null")
+                if (response.Body == null)
                 {
-                    return NotFound("Nenhum usuário foi encontrado.");
+                    return NotFound("Nenhum usuário com esse Id foi encontrado.");
                 }
 
                 UserModel user = response.ResultAs<UserModel>();
@@ -56,7 +62,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
             }
 
         }
@@ -66,21 +72,24 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
+                if(!ModelState.IsValid) 
+                    return BadRequest("Todos os campos são obrigatórios.");
+
                 string IdGenerate = Guid.NewGuid().ToString("N");
 
                 user.Id = IdGenerate;
 
-                if (await _userService.VerifyEmail(user.Email))
+                if (await _userService.VerifyPostEmail(user.Email))
                 {
                     SetResponse response = await _firebaseClient.SetAsync("users/" + IdGenerate, user);
                     return Ok(user);
                 }
 
-                return BadRequest("Este e-mail já está sendo utilizado.");
+                return Conflict("Este e-mail já está sendo utilizado.");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
             }
         }
 
@@ -89,20 +98,24 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    return BadRequest("Todos os campos são obrigatórios.");
+
+
                 string userId = user.Id;
 
-                if (await _userService.VerifyEmail(user.Email))
+                if (await _userService.VerifyPutEmail(user.Email, user.Id))
                 {
                     FirebaseResponse response = await _firebaseClient.UpdateAsync("users/" + userId, user);
 
                     return Ok(user);
                 }
 
-                return BadRequest("Este e-mail já está sendo utilizado.");
+                return Conflict("Este e-mail já está sendo utilizado.");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
             }
         }
 
@@ -111,13 +124,22 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                await _firebaseClient.DeleteAsync("users/" + id);
+                FirebaseResponse getUserResponse = await _firebaseClient.GetAsync("users/" + id);
 
-                return Ok();
+                if (getUserResponse.Body == "null")
+                    return NotFound("Ususário não encontrado.");
+
+                FirebaseResponse deleteUserResponse = await _firebaseClient.DeleteAsync("users/" + id);
+
+                FirebaseResponse checkUserResponse = await _firebaseClient.GetAsync("users/" + id);
+                if (checkUserResponse.Body != "null")
+                    return StatusCode(500, "Falha ao deletar o usuário.");
+
+                return Ok("Usuário deletado com sucesso.");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
             }
         }
     }
