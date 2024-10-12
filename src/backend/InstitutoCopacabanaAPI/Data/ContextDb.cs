@@ -1,6 +1,6 @@
 ﻿using FireSharp.Config;
 using FireSharp.Interfaces;
-using FireSharp;
+using FireSharp; 
 
 namespace InstitutoCopacabanaAPI.Data
 {
@@ -8,12 +8,14 @@ namespace InstitutoCopacabanaAPI.Data
     {
         public IFirebaseClient _client;
 
-        public ContextDb()
+        public ContextDb(IConfiguration configuration)
         {
+            var firebaseConfig = configuration.GetSection("FirebaseConnection");
+
             IFirebaseConfig config = new FirebaseConfig
             {
-                AuthSecret = "J25zaqHLQMmwnb2k1kxVJWzbPnNOyN5plwW69HgZ",
-                BasePath = "https://gerenciador-escolar-cbad7-default-rtdb.firebaseio.com/"
+                AuthSecret = firebaseConfig["AuthSecret"],
+                BasePath = firebaseConfig["BasePath"]
             };
 
             _client = new FirebaseClient(config);
