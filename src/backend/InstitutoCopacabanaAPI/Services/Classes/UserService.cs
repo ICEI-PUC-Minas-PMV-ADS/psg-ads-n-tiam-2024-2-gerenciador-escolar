@@ -1,18 +1,21 @@
-﻿using FireSharp.Interfaces;
-using FireSharp.Response;
+﻿using FirebaseAdmin.Auth;
 using InstitutoCopacabanaAPI.Data;
+using Google.Cloud.Firestore;
 using InstitutoCopacabanaAPI.Models;
 using InstitutoCopacabanaAPI.Services.Interfaces;
+using Firebase.Auth;
 
 namespace InstitutoCopacabanaAPI.Services.Classes
 {
     public class UserService : IUserService
     {
-        private readonly IFirebaseClient _firebaseClient;
+        private readonly FirestoreDb _firebaseClient;
+        private readonly FirebaseAuthProvider _auth;
 
-        public UserService(ContextDb contextDb)
+        public UserService(ContextDb contextDb, AuthConnection authConnection)
         {
             _firebaseClient = contextDb.GetClient();
+            _auth = authConnection.GetAuth();
         }
 
         public async Task<UserModel> PostUser(UserModel user, string hashedPassword)
@@ -26,8 +29,11 @@ namespace InstitutoCopacabanaAPI.Services.Classes
                 UserType = user.UserType
             };
 
+            DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);
 
-            FirebaseResponse response = await _firebaseClient.SetAsync("users/" + user.Id, finalUser);
+            await _auth.CreateUserWithEmailAndPasswordAsync(finalUser.Email, finalUser.Password);
+
+            await docRef.SetAsync(finalUser);            
 
             return finalUser;
         }
@@ -44,39 +50,40 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             };
 
 
-            FirebaseResponse response = await _firebaseClient.UpdateAsync("users/" + user.Id, finalUser);
+            DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);
+
+            await docRef.SetAsync(finalUser, SetOptions.Overwrite);
 
             return finalUser;
         }
 
         public async Task<bool> VerifyPostEmail(string email)
         {
-            FirebaseResponse response = await _firebaseClient.GetAsync("users");
+            CollectionReference usersRef = _firebaseClient.Collection("users");
 
-            if (response.Body == "null")
+            Query query = usersRef.WhereEqualTo("Email", email);
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            if (snapshot.Documents.Count == 0)
                 return true;
 
-            var users = response.ResultAs<Dictionary<string, UserModel>>();
-
-            if (users.Values.Any(user => user.Email == email))
-                return false;
-
-            return true;
+            return false;
         }
 
         public async Task<bool> VerifyPutEmail(string email, string id)
         {
-            FirebaseResponse response = await _firebaseClient.GetAsync("users/" + id);
-            
-            var user = response.ResultAs<UserModel>();
+            DocumentReference docRef = _firebaseClient.Collection("users").Document(id);
+            DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
 
-            if (user.Email == email) 
+            if (!snapshot.Exists)
+                throw new Exception("Usuário não encontrado.");
+
+            UserModel user = snapshot.ConvertTo<UserModel>();
+
+            if (user.Email == email)
                 return true;
 
-            if(await VerifyPostEmail(email))
-                return true;
-
-            return false;
+            return await VerifyPostEmail(email);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FireSharp.Interfaces;
+﻿using Google.Cloud.Firestore;
+using FireSharp.Interfaces;
 using FireSharp.Response;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Models;
@@ -11,7 +12,7 @@ namespace InstitutoCopacabanaAPI.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IFirebaseClient _firebaseClient;
+        private readonly FirestoreDb _firebaseClient;
         private readonly IUserService _userService;
         private readonly IPasswordService _passwordService;
 
@@ -27,14 +28,20 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                FirebaseResponse response = await _firebaseClient.GetAsync("users");
+                CollectionReference usersRef = _firebaseClient.Collection("users");
 
-                if (response.Body == "null") 
+                QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+
+                if (snapshot.Count() == 0) 
                     return NotFound("Nenhum usuário foi encontrado.");
 
-                var userDictonary = response.ResultAs<Dictionary<string, UserModel>>();
+                List<UserModel> usersList = new List<UserModel>();
 
-                var usersList = userDictonary.Values.ToList();
+                foreach (DocumentSnapshot document in snapshot.Documents)
+                {
+                    UserModel user = document.ConvertTo<UserModel>();
+                    usersList.Add(user);
+                }
 
                 return Ok(usersList);
 
@@ -50,14 +57,15 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                FirebaseResponse response = await _firebaseClient.GetAsync("users/" + id);
+                DocumentReference docRef = _firebaseClient.Collection("users").Document(id);
+                DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
 
-                if (response.Body == null)
+                if (!snapshot.Exists)
                 {
                     return NotFound("Nenhum usuário com esse Id foi encontrado.");
                 }
 
-                UserModel user = response.ResultAs<UserModel>();
+                Dictionary<string, object> user = snapshot.ToDictionary();
 
                 return Ok(user);
 
@@ -138,15 +146,17 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                FirebaseResponse getUserResponse = await _firebaseClient.GetAsync("users/" + id);
+                DocumentReference docRef = _firebaseClient.Collection("users").Document(id);
 
-                if (getUserResponse.Body == "null")
-                    return NotFound("Ususário não encontrado.");
+                DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
 
-                FirebaseResponse deleteUserResponse = await _firebaseClient.DeleteAsync("users/" + id);
+                if (!snapshot.Exists)
+                    return NotFound("Usuário não encontrado.");
 
-                FirebaseResponse checkUserResponse = await _firebaseClient.GetAsync("users/" + id);
-                if (checkUserResponse.Body != "null")
+                await docRef.DeleteAsync();
+
+                snapshot = await docRef.GetSnapshotAsync();
+                if (snapshot.Exists)
                     return StatusCode(500, "Falha ao deletar o usuário.");
 
                 return Ok("Usuário deletado com sucesso.");

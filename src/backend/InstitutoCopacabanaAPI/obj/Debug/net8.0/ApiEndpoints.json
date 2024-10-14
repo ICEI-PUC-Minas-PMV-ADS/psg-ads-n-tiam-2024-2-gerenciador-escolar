@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
+    "Method": "Login",
+    "RelativePath": "api/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "InstitutoCopacabanaAPI.Models.LoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
     "Method": "GetUsers",
     "RelativePath": "api/User",
