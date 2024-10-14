@@ -25,5 +25,6 @@ namespace InstitutoCopacabanaAPI.Data
         {
             return _client;
         }
+
     }
 }
