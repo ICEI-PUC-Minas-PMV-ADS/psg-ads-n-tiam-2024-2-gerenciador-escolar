@@ -16,6 +16,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
+    "Method": "GetSession",
+    "RelativePath": "api/Login",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
     "Method": "GetUsers",
     "RelativePath": "api/User",

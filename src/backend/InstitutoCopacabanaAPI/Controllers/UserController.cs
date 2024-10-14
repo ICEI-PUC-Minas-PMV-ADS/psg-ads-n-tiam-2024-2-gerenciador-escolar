@@ -15,12 +15,14 @@ namespace InstitutoCopacabanaAPI.Controllers
         private readonly FirestoreDb _firebaseClient;
         private readonly IUserService _userService;
         private readonly IPasswordService _passwordService;
+        private readonly ISessionService _sessionService;
 
-        public UserController(ContextDb contextDb, IUserService userService, IPasswordService passwordService)
+        public UserController(ContextDb contextDb, IUserService userService, IPasswordService passwordService, ISessionService sessionService)
         {
             _firebaseClient = contextDb.GetClient();
             _userService = userService;
             _passwordService = passwordService;
+            _sessionService = sessionService;   
         }
 
         [HttpGet]
@@ -28,22 +30,37 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                CollectionReference usersRef = _firebaseClient.Collection("users");
+                var token = HttpContext.Session.GetString("_userToken");
 
-                QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-
-                if (snapshot.Count() == 0) 
-                    return NotFound("Nenhum usuário foi encontrado.");
-
-                List<UserModel> usersList = new List<UserModel>();
-
-                foreach (DocumentSnapshot document in snapshot.Documents)
+                if (token != null) 
                 {
-                    UserModel user = document.ConvertTo<UserModel>();
-                    usersList.Add(user);
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Secretary")
+                    {
+                        CollectionReference usersRef = _firebaseClient.Collection("users");
+
+                        QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+
+                        if (snapshot.Count() == 0)
+                            return NotFound("Nenhum usuário foi encontrado.");
+
+                        List<UserModel> usersList = new List<UserModel>();
+
+                        foreach (DocumentSnapshot document in snapshot.Documents)
+                        {
+                            UserModel user = document.ConvertTo<UserModel>();
+                            usersList.Add(user);
+                        }
+
+                        return Ok(usersList);
+                    }
+                    
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
                 }
 
-                return Ok(usersList);
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+                
 
             }
             catch (Exception ex)
@@ -57,17 +74,31 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                DocumentReference docRef = _firebaseClient.Collection("users").Document(id);
-                DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+                var token = HttpContext.Session.GetString("_userToken");
 
-                if (!snapshot.Exists)
+                if (token != null)
                 {
-                    return NotFound("Nenhum usuário com esse Id foi encontrado.");
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Secretary")
+                    {
+                        DocumentReference docRef = _firebaseClient.Collection("users").Document(id);
+                        DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+
+                        if (!snapshot.Exists)
+                        {
+                            return NotFound("Nenhum usuário com esse Id foi encontrado.");
+                        }
+
+                        Dictionary<string, object> user = snapshot.ToDictionary();
+
+                        return Ok(user);
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
                 }
 
-                Dictionary<string, object> user = snapshot.ToDictionary();
-
-                return Ok(user);
+                return NotFound("Nenhum usuário conectado foi encontrado.");
 
             }
             catch (Exception ex)
@@ -82,26 +113,40 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                if(!ModelState.IsValid) 
-                    return BadRequest("Todos os campos são obrigatórios.");
+                var token = HttpContext.Session.GetString("_userToken");
 
-                string IdGenerate = Guid.NewGuid().ToString("N");
-
-                user.Id = IdGenerate;
-
-                if (await _userService.VerifyPostEmail(user.Email))
+                if (token != null)
                 {
-                    if (!_passwordService.ValidatePassword(user.Password))
-                        return BadRequest("A senha não atende os padrões.");
+                    var session = await _sessionService.GetConnectedUser(token);
 
-                    string hashedPassword = _passwordService.HashPassword(user.Password);
+                    if (session.UserType == "Secretary")
+                    {
+                        if (!ModelState.IsValid)
+                            return BadRequest("Todos os campos são obrigatórios.");
 
-                    var finalUser = await _userService.PostUser(user, hashedPassword);
+                        string IdGenerate = Guid.NewGuid().ToString("N");
 
-                    return Ok(finalUser);
+                        user.Id = IdGenerate;
+
+                        if (await _userService.VerifyPostEmail(user.Email))
+                        {
+                            if (!_passwordService.ValidatePassword(user.Password))
+                                return BadRequest("A senha não atende os padrões.");
+
+                            string hashedPassword = _passwordService.HashPassword(user.Password);
+
+                            var finalUser = await _userService.PostUser(user, hashedPassword);
+
+                            return Ok(finalUser);
+                        }
+
+                        return Conflict("Este e-mail já está sendo utilizado.");
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
                 }
 
-                return Conflict("Este e-mail já está sendo utilizado.");
+                return NotFound("Nenhum usuário conectado foi encontrado.");
             }
             catch (Exception ex)
             {
@@ -114,26 +159,40 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                    return BadRequest("Todos os campos são obrigatórios.");
+                var token = HttpContext.Session.GetString("_userToken");
 
-
-                string userId = user.Id;
-
-                if (await _userService.VerifyPutEmail(user.Email, user.Id))
+                if (token != null)
                 {
+                    var session = await _sessionService.GetConnectedUser(token);
 
-                    if (!_passwordService.ValidatePassword(user.Password))
-                        return BadRequest("A senha não atende os padrões.");
+                    if (session.UserType == "Secretary")
+                    {
+                        if (!ModelState.IsValid)
+                            return BadRequest("Todos os campos são obrigatórios.");
 
-                    string hashedPassword = _passwordService.HashPassword(user.Password);
 
-                    var finalUser = await _userService.PutUser(user, hashedPassword);                    
-                    
-                    return Ok(finalUser);
+                        string userId = user.Id;
+
+                        if (await _userService.VerifyPutEmail(user.Email, user.Id))
+                        {
+
+                            if (!_passwordService.ValidatePassword(user.Password))
+                                return BadRequest("A senha não atende os padrões.");
+
+                            string hashedPassword = _passwordService.HashPassword(user.Password);
+
+                            var finalUser = await _userService.PutUser(user, hashedPassword);
+
+                            return Ok(finalUser);
+                        }
+
+                        return Conflict("Este e-mail já está sendo utilizado.");
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
                 }
 
-                return Conflict("Este e-mail já está sendo utilizado.");
+                return NotFound("Nenhum usuário conectado foi encontrado.");
             }
             catch (Exception ex)
             {
@@ -146,20 +205,34 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                DocumentReference docRef = _firebaseClient.Collection("users").Document(id);
+                var token = HttpContext.Session.GetString("_userToken");
 
-                DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
 
-                if (!snapshot.Exists)
-                    return NotFound("Usuário não encontrado.");
+                    if (session.UserType == "Secretary")
+                    {
+                        DocumentReference docRef = _firebaseClient.Collection("users").Document(id);
 
-                await docRef.DeleteAsync();
+                        DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
 
-                snapshot = await docRef.GetSnapshotAsync();
-                if (snapshot.Exists)
-                    return StatusCode(500, "Falha ao deletar o usuário.");
+                        if (!snapshot.Exists)
+                            return NotFound("Usuário não encontrado.");
 
-                return Ok("Usuário deletado com sucesso.");
+                        await docRef.DeleteAsync();
+
+                        snapshot = await docRef.GetSnapshotAsync();
+                        if (snapshot.Exists)
+                            return StatusCode(500, "Falha ao deletar o usuário.");
+
+                        return Ok("Usuário deletado com sucesso.");
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
             }
             catch (Exception ex)
             {

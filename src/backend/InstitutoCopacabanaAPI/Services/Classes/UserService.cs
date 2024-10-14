@@ -18,6 +18,30 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             _auth = authConnection.GetAuth();
         }
 
+        public async Task CreateAuthenticantion(UserModel user)
+        {
+            UserRecordArgs args = new UserRecordArgs
+            {
+                Uid = user.Id,
+                Email = user.Email,
+                Password = user.Password
+            };
+
+            UserRecord userRecord = await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.CreateUserAsync(args);
+        }
+
+        public async Task UpdateAuthenticantion(UserModel user)
+        {
+            UserRecordArgs args = new UserRecordArgs
+            {
+                Uid = user.Id,
+                Email = user.Email,
+                Password = user.Password
+            };
+
+            UserRecord userRecord = await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.UpdateUserAsync(args);
+        }
+
         public async Task<UserModel> PostUser(UserModel user, string hashedPassword)
         {
             UserModel finalUser = new UserModel
@@ -29,9 +53,10 @@ namespace InstitutoCopacabanaAPI.Services.Classes
                 UserType = user.UserType
             };
 
-            DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);
+            //Registra a autenticação com o UID igual ao Id do banco de dados
+            await CreateAuthenticantion(finalUser);
 
-            await _auth.CreateUserWithEmailAndPasswordAsync(finalUser.Email, finalUser.Password);
+            DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);            
 
             await docRef.SetAsync(finalUser);            
 
@@ -49,6 +74,8 @@ namespace InstitutoCopacabanaAPI.Services.Classes
                 UserType = user.UserType
             };
 
+            //Atualiza a autenticação com o UID igual ao Id do banco de dados
+            await UpdateAuthenticantion(finalUser);
 
             DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);
 
