@@ -54,7 +54,19 @@
               "target": "Package",
               "version": "[2.0.4, )"
             },
+            "Firebase.Auth": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
             "Google.Cloud.Firestore": {
+              "target": "Package",
+              "version": "[3.9.0, )"
+            },
+            "Google.Cloud.Firestore.V1": {
               "target": "Package",
               "version": "[3.9.0, )"
             },

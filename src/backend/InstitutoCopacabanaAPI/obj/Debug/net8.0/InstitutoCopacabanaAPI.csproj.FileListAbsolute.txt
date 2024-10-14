@@ -58,3 +58,8 @@ C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-g
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\System.Linq.Async.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\System.Management.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\serviceAccountKeyDevelop.json
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Firebase.Auth.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\FirebaseAdmin.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\System.ServiceModel.dll
