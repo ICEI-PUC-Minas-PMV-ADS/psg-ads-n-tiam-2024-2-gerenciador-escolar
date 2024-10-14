@@ -13,6 +13,7 @@ namespace InstitutoCopacabanaAPI
 
             // Add services to the container.
             builder.Services.AddSingleton<ContextDb>();
+            builder.Services.AddSingleton<AuthConnection>();
             builder.Services.AddScoped<IUserService, UserService>(); 
             builder.Services.AddScoped<IPasswordService, PasswordService>();
 

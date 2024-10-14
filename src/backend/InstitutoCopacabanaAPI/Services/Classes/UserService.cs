@@ -1,4 +1,5 @@
-﻿using InstitutoCopacabanaAPI.Data;
+﻿using FirebaseAdmin.Auth;
+using InstitutoCopacabanaAPI.Data;
 using Google.Cloud.Firestore;
 using InstitutoCopacabanaAPI.Models;
 using InstitutoCopacabanaAPI.Services.Interfaces;
@@ -29,6 +30,8 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             };
 
             DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);
+
+            await _auth.CreateUserWithEmailAndPasswordAsync(finalUser.Email, finalUser.Password);
 
             await docRef.SetAsync(finalUser);            
 
