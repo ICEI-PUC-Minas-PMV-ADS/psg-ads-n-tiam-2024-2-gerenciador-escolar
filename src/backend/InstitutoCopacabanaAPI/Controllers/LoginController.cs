@@ -82,6 +82,25 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
             
         }
+          [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            try
+            {
+                if (HttpContext.Session != null)
+                {
+                    // Remove o token da sessão
+                    HttpContext.Session.Remove("_userToken");
+                    return Ok("Logout realizado com sucesso.");
+                }
+
+                return StatusCode(500, "Sessão não configurada corretamente.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
 
     }
 }

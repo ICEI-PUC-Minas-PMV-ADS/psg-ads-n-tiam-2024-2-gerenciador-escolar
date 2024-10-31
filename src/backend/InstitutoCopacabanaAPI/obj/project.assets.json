@@ -7451,24 +7451,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\caisi\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\gustavo.reis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
+      "projectUniqueName": "C:\\Users\\gustavo.reis\\Nova pasta\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
       "projectName": "InstitutoCopacabanaAPI",
-      "projectPath": "C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
-      "packagesPath": "C:\\Users\\caisi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\obj\\",
+      "projectPath": "C:\\Users\\gustavo.reis\\Nova pasta\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
+      "packagesPath": "C:\\Users\\gustavo.reis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gustavo.reis\\Nova pasta\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\caisi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\gustavo.reis\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7552,7 +7547,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -7561,7 +7556,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "O pacote 'FireSharp 2.0.4' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "message": "Package 'FireSharp 2.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
       "libraryId": "FireSharp",
       "targetGraphs": [
         "net8.0"
@@ -7571,7 +7566,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "O pacote 'Microsoft.Bcl 1.1.9' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "message": "Package 'Microsoft.Bcl 1.1.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Bcl",
       "targetGraphs": [
         "net8.0"
@@ -7581,7 +7576,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "O pacote 'Microsoft.Bcl.Async 1.0.168' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "message": "Package 'Microsoft.Bcl.Async 1.0.168' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Bcl.Async",
       "targetGraphs": [
         "net8.0"
@@ -7591,7 +7586,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "O pacote 'Microsoft.Net.Http 2.2.28' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "message": "Package 'Microsoft.Net.Http 2.2.28' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Net.Http",
       "targetGraphs": [
         "net8.0"
