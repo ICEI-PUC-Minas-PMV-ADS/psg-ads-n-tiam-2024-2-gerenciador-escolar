@@ -1,6 +1,4 @@
 ﻿using Google.Cloud.Firestore;
-using FireSharp.Interfaces;
-using FireSharp.Response;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Models;
 using InstitutoCopacabanaAPI.Services.Interfaces;

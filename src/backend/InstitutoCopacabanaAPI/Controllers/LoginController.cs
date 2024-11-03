@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using FirebaseAdmin.Auth;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Models;
 using InstitutoCopacabanaAPI.Services.Interfaces;
@@ -23,7 +24,7 @@ namespace InstitutoCopacabanaAPI.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginModel user)
         {
             try
@@ -49,7 +50,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                 return Ok("Usuário logado com sucesso.");
 
             }
-            catch (FirebaseAuthException)
+            catch (Firebase.Auth.FirebaseAuthException)
             {
                 return BadRequest("E-mail ou senha inválidos.");
             }
@@ -59,7 +60,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("GetSession")]
         public async Task<IActionResult> GetSession()
         {
             try
@@ -69,12 +70,14 @@ namespace InstitutoCopacabanaAPI.Controllers
                 if (token == null)
                     return BadRequest("Nenhum usuário conectado foi encontrado.");
 
-                SessionModel sessionUser = await _sessionService.GetConnectedUser(token);
+                //var connectedUser = await _authConnection.GetUserAsync(token);
 
-                if (sessionUser == null)
+                SessionModel connectedUser = await _sessionService.GetConnectedUser(token); 
+
+                if (connectedUser == null)
                     return NotFound("Não possível encontrar o usuário.");
 
-                return Ok(sessionUser);
+                return Ok(connectedUser);
             }
             catch (Exception ex)
             {
@@ -82,19 +85,19 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
             
         }
-          [HttpPost("logout")]
+        [HttpPost("Logout")]
         public IActionResult Logout()
         {
             try
             {
-                if (HttpContext.Session != null)
+                if (HttpContext.Session.GetString("_userToken") != null)
                 {
                     // Remove o token da sessão
                     HttpContext.Session.Remove("_userToken");
                     return Ok("Logout realizado com sucesso.");
                 }
 
-                return StatusCode(500, "Sessão não configurada corretamente.");
+                return StatusCode(404, "Sessão não configurada corretamente.");
             }
             catch (Exception ex)
             {
