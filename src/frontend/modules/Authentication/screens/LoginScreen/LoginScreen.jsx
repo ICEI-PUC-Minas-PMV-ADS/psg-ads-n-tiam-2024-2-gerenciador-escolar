@@ -1,9 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
 import CustomButton from '../../components/Button';
 import { Button } from 'react-native-paper';
 import { black, white } from 'react-native-paper/src/styles/themes/v2/colors';
 import Logo from '../../../../assets/images/Logo.png'
+import {
+  validateEmailFormat, 
+  validateEmailLength, 
+  isEmailNotEmpty, 
+  validateNoInvalidCharacters,
+} from '../../utils/validation'
 
 
 export default function LoginScreen() {
@@ -15,7 +21,6 @@ export default function LoginScreen() {
       />
       <TitleText />
       <Credentials />
-      <CustomButton title={"Entrar"}></CustomButton>
       <GhostButton></GhostButton>
     </View>
 
@@ -35,17 +40,61 @@ function GhostButton(){
 }
 
 function Credentials() {
+
+  const [email, setEmail] = useState('');
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [validatePassword, setValidatePassword] = useState({ number: false, length: false });
+  const [isPasswordTouched, setIsPasswordTouched] = useState(false); 
+
+
+  const securePassword = (password) => {
+    setIsPasswordTouched(true); 
+    const regexNumber = RegExp(/^(?=,*[0-9]).+$/)
+    const length = password.length >= 6
+
+    setValidatePassword({
+      number: regexNumber.test(password),
+      length
+    })
+  }
+
+  const secureEmail = (email) => {
+    const isValid = 
+      validateEmailFormat(email) &&
+      validateEmailLength(email) &&
+      isEmailNotEmpty(email) &&
+      validateNoInvalidCharacters(email);
+
+    setIsValidEmail(isValid);
+  };
+
+  const isPasswordValid = validatePassword.number && validatePassword.length;
+  const isFormValid = isValidEmail && isPasswordValid;
+
   return (
     <View>
       <TextInput
-        style={styles.textInput}
+        style={[styles.textInput, !isValidEmail && styles.invalidTextInput]}
         placeholder = "E-mail"
+        autoCapitalize='none'
+        onChangeText={(email) =>{
+          setEmail(email);
+          secureEmail(email);
+        }}
         />
 
         <TextInput 
-        style={styles.textInput}
-        placeholder = "Senha"
+        style={[
+          styles.textInput, 
+          isPasswordTouched && !isPasswordValid && styles.invalidTextInput
+          ]}
+        placeholder="Senha"
+        secureTextEntry
+        onChangeText={(password) =>{
+          securePassword(password)
+        }}
         />
+        <CustomButton title="Entrar" disabled={!isFormValid} />
     </View>
   )
 }
@@ -93,6 +142,14 @@ const styles = StyleSheet.create({
   ghostButton: {
     marginTop: 40,
     marginBottom: 72
+  },
+
+  invalidTextInput: {
+    borderColor: 'red',
+  },
+
+  errorText : {
+    color: 'red'
   },
 
   textInput: {
