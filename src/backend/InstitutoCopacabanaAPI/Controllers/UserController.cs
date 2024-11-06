@@ -129,11 +129,9 @@ namespace InstitutoCopacabanaAPI.Controllers
                         if (await _userService.VerifyPostEmail(user.Email))
                         {
                             if (!_passwordService.ValidatePassword(user.Password))
-                                return BadRequest("A senha não atende os padrões.");
+                                return BadRequest("A senha não atende os padrões.");                            
 
-                            string hashedPassword = _passwordService.HashPassword(user.Password);
-
-                            var finalUser = await _userService.PostUser(user, hashedPassword);
+                            var finalUser = await _userService.PostUser(user);
 
                             return Ok(finalUser);
                         }
@@ -175,11 +173,9 @@ namespace InstitutoCopacabanaAPI.Controllers
                         {
 
                             if (!_passwordService.ValidatePassword(user.Password))
-                                return BadRequest("A senha não atende os padrões.");
+                                return BadRequest("A senha não atende os padrões.");                            
 
-                            string hashedPassword = _passwordService.HashPassword(user.Password);
-
-                            var finalUser = await _userService.PutUser(user, hashedPassword);
+                            var finalUser = await _userService.PutUser(user);
 
                             return Ok(finalUser);
                         }

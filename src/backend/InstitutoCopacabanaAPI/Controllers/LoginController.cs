@@ -4,6 +4,7 @@ using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Models;
 using InstitutoCopacabanaAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace InstitutoCopacabanaAPI.Controllers
 {
@@ -12,15 +13,17 @@ namespace InstitutoCopacabanaAPI.Controllers
     public class LoginController : ControllerBase
     {
         private readonly FirebaseAuthProvider _authConnection;
-        private readonly IPasswordService _passwordService; 
+        private readonly IPasswordService _passwordService;
         private readonly ISessionService _sessionService;
+        private readonly IUserService _userService;
 
 
-        public LoginController(AuthConnection connection, IPasswordService passwordService, ISessionService sessionService)
+        public LoginController(AuthConnection connection, IPasswordService passwordService, ISessionService sessionService, IUserService userService)
         {
             _authConnection = connection.GetAuth();
             _passwordService = passwordService;
             _sessionService = sessionService;
+            _userService = userService;
         }
 
 
@@ -29,9 +32,7 @@ namespace InstitutoCopacabanaAPI.Controllers
         {
             try
             {
-                string hashedPassword = _passwordService.HashPassword(user.Password);
-
-                var fbAuthLink = await _authConnection.SignInWithEmailAndPasswordAsync(user.Email, hashedPassword);
+                var fbAuthLink = await _authConnection.SignInWithEmailAndPasswordAsync(user.Email, user.Password);
 
                 if (fbAuthLink == null)
                 {
@@ -83,8 +84,36 @@ namespace InstitutoCopacabanaAPI.Controllers
             {
                 return StatusCode(500, "Erro interno do servidor: " + ex.Message);
             }
-            
         }
+
+        [HttpPost("Requestpassword")]
+        public async Task<IActionResult> RequestPassword(string email)
+        {          
+
+            try
+            {
+                if (string.IsNullOrEmpty(email))
+                {
+                    return BadRequest("O e-mail é obrigatório.");
+                }
+
+                bool validEmail = await _userService.VerifyPostEmail(email);
+
+                if (!validEmail)
+                {
+                    await _authConnection.SendPasswordResetEmailAsync(email);
+                    return Ok("E-mail de recuperação de senha enviado com sucesso.");
+                }
+
+                return NotFound("Email não encontrado.");
+                
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro ao enviar o e-mail de recuperação de senha: {ex.Message}");
+            }
+        }
+
         [HttpPost("Logout")]
         public IActionResult Logout()
         {
@@ -107,3 +136,4 @@ namespace InstitutoCopacabanaAPI.Controllers
 
     }
 }
+
