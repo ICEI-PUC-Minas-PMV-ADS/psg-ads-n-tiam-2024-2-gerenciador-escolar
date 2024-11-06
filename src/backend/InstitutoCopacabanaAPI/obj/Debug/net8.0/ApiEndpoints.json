@@ -36,6 +36,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
+    "Method": "RequestPassword",
+    "RelativePath": "api/Login/Requestpassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
     "Method": "GetUsers",
     "RelativePath": "api/User",

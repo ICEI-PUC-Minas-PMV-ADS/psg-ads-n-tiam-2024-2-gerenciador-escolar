@@ -13,7 +13,7 @@ namespace InstitutoCopacabanaAPI.Data
         {
             var firebaseConfig = configuration.GetSection("FirestoreConnection");
 
-            var jsonString = File.ReadAllText("C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\serviceAccountKeyDevelop.json");
+            var jsonString = File.ReadAllText("C:\\TIAM 12\\src\\backend\\InstitutoCopacabanaAPI\\serviceAccountKeyDevelop.json");
 
             var builder = new FirestoreClientBuilder { JsonCredentials = jsonString };
 
