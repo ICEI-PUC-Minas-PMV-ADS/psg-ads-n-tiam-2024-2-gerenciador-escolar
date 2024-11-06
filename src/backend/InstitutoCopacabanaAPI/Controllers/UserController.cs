@@ -1,4 +1,5 @@
-﻿using Google.Cloud.Firestore;
+﻿using Firebase.Auth;
+using Google.Cloud.Firestore;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Models;
 using InstitutoCopacabanaAPI.Services.Interfaces;
@@ -11,16 +12,18 @@ namespace InstitutoCopacabanaAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly FirestoreDb _firebaseClient;
+        private readonly IFirebaseAuthProvider _firebaseAuthProvider;
         private readonly IUserService _userService;
         private readonly IPasswordService _passwordService;
         private readonly ISessionService _sessionService;
 
-        public UserController(ContextDb contextDb, IUserService userService, IPasswordService passwordService, ISessionService sessionService)
+        public UserController(ContextDb contextDb, IUserService userService, IPasswordService passwordService, ISessionService sessionService, AuthConnection connection)
         {
             _firebaseClient = contextDb.GetClient();
             _userService = userService;
             _passwordService = passwordService;
-            _sessionService = sessionService;   
+            _sessionService = sessionService;
+            _firebaseAuthProvider = connection.GetAuth();
         }
 
         [HttpGet]
@@ -214,6 +217,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                         if (!snapshot.Exists)
                             return NotFound("Usuário não encontrado.");
 
+                        //Excluir do firestore
                         await docRef.DeleteAsync();
 
                         snapshot = await docRef.GetSnapshotAsync();

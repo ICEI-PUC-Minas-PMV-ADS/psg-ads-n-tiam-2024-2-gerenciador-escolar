@@ -4,18 +4,21 @@ using Google.Apis.Auth.OAuth2;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Services.Classes;
 using InstitutoCopacabanaAPI.Services.Interfaces;
+using Microsoft.IdentityModel.Tokens;
 
 namespace InstitutoCopacabanaAPI
 {
     public class Program
     {
         public static void Main(string[] args)
-        {
+        {           
             var builder = WebApplication.CreateBuilder(args);
+
+            var pathServiceKey = builder.Configuration.GetValue<string>("LinkServiceAccountKey:Path");
 
             FirebaseApp.Create(new AppOptions
             {
-                Credential = GoogleCredential.FromFile("C:\\TIAM 12\\src\\backend\\InstitutoCopacabanaAPI\\serviceAccountKeyDevelop.json")
+                Credential = GoogleCredential.FromFile(pathServiceKey)
             });
 
             // Add services to the container.

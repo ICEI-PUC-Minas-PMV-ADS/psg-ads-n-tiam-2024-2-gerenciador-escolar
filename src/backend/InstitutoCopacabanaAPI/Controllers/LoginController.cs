@@ -1,5 +1,4 @@
 ﻿using Firebase.Auth;
-using FirebaseAdmin.Auth;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Models;
 using InstitutoCopacabanaAPI.Services.Interfaces;
@@ -86,7 +85,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
-        [HttpPost("Requestpassword")]
+        [HttpPost("RequestPassword")]
         public async Task<IActionResult> RequestPassword(string email)
         {          
 

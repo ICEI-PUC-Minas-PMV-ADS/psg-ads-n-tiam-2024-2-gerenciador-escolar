@@ -38,7 +38,7 @@
   {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
     "Method": "RequestPassword",
-    "RelativePath": "api/Login/Requestpassword",
+    "RelativePath": "api/Login/RequestPassword",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
