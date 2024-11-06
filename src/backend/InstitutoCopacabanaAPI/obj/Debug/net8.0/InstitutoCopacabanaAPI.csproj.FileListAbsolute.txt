@@ -4,12 +4,6 @@ C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-g
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\InstitutoCopacabanaAPI.runtimeconfig.json
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\InstitutoCopacabanaAPI.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\InstitutoCopacabanaAPI.pdb
-C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\FireSharp.dll
-C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.Threading.Tasks.Extensions.Desktop.dll
-C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.Threading.Tasks.Extensions.dll
-C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.Threading.Tasks.dll
-C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\System.Net.Http.Extensions.dll
-C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\System.Net.Http.Primitives.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
