@@ -6,7 +6,7 @@ import { black, white } from 'react-native-paper/src/styles/themes/v2/colors';
 import Logo from '../../../../assets/images/Logo.png'
 
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Image
@@ -16,17 +16,17 @@ export default function LoginScreen() {
       <TitleText />
       <Credentials />
       <CustomButton title={"Entrar"}></CustomButton>
-      <GhostButton></GhostButton>
+      <GhostButton navigation={navigation}></GhostButton>
     </View>
 
   )
 }
 
-function GhostButton(){
+function GhostButton({navigation}){
   return(
     <View>
       <TouchableOpacity>
-      <Button style={styles.ghostButton}>
+      <Button style={styles.ghostButton} onPress={()=> navigation.navigate('FormCadastro')}>
         <Text style={styles.textButton}>Cadastre-se</Text>
       </Button>
       </TouchableOpacity>
