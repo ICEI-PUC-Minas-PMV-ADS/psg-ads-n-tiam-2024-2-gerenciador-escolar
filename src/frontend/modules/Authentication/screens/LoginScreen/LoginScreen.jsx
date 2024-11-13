@@ -12,7 +12,7 @@ import {
 } from '../../utils/validation'
 
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Image
@@ -21,17 +21,18 @@ export default function LoginScreen() {
       />
       <TitleText />
       <Credentials />
-      <GhostButton></GhostButton>
+      <CustomButton title={"Entrar"}/>
+      <GhostButton navigation={navigation}/>
     </View>
 
   )
 }
 
-function GhostButton(){
+function GhostButton({navigation}){
   return(
     <View>
       <TouchableOpacity>
-      <Button style={styles.ghostButton}>
+      <Button style={styles.ghostButton} onPress={()=> navigation.navigate('FormCadastro')}>
         <Text style={styles.textButton}>Cadastre-se</Text>
       </Button>
       </TouchableOpacity>
