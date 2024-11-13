@@ -15,7 +15,7 @@ namespace InstitutoCopacabanaAPI
 
             FirebaseApp.Create(new AppOptions
             {
-                Credential = GoogleCredential.FromFile("C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\serviceAccountKeyDevelop.json")
+                Credential = GoogleCredential.FromFile("C:\\TIAM 12\\src\\backend\\InstitutoCopacabanaAPI\\serviceAccountKeyDevelop.json")
             });
 
             // Add services to the container.

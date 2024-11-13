@@ -1,8 +1,18 @@
 [
   {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
+    "Method": "GetSession",
+    "RelativePath": "api/Login/GetSession",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
     "Method": "Login",
-    "RelativePath": "api/Login",
+    "RelativePath": "api/Login/Login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -17,12 +27,28 @@
   },
   {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
-    "Method": "GetSession",
-    "RelativePath": "api/Login",
-    "HttpMethod": "GET",
+    "Method": "Logout",
+    "RelativePath": "api/Login/Logout",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
+    "Method": "RequestPassword",
+    "RelativePath": "api/Login/Requestpassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
