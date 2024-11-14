@@ -1,4 +1,5 @@
-﻿using Google.Cloud.Firestore;
+﻿using Firebase.Auth;
+using Google.Cloud.Firestore;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Enum;
 using InstitutoCopacabanaAPI.Models;
@@ -12,20 +13,19 @@ namespace InstitutoCopacabanaAPI.Services.Classes
     public class SessionService : ISessionService
     {
         private readonly FirestoreDb _firebaseClient;
+        private readonly FirebaseAuthProvider _authConnection;
 
-        public SessionService(ContextDb contextDb)
+        public SessionService(ContextDb contextDb, AuthConnection authConnection)
         {
             _firebaseClient = contextDb.GetClient();
+            _authConnection = authConnection.GetAuth();
         }
 
         public async Task<SessionModel> GetConnectedUser(string token)
-        {                     
-            var handler = new JwtSecurityTokenHandler();
-            var jwtToken = handler.ReadJwtToken(token);
+        {
+            var connectedUser = await _authConnection.GetUserAsync(token);            
 
-            var userId = jwtToken.Claims.FirstOrDefault(c => c.Type == "user_id")?.Value;
-
-            DocumentReference docRef = _firebaseClient.Collection("users").Document(userId);
+            DocumentReference docRef = _firebaseClient.Collection("users").Document(connectedUser.LocalId);
             DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();            
 
             if (snapshot.Exists)

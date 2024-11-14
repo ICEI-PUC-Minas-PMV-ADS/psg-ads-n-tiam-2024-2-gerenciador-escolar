@@ -18,7 +18,7 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             _auth = authConnection.GetAuth();
         }
 
-        public async Task CreateAuthenticantion(UserModel user)
+        public async Task CreateAuthentication(UserModel user)
         {
             UserRecordArgs args = new UserRecordArgs
             {
@@ -30,44 +30,40 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             UserRecord userRecord = await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.CreateUserAsync(args);
         }
 
-        public async Task<UserModel> PostUser(UserModel user, string hashedPassword)
+        public async Task UpdateAuthentication(UserModel user)
         {
-            UserModel finalUser = new UserModel
+            UserRecordArgs args = new UserRecordArgs
             {
-                Id = user.Id,
-                Name = user.Name,
+                Uid = user.Id,
                 Email = user.Email,
-                Password = hashedPassword,
-                UserType = user.UserType
+                Password = user.Password
             };
 
+            UserRecord userRecord = await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.UpdateUserAsync(args);
+        }
+
+        public async Task<UserModel> PostUser(UserModel user)
+        {
             //Registra a autenticação com o UID igual ao Id do banco de dados
-            await CreateAuthenticantion(finalUser);
+            await CreateAuthentication(user);                    
 
             DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);            
 
-            await docRef.SetAsync(finalUser);            
+            await docRef.SetAsync(user);            
 
-            return finalUser;
+            return user;
         }
 
-        public async Task<UserModel> PutUser(UserModel user, string hashedPassword)
+        public async Task<UserModel> PutUser(UserModel user)
         {
-            UserModel finalUser = new UserModel
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Email = user.Email,
-                Password = hashedPassword,
-                UserType = user.UserType
-            };
-
+            //Atualiza a autenticação com o UID igual ao Id do banco de dados
+            await UpdateAuthentication(user);                       
 
             DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);
 
-            await docRef.SetAsync(finalUser, SetOptions.Overwrite);
+            await docRef.SetAsync(user, SetOptions.Overwrite);
 
-            return finalUser;
+            return user;
         }
 
         public async Task<bool> VerifyPostEmail(string email)
