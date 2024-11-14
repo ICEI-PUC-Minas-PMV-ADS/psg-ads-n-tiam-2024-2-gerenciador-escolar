@@ -13,7 +13,9 @@ namespace InstitutoCopacabanaAPI.Data
         {
             var firebaseConfig = configuration.GetSection("FirestoreConnection");
 
-            var jsonString = File.ReadAllText("C:\\TIAM 12\\src\\backend\\InstitutoCopacabanaAPI\\serviceAccountKeyDevelop.json");
+            var jsonFilePath = configuration.GetValue<string>("LinkServiceAccountKey:Path");
+
+            var jsonString = File.ReadAllText(jsonFilePath!);
 
             var builder = new FirestoreClientBuilder { JsonCredentials = jsonString };
 

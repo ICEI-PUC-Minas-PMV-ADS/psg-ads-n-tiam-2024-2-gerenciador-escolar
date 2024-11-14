@@ -1,4 +1,5 @@
-﻿using Google.Cloud.Firestore;
+﻿using Firebase.Auth;
+using Google.Cloud.Firestore;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Models;
 using InstitutoCopacabanaAPI.Services.Interfaces;
@@ -11,19 +12,21 @@ namespace InstitutoCopacabanaAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly FirestoreDb _firebaseClient;
+        private readonly IFirebaseAuthProvider _firebaseAuthProvider;
         private readonly IUserService _userService;
         private readonly IPasswordService _passwordService;
         private readonly ISessionService _sessionService;
 
-        public UserController(ContextDb contextDb, IUserService userService, IPasswordService passwordService, ISessionService sessionService)
+        public UserController(ContextDb contextDb, IUserService userService, IPasswordService passwordService, ISessionService sessionService, AuthConnection connection)
         {
             _firebaseClient = contextDb.GetClient();
             _userService = userService;
             _passwordService = passwordService;
-            _sessionService = sessionService;   
+            _sessionService = sessionService;
+            _firebaseAuthProvider = connection.GetAuth();
         }
 
-        [HttpGet]
+        [HttpGet("GetUsers")]
         public async Task<ActionResult> GetUsers()
         {
             try
@@ -51,7 +54,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                             usersList.Add(user);
                         }
 
-                        return Ok(usersList);
+                        return StatusCode(200, usersList);
                     }
                     
                     return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
@@ -67,7 +70,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetUser")]
         public async Task<ActionResult> GetUserById(string id)
         {
             try
@@ -106,7 +109,7 @@ namespace InstitutoCopacabanaAPI.Controllers
 
         }
 
-        [HttpPost]
+        [HttpPost("CreateUser")]
         public async Task<ActionResult> PostUser(UserModel user)
         {
             try
@@ -133,7 +136,7 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                             var finalUser = await _userService.PostUser(user);
 
-                            return Ok(finalUser);
+                            return StatusCode(201, finalUser);
                         }
 
                         return Conflict("Este e-mail já está sendo utilizado.");
@@ -150,7 +153,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("UpdateUser")]
         public async Task<ActionResult> UpdateUser(UserModel user)
         {
             try
@@ -194,7 +197,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteUser")]
         public async Task<ActionResult> DeleteUser(string id)
         {
             try
@@ -214,13 +217,14 @@ namespace InstitutoCopacabanaAPI.Controllers
                         if (!snapshot.Exists)
                             return NotFound("Usuário não encontrado.");
 
+                        //Excluir do firestore
                         await docRef.DeleteAsync();
 
                         snapshot = await docRef.GetSnapshotAsync();
                         if (snapshot.Exists)
                             return StatusCode(500, "Falha ao deletar o usuário.");
 
-                        return Ok("Usuário deletado com sucesso.");
+                        return StatusCode(204, "Usuário deletado com sucesso.");
                     }
 
                     return Unauthorized("Este usuário não pode acessar essa funcionalidade.");

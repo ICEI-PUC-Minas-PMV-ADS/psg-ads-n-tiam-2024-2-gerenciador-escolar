@@ -18,7 +18,7 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             _auth = authConnection.GetAuth();
         }
 
-        public async Task CreateAuthenticantion(UserModel user)
+        public async Task CreateAuthentication(UserModel user)
         {
             UserRecordArgs args = new UserRecordArgs
             {
@@ -30,7 +30,7 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             UserRecord userRecord = await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.CreateUserAsync(args);
         }
 
-        public async Task UpdateAuthenticantion(UserModel user)
+        public async Task UpdateAuthentication(UserModel user)
         {
             UserRecordArgs args = new UserRecordArgs
             {
@@ -45,41 +45,25 @@ namespace InstitutoCopacabanaAPI.Services.Classes
         public async Task<UserModel> PostUser(UserModel user)
         {
             //Registra a autenticação com o UID igual ao Id do banco de dados
-            await CreateAuthenticantion(user);
-
-            UserModel finalUser = new UserModel
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Email = user.Email,                
-                UserType = user.UserType
-            };          
+            await CreateAuthentication(user);                    
 
             DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);            
 
-            await docRef.SetAsync(finalUser);            
+            await docRef.SetAsync(user);            
 
-            return finalUser;
+            return user;
         }
 
         public async Task<UserModel> PutUser(UserModel user)
         {
             //Atualiza a autenticação com o UID igual ao Id do banco de dados
-            await UpdateAuthenticantion(user);
-
-            UserModel finalUser = new UserModel
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Email = user.Email,                
-                UserType = user.UserType
-            };            
+            await UpdateAuthentication(user);                       
 
             DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);
 
-            await docRef.SetAsync(finalUser, SetOptions.Overwrite);
+            await docRef.SetAsync(user, SetOptions.Overwrite);
 
-            return finalUser;
+            return user;
         }
 
         public async Task<bool> VerifyPostEmail(string email)
