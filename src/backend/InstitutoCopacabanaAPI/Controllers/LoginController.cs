@@ -47,7 +47,9 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                 HttpContext.Session.SetString("_userToken", token);
 
-                return Ok("Usuário logado com sucesso.");
+                SessionModel connectedUser = await _sessionService.GetConnectedUser(token);
+
+                return Ok(connectedUser.UserType);
 
             }
             catch (Firebase.Auth.FirebaseAuthException)
@@ -69,8 +71,6 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                 if (token == null)
                     return BadRequest("Nenhum usuário conectado foi encontrado.");
-
-                //var connectedUser = await _authConnection.GetUserAsync(token);
 
                 SessionModel connectedUser = await _sessionService.GetConnectedUser(token); 
 
@@ -101,7 +101,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                 if (!validEmail)
                 {
                     await _authConnection.SendPasswordResetEmailAsync(email);
-                    return Ok("E-mail de recuperação de senha enviado com sucesso.");
+                    return StatusCode(202, "E-mail de recuperação de senha enviado com sucesso.");
                 }
 
                 return NotFound("Email não encontrado.");

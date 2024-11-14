@@ -1,5 +1,31 @@
 [
   {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.ClassController",
+    "Method": "CreateClass",
+    "RelativePath": "api/Class/CreateClass",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "schoolClass",
+        "Type": "InstitutoCopacabanaAPI.Models.ClassModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.ClassController",
+    "Method": "GetClasses",
+    "RelativePath": "api/Class/GetClasses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
     "Method": "GetSession",
     "RelativePath": "api/Login/GetSession",
@@ -53,18 +79,8 @@
   },
   {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
-    "Method": "GetUsers",
-    "RelativePath": "api/User",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
     "Method": "PostUser",
-    "RelativePath": "api/User",
+    "RelativePath": "api/User/CreateUser",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -79,40 +95,8 @@
   },
   {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
-    "Method": "UpdateUser",
-    "RelativePath": "api/User",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "user",
-        "Type": "InstitutoCopacabanaAPI.Models.UserModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
-    "Method": "GetUserById",
-    "RelativePath": "api/User/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
     "Method": "DeleteUser",
-    "RelativePath": "api/User/{id}",
+    "RelativePath": "api/User/DeleteUser",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -120,6 +104,48 @@
       {
         "Name": "id",
         "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
+    "Method": "GetUserById",
+    "RelativePath": "api/User/GetUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
+    "Method": "GetUsers",
+    "RelativePath": "api/User/GetUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.UserController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/User/UpdateUser",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "InstitutoCopacabanaAPI.Models.UserModel",
         "IsRequired": true
       }
     ],
