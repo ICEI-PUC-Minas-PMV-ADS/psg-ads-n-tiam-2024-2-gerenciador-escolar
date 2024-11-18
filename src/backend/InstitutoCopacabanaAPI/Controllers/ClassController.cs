@@ -72,6 +72,11 @@ namespace InstitutoCopacabanaAPI.Controllers
                         if (!ModelState.IsValid)
                             return BadRequest("Todos os campos são obrigatórios.");
 
+                        var classDocument = await _classService.GetClassByName(schoolClass.Name);
+
+                        if (classDocument != null)
+                            return BadRequest("Essa turma já existe.");
+
                         string IdGenerate = Guid.NewGuid().ToString("N");
 
                         schoolClass.Id = IdGenerate;
@@ -91,6 +96,41 @@ namespace InstitutoCopacabanaAPI.Controllers
                 return StatusCode(500, "Erro interno do servidor: " + ex.Message);
             }
         }
+
+        [HttpPut("InsertStudent")]
+        public async Task<ActionResult> InsertStudentToClass(string className, StudentModel student)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Secretary")
+                    {
+                        var classDocument = await _classService.GetClassByName(className);
+
+                        if (classDocument == null)
+                            return BadRequest("Essa turma não foi registrada.");
+
+                        var insertedStudent = await _classService.InsertStudent(classDocument.Id, student);
+
+                        return StatusCode(201, "Aluno inserido com sucesso.");
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
+
         
     }
 }
