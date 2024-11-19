@@ -31,6 +31,21 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             return null;
         }
 
+        public async Task<UserModel?> GetStudentByName(string studentName)
+        {
+            CollectionReference classesRef = _firebaseClient.Collection("users");
+
+            Query query = classesRef.WhereEqualTo("Name", studentName);
+            QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+
+            if (querySnapshot.Documents.Count > 0)
+            {
+                DocumentSnapshot document = querySnapshot.Documents[0];
+                return document.ConvertTo<UserModel>();
+            }
+
+            return null;
+        }     
 
         public async Task<ClassModel> CreateClass(ClassModel schoolClass)
         {
@@ -41,8 +56,15 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             return schoolClass;
         }
 
-        public async Task<StudentModel> InsertStudent(string classId, StudentModel student)
+        public async Task<StudentModel> InsertStudent(string classId, UserModel user)
         {
+            StudentModel student = new StudentModel
+            {
+                StudentId = user.Id,
+                Name = user.Name,
+                Subjects = new List<SubjectModel> { new SubjectModel() }
+            };
+
             DocumentReference docRef = _firebaseClient.Collection("classes").Document(classId);
 
             DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();

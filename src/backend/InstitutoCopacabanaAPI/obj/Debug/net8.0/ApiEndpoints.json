@@ -39,9 +39,9 @@
         "IsRequired": false
       },
       {
-        "Name": "student",
-        "Type": "InstitutoCopacabanaAPI.Models.StudentModel",
-        "IsRequired": true
+        "Name": "studentName",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

@@ -48,7 +48,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                     return StatusCode(200, classesList);
                 }
 
-                return NotFound("Nenhum usuário conectado foi encontrado.");
+                return StatusCode(403, "Nenhum usuário conectado foi encontrado.");
             }
             catch (Exception ex)
             {
@@ -86,7 +86,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                         return StatusCode(201, finalClass);
                     }
 
-                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
                 }
 
                 return NotFound("Nenhum usuário conectado foi encontrado.");
@@ -98,7 +98,7 @@ namespace InstitutoCopacabanaAPI.Controllers
         }
 
         [HttpPut("InsertStudent")]
-        public async Task<ActionResult> InsertStudentToClass(string className, StudentModel student)
+        public async Task<ActionResult> InsertStudentToClass(string className, string studentName)
         {
             try
             {
@@ -113,14 +113,22 @@ namespace InstitutoCopacabanaAPI.Controllers
                         var classDocument = await _classService.GetClassByName(className);
 
                         if (classDocument == null)
-                            return BadRequest("Essa turma não foi registrada.");
+                            return NotFound("Essa turma não foi registrada.");
+
+                        UserModel? student = await _classService.GetStudentByName(studentName);
+
+                        if (student == null) 
+                            return NotFound("Esse aluno não existe.");
+
+                        if (student.UserType != "Student")
+                            return StatusCode(403, "Apenas alunos podem ser inseridos nas turmas.");
 
                         var insertedStudent = await _classService.InsertStudent(classDocument.Id, student);
 
                         return StatusCode(201, "Aluno inserido com sucesso.");
                     }
 
-                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
                 }
 
                 return NotFound("Nenhum usuário conectado foi encontrado.");
