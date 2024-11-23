@@ -6,7 +6,8 @@ import { useForm } from "react-hook-form";
 
 import { Input } from "../../components/InputCadastro/index";
 import { Button } from "../../components/ButtonCadastro/index";
-import LogoEscola from "../../../../assets/LogoEscola.png";
+import Logo from '../../../../assets/images/Logo.png'
+
 
 export default function FormCadastro(){
     const {control, handleSubmit,formState:{errors},getValues} = useForm();
@@ -29,8 +30,8 @@ export default function FormCadastro(){
     return(
         <View style={styles.container}>
              <Image 
-                source={LogoEscola} 
                 style={styles.logo}
+                source={Logo} 
             />
             <Text style={styles.title}>
                 Cadastro
