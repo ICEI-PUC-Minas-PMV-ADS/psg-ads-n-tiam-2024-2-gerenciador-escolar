@@ -53,7 +53,7 @@ function Credentials() {
   const handleLogin = async () => {
     try{
       const response = await login(email,password)
-      console.log("Login bem-sucedido:", response);
+      console.log("Login bem-sucedido");
       Alert.alert('Sucesso', `Bem-vindo, ${response.email}`)
 
     } catch(error){
