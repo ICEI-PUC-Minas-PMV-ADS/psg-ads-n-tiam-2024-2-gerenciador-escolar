@@ -1,14 +1,21 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native'; 
+import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
+import 'react-native-url-polyfill/auto'; 
+import LoginScreen from './modules/Authentication/screens/LoginScreen/LoginScreen';
+import FormCadastro from './modules/Authentication/screens/CadastroScreen/index';
+import HomeScreen from './modules/Class/screens/HomeScreen';
 
-import {NavigationContainer} from '@react-navigation/native'
-import Routes from "./routes";
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Routes/>
+      <Stack.Navigator>
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="FormCadastro" component={FormCadastro} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
-};
-
+}
