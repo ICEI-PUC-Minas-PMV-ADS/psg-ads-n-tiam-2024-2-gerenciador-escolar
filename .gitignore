@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -20,7 +20,5 @@
 /src/backend/InstitutoCopacabanaAPI/appsettings.Development.json
 /src/backend/InstitutoCopacabanaAPI/serviceAccountKeyDevelop.json
 /src/backend/InstitutoCopacabanaAPI/serviceAccountKeyDevelop.json
-/src/backend/InstitutoCopacabanaAPI/gerenciador-escolar-cbad7-firebase-adminsdk-cg25r-3d8e7b7d30.json
 /src/backend/InstitutoCopacabanaAPI/serviceAccountKey.json
 /src/backend/InstitutoCopacabanaAPI/appsettings.Development.json
-/src/backend/InstitutoCopacabanaAPI/serviceAccountKey.json
