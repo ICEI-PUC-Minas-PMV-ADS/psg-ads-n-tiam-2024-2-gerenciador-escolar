@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../../components/Button';
 import { Button } from 'react-native-paper';
 import { black, white } from 'react-native-paper/src/styles/themes/v2/colors';
@@ -21,7 +22,6 @@ export default function LoginScreen({navigation}) {
       />
       <TitleText />
       <Credentials />
-      <CustomButton title={"Entrar"}/>
       <GhostButton navigation={navigation}/>
     </View>
 
@@ -50,7 +50,7 @@ function Credentials() {
 
   const securePassword = (password) => {
     setIsPasswordTouched(true); 
-    const regexNumber = RegExp(/^(?=,*[0-9]).+$/)
+    const regexNumber = /^(?=.*[0-9]).+$/;
     const length = password.length >= 6
 
     setValidatePassword({
@@ -71,6 +71,7 @@ function Credentials() {
 
   const isPasswordValid = validatePassword.number && validatePassword.length;
   const isFormValid = isValidEmail && isPasswordValid;
+  const navigation = useNavigation();
 
   return (
     <View>
@@ -95,7 +96,7 @@ function Credentials() {
           securePassword(password)
         }}
         />
-        <CustomButton title="Entrar" disabled={!isFormValid} />
+        <CustomButton title="Entrar" disabled={!isFormValid} onPress={()=> navigation.replace('TabRoutes')} />
     </View>
   )
 }
