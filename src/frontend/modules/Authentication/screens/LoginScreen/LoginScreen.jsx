@@ -5,15 +5,19 @@ import CustomButton from '../../components/Button';
 import { Button } from 'react-native-paper';
 import { black, white } from 'react-native-paper/src/styles/themes/v2/colors';
 import Logo from '../../../../assets/images/Logo.png'
+import {login} from '../../services/login'
 import {
   validateEmailFormat, 
   validateEmailLength, 
   isEmailNotEmpty, 
   validateNoInvalidCharacters,
+  validatePassword
+
 } from '../../utils/validation'
 
 
 export default function LoginScreen({navigation}) {
+
   return (
     <View style={styles.container}>
       <Image
@@ -43,35 +47,40 @@ function GhostButton({navigation}){
 function Credentials() {
 
   const [email, setEmail] = useState('');
-  const [isValidEmail, setIsValidEmail] = useState(true);
-  const [validatePassword, setValidatePassword] = useState({ number: false, length: false });
-  const [isPasswordTouched, setIsPasswordTouched] = useState(false); 
+  const [password, setPassword] = useState('');
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
 
+  const handleLogin = async () => {
+    try{
+      const response = await login(email,password)
+      console.log("Login bem-sucedido");
+      Alert.alert('Sucesso', `Bem-vindo, ${response.email}`)
 
-  const securePassword = (password) => {
-    setIsPasswordTouched(true); 
-    const regexNumber = /^(?=.*[0-9]).+$/;
-    const length = password.length >= 6
-
-    setValidatePassword({
-      number: regexNumber.test(password),
-      length
-    })
+    } catch(error){
+      console.error("Erro no login:", error);
+      Alert.alert('Erro', 'Falha no login.')
+    }
   }
 
-  const secureEmail = (email) => {
-    const isValid = 
-      validateEmailFormat(email) &&
-      validateEmailLength(email) &&
-      isEmailNotEmpty(email) &&
-      validateNoInvalidCharacters(email);
+  const handleEmailChange = (input) => {
+    setEmail(input)
 
-    setIsValidEmail(isValid);
+    const isValid = 
+    validateEmailFormat(input) &&
+    validateEmailLength(input) &&
+    isEmailNotEmpty(input) &&
+    validateNoInvalidCharacters(input);
+
+    setIsValidEmail(isValid)
+  }
+
+  const handlePasswordChange = (input) => {
+    setPassword(input)
+    setIsPasswordValid(validatePassword(input))
   };
 
-  const isPasswordValid = validatePassword.number && validatePassword.length;
-  const isFormValid = isValidEmail && isPasswordValid;
-  const navigation = useNavigation();
+  const isFormValid = isValidEmail && isPasswordValid
 
   return (
     <View>
@@ -79,24 +88,22 @@ function Credentials() {
         style={[styles.textInput, !isValidEmail && styles.invalidTextInput]}
         placeholder = "E-mail"
         autoCapitalize='none'
-        onChangeText={(email) =>{
-          setEmail(email);
-          secureEmail(email);
-        }}
+        value = {email}
+        onChangeText={handleEmailChange}
         />
 
         <TextInput 
-        style={[
-          styles.textInput, 
-          isPasswordTouched && !isPasswordValid && styles.invalidTextInput
-          ]}
+        style={[styles.textInput, !isPasswordValid && styles.invalidTextInput]}
         placeholder="Senha"
         secureTextEntry
-        onChangeText={(password) =>{
-          securePassword(password)
-        }}
+        value={password}
+        onChangeText={handlePasswordChange}
         />
-        <CustomButton title="Entrar" disabled={!isFormValid} onPress={()=> navigation.replace('TabRoutes')} />
+        <CustomButton 
+        title="Entrar" 
+        disabled={!isFormValid} 
+        onPress={() => handleLogin()}
+        />
     </View>
   )
 }
@@ -115,8 +122,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    
-    
   },
 
   image: {

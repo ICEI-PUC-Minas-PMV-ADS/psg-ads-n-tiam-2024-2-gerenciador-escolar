@@ -11,3 +11,8 @@ export const validateEmailFormat = (email) => {
     const regexInvalidChars = /[!#\$%\^&\*\(\)<>]/;
     return !regexInvalidChars.test(email);
   };
+
+  export const validatePassword = (password) => {
+    const MIN_LENGTH = 6;
+    return password.length >= MIN_LENGTH;
+  };

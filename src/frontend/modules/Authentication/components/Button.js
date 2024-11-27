@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
  },
 
   disabledButton: {
-  backgroundColor: '#d3d3d3', // Cor para o botão desabilitado
+  backgroundColor: '#d3d3d3', 
 },
 });
 
