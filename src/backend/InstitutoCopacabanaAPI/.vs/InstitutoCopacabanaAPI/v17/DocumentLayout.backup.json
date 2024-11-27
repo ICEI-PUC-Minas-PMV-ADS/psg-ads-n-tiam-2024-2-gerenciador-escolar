@@ -78,8 +78,7 @@
               "RelativeToolTip": "appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-20T20:48:31.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T20:48:31.333Z"
             },
             {
               "$type": "Document",
@@ -104,8 +103,7 @@
               "RelativeToolTip": "Services\\Classes\\ClassService.cs",
               "ViewState": "AgIAADgAAAAAAAAAAAAIwFgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T19:44:29.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T19:44:29.345Z"
             },
             {
               "$type": "Document",
@@ -117,8 +115,7 @@
               "RelativeToolTip": "Services\\Interfaces\\IClassService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T20:01:12.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T20:01:12.7Z"
             },
             {
               "$type": "Document",
@@ -130,8 +127,7 @@
               "RelativeToolTip": "Data\\ContextDb.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T19:44:02.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T19:44:02.924Z"
             },
             {
               "$type": "Document",
@@ -143,8 +139,7 @@
               "RelativeToolTip": "Models\\StudentModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T17:09:37.176Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T17:09:37.176Z"
             },
             {
               "$type": "Document",
@@ -156,8 +151,7 @@
               "RelativeToolTip": "Models\\ClassModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T16:39:17.798Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T16:39:17.798Z"
             },
             {
               "$type": "Document",
@@ -169,8 +163,7 @@
               "RelativeToolTip": "Controllers\\ClassController.cs",
               "ViewState": "AgIAAGIAAAAAAAAAAAAQwH8AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T16:38:33.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T16:38:33.484Z"
             }
           ]
         }
