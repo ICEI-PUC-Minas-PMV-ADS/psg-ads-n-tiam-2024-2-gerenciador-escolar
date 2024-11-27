@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj": {}
+    "C:\\Users\\gustavo.reis\\Tiaw\\psg-ads-n-tiam-2024-2-gerenciador-escolar-1\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj": {
+    "C:\\Users\\gustavo.reis\\Tiaw\\psg-ads-n-tiam-2024-2-gerenciador-escolar-1\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
+        "projectUniqueName": "C:\\Users\\gustavo.reis\\Tiaw\\psg-ads-n-tiam-2024-2-gerenciador-escolar-1\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
         "projectName": "InstitutoCopacabanaAPI",
-        "projectPath": "C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
-        "packagesPath": "C:\\Users\\caisi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\caisi\\OneDrive\\Área de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\obj\\",
+        "projectPath": "C:\\Users\\gustavo.reis\\Tiaw\\psg-ads-n-tiam-2024-2-gerenciador-escolar-1\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
+        "packagesPath": "C:\\Users\\gustavo.reis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gustavo.reis\\Tiaw\\psg-ads-n-tiam-2024-2-gerenciador-escolar-1\\src\\backend\\InstitutoCopacabanaAPI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\caisi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\gustavo.reis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -98,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
