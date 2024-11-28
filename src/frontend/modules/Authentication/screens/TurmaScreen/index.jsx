@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
-import { FlatList, StyleSheet,Text,View} from 'react-native';
+import { FlatList, StyleSheet,Text,View,Image} from 'react-native';
 import { Button } from '../../components/ButtonCadastro';
+import Logo from '../../../../assets/images/Logo.png';
 
 export default class Turma extends Component{
 
@@ -25,6 +26,11 @@ export default class Turma extends Component{
     render(){
         return(
             <View style={styles.container}>
+                <Image 
+                    style={styles.logo}
+                    source={Logo}
+                />
+                <Text style={styles.titleTela}>Turmas</Text>
                  <FlatList
                     data={this.state.turmas}
                     renderItem={({item}) =>
@@ -42,7 +48,9 @@ export default class Turma extends Component{
 
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        margin:20,
+        top:10
     },
     containerTurmas:{
         backgroundColor: 'grey',
@@ -72,5 +80,17 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right:20,
         top: 75
+    },
+    titleTela:{
+        fontSize: 50,
+        paddingLeft:92,
+        marginBottom:33,
+        marginTop:30
+    },
+    logo:{
+        marginLeft:310,
+        height:50,
+        width:60,
+        top:10
     }
 })

@@ -46,6 +46,7 @@ function GhostButton({navigation}){
 
 function Credentials() {
 
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(false);
@@ -56,7 +57,7 @@ function Credentials() {
       const response = await login(email,password)
       console.log("Login bem-sucedido");
       Alert.alert('Sucesso', `Bem-vindo, ${response.email}`)
-
+      navigation.replace('Turma')
     } catch(error){
       console.error("Erro no login:", error);
       Alert.alert('Erro', 'Falha no login.')
