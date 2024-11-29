@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "QqdDuN6DyViE1CV3KDfG6jNxbeBbWidXxBoujwb194Y=",
+  "Hash": "BnXPScutdumWB62LcDYIY805OgtsL6nb/kC8D7gB8Z4=",
   "Source": "InstitutoCopacabanaAPI",
   "BasePath": "_content/InstitutoCopacabanaAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

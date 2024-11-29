@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InstitutoCopacabanaAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+938f5fc38d80d45909b299856d586ecc9d92dc6f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43e2c843d7e07e7ceb1e8ff0d7b6ff549c0225f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("InstitutoCopacabanaAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InstitutoCopacabanaAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
