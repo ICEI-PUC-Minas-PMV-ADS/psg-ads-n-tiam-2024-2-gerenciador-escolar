@@ -26,6 +26,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.ClassController",
+    "Method": "InsertStudentToClass",
+    "RelativePath": "api/Class/InsertStudent",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "className",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "studentName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.LoginController",
     "Method": "GetSession",
     "RelativePath": "api/Login/GetSession",

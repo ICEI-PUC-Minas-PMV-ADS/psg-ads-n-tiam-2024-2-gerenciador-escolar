@@ -3,11 +3,11 @@
 namespace InstitutoCopacabanaAPI.Models
 {
     [FirestoreData]
-    public class ClassModel
+    public class GradeModel
     {
         [FirestoreProperty]
-        public string Id { get; set; } = string.Empty;
+        public string ClassId { get; set; } = string.Empty;
         [FirestoreProperty]
-        public string Name { get; set; } = string.Empty;
+        public double Grade { get; set; }
     }
 }
