@@ -4,6 +4,8 @@
 
 /src/backend/GerenciadorEscolarAPI/serviceAccountKeyDevelop.json
 /src/backend/InstitutoCopacabanaAPI/appsettings.Development.json
+/src/backend/InstitutoCopacabanaAPI
+/bin/obj
 
 # User-specific files
 *.rsuser
