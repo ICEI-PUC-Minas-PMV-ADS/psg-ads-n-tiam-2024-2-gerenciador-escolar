@@ -1,123 +1,176 @@
-# Documentação das Rotas da API
+# Rotas da API do Instituto Copacabana
 
-## Rotas de Usuário (UserController)
+## 1. Login
 
-### GET /api/User/GetUsers
-- **Descrição**: Retorna todos os usuários cadastrados
-- **Acesso**: Apenas Secretários
-- **Resposta de Sucesso**: Lista de usuários (200)
-- **Respostas de Erro**: 
-  - 403: Usuário sem permissão
-  - 404: Nenhum usuário encontrado
-  - 500: Erro interno do servidor
+#### Login de Usuário
+- **`POST /api/Login/Login`**
+- **Descrição:** Realiza autenticação do usuário na plataforma.
+- **Parâmetros no Body (JSON):**
+  - `email`: (string) - Email do usuário
+  - `password`: (string) - Senha do usuário
+- **Resposta:**
+  - `200 OK`: Usuário autenticado com sucesso
+  - `400 Bad Request`: Email ou senha inválidos
+  - `500 Internal Server Error`: Erro ao fazer login
 
-### GET /api/User/GetUser
-- **Descrição**: Retorna um usuário específico por ID
-- **Parâmetros**: id (string)
-- **Acesso**: Apenas Secretários
-- **Resposta de Sucesso**: Dados do usuário (200)
-- **Respostas de Erro**:
-  - 403: Usuário sem permissão
-  - 404: Usuário não encontrado
-  - 500: Erro interno do servidor
+##### Exemplo de Requisição:
+```json
+{
+  "email": "usuario@exemplo.com",
+  "password": "senha123"
+}
+```
 
-### POST /api/User/CreateUser
-- **Descrição**: Cria um novo usuário
-- **Corpo**: UserModel
-- **Acesso**: Apenas Secretários
-- **Resposta de Sucesso**: Usuário criado (201)
-- **Respostas de Erro**:
-  - 400: Campos inválidos ou senha não atende aos padrões
-  - 403: Usuário sem permissão
-  - 409: Email já em uso
-  - 500: Erro interno do servidor
+#### Recuperar Senha
+- **`POST /api/Login/RequestPassword`**
+- **Descrição:** Envia email para recuperação de senha.
+- **Parâmetros no Body:**
+  - `email`: (string) - Email do usuário
+- **Resposta:**
+  - `202 Accepted`: Email de recuperação enviado
+  - `400 Bad Request`: Email não fornecido
+  - `404 Not Found`: Email não encontrado
+  - `500 Internal Server Error`: Erro ao enviar email
 
-### PUT /api/User/UpdateUser
-- **Descrição**: Atualiza dados de um usuário
-- **Corpo**: UserModel
-- **Acesso**: Apenas Secretários
-- **Resposta de Sucesso**: Usuário atualizado (200)
-- **Respostas de Erro**:
-  - 400: Campos inválidos ou senha não atende aos padrões
-  - 403: Usuário sem permissão
-  - 409: Email já em uso
-  - 500: Erro interno do servidor
+#### Obter Sessão Atual
+- **`GET /api/Login/GetSession`**
+- **Descrição:** Retorna dados do usuário conectado.
+- **Resposta:**
+  - `200 OK`: Retorna dados da sessão
+  - `400 Bad Request`: Nenhum usuário conectado
+  - `404 Not Found`: Usuário não encontrado
+  - `500 Internal Server Error`: Erro interno do servidor
 
-### DELETE /api/User/DeleteUser
-- **Descrição**: Remove um usuário
-- **Parâmetros**: id (string)
-- **Acesso**: Apenas Secretários
-- **Resposta de Sucesso**: Usuário deletado (204)
-- **Respostas de Erro**:
-  - 403: Usuário sem permissão
-  - 404: Usuário não encontrado
-  - 500: Erro interno do servidor
+#### Logout
+- **`POST /api/Login/Logout`**
+- **Descrição:** Encerra a sessão do usuário.
+- **Resposta:**
+  - `200 OK`: Logout realizado com sucesso
+  - `404 Not Found`: Sessão não encontrada
+  - `500 Internal Server Error`: Erro interno do servidor
 
-## Rotas de Login (LoginController)
+## 2. Usuários
 
-### POST /api/Login/Login
-- **Descrição**: Realiza login do usuário
-- **Corpo**: LoginModel (email e senha)
-- **Resposta de Sucesso**: Tipo do usuário (200)
-- **Respostas de Erro**:
-  - 400: Email ou senha inválidos
-  - 500: Erro interno do servidor
+#### Listar Usuários
+- **`GET /api/User/GetUsers`**
+- **Descrição:** Retorna todos os usuários cadastrados.
+- **Resposta:**
+  - `200 OK`: Lista de usuários retornada
+  - `403 Forbidden`: Usuário sem permissão
+  - `404 Not Found`: Nenhum usuário encontrado
+  - `500 Internal Server Error`: Erro interno do servidor
 
-### GET /api/Login/GetSession
-- **Descrição**: Retorna dados da sessão atual
-- **Resposta de Sucesso**: Dados da sessão (200)
-- **Respostas de Erro**:
-  - 400: Nenhum usuário conectado
-  - 404: Usuário não encontrado
-  - 500: Erro interno do servidor
+#### Buscar Usuário
+- **`GET /api/User/GetUser`**
+- **Descrição:** Busca um usuário específico pelo ID.
+- **Parâmetros na Query:**
+  - `id`: (string) - ID do usuário
+- **Resposta:**
+  - `200 OK`: Dados do usuário
+  - `403 Forbidden`: Usuário sem permissão
+  - `404 Not Found`: Usuário não encontrado
+  - `500 Internal Server Error`: Erro interno do servidor
 
-### POST /api/Login/RequestPassword
-- **Descrição**: Solicita redefinição de senha
-- **Parâmetros**: email (string)
-- **Resposta de Sucesso**: Email enviado (202)
-- **Respostas de Erro**:
-  - 400: Email não fornecido
-  - 404: Email não encontrado
-  - 500: Erro interno do servidor
+#### Criar Usuário
+- **`POST /api/User/CreateUser`**
+- **Descrição:** Cria um novo usuário no sistema.
+- **Parâmetros no Body (JSON):**
+  - `name`: (string) - Nome do usuário
+  - `email`: (string) - Email do usuário
+  - `password`: (string) - Senha do usuário
+  - `userType`: (string) - Tipo do usuário (Secretary/Teacher/Student)
+- **Resposta:**
+  - `201 Created`: Usuário criado com sucesso
+  - `400 Bad Request`: Campos inválidos ou senha não atende padrões
+  - `403 Forbidden`: Usuário sem permissão
+  - `409 Conflict`: Email já em uso
+  - `500 Internal Server Error`: Erro interno do servidor
 
-### POST /api/Login/Logout
-- **Descrição**: Realiza logout do usuário
-- **Resposta de Sucesso**: Logout realizado (200)
-- **Respostas de Erro**:
-  - 404: Sessão não encontrada
-  - 500: Erro interno do servidor
+##### Exemplo de Requisição:
+```json
+{
+  "name": "João Silva",
+  "email": "joao@exemplo.com",
+  "password": "Senha@123",
+  "userType": "Student"
+}
+```
 
-## Rotas de Turma (ClassController)
+#### Atualizar Usuário
+- **`PUT /api/User/UpdateUser`**
+- **Descrição:** Atualiza dados de um usuário existente.
+- **Parâmetros no Body (JSON):**
+  - `id`: (string) - ID do usuário
+  - `name`: (string) - Nome do usuário
+  - `email`: (string) - Email do usuário
+  - `password`: (string) - Senha do usuário
+  - `userType`: (string) - Tipo do usuário
+- **Resposta:**
+  - `200 OK`: Usuário atualizado com sucesso
+  - `400 Bad Request`: Campos inválidos
+  - `403 Forbidden`: Usuário sem permissão
+  - `409 Conflict`: Email já em uso
+  - `500 Internal Server Error`: Erro interno do servidor
 
-### GET /api/Class/GetClasses
-- **Descrição**: Retorna todas as turmas
-- **Acesso**: Usuários autenticados
-- **Resposta de Sucesso**: Lista de turmas (200)
-- **Respostas de Erro**:
-  - 403: Usuário não autenticado
-  - 404: Nenhuma turma encontrada
-  - 500: Erro interno do servidor
+##### Exemplo de Requisição:
+```json
+{
+  "id": "abc123",
+  "name": "João Silva",
+  "email": "joao.novo@exemplo.com",
+  "password": "NovaSenha@123",
+  "userType": "Student"
+}
+```
 
-### POST /api/Class/CreateClass
-- **Descrição**: Cria uma nova turma
-- **Corpo**: ClassModel
-- **Acesso**: Apenas Secretários
-- **Resposta de Sucesso**: Turma criada (201)
-- **Respostas de Erro**:
-  - 400: Campos inválidos ou turma já existe
-  - 403: Usuário sem permissão
-  - 404: Usuário não conectado
-  - 500: Erro interno do servidor
+#### Excluir Usuário
+- **`DELETE /api/User/DeleteUser`**
+- **Descrição:** Remove um usuário do sistema.
+- **Parâmetros na Query:**
+  - `id`: (string) - ID do usuário
+- **Resposta:**
+  - `204 No Content`: Usuário deletado com sucesso
+  - `403 Forbidden`: Usuário sem permissão
+  - `404 Not Found`: Usuário não encontrado
+  - `500 Internal Server Error`: Erro interno do servidor
 
-### PUT /api/Class/InsertStudent
-- **Descrição**: Adiciona um aluno a uma turma
-- **Parâmetros**: className (string), studentName (string)
-- **Acesso**: Apenas Secretários
-- **Resposta de Sucesso**: Aluno inserido (201)
-- **Respostas de Erro**:
-  - 403: Usuário sem permissão ou usuário não é aluno
-  - 404: Turma ou aluno não encontrado
-  - 500: Erro interno do servidor
+## 3. Turmas
 
-## Rotas de Notas (GradeController)
-- **Observação**: Controlador existente mas sem rotas implementadas 
+#### Listar Turmas
+- **`GET /api/Class/GetClasses`**
+- **Descrição:** Retorna todas as turmas cadastradas.
+- **Resposta:**
+  - `200 OK`: Lista de turmas
+  - `403 Forbidden`: Usuário não autenticado
+  - `404 Not Found`: Nenhuma turma encontrada
+  - `500 Internal Server Error`: Erro interno do servidor
+
+#### Criar Turma
+- **`POST /api/Class/CreateClass`**
+- **Descrição:** Cria uma nova turma.
+- **Parâmetros no Body (JSON):**
+  - `name`: (string) - Nome da turma
+- **Resposta:**
+  - `201 Created`: Turma criada com sucesso
+  - `400 Bad Request`: Campos inválidos
+  - `403 Forbidden`: Usuário sem permissão
+  - `500 Internal Server Error`: Erro interno do servidor
+
+##### Exemplo de Requisição:
+```json
+{
+  "name": "Turma A"
+}
+```
+
+#### Inserir Aluno na Turma
+- **`PUT /api/Class/InsertStudent`**
+- **Descrição:** Adiciona um aluno a uma turma existente.
+- **Parâmetros na Query:**
+  - `className`: (string) - Nome da turma
+  - `studentName`: (string) - Nome do aluno
+- **Resposta:**
+  - `201 Created`: Aluno inserido com sucesso
+  - `403 Forbidden`: Usuário sem permissão
+  - `404 Not Found`: Turma ou aluno não encontrado
+  - `500 Internal Server Error`: Erro interno do servidor
