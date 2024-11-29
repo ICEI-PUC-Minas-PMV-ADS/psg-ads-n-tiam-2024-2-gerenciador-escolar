@@ -1,27 +1,27 @@
-import { View,Text, Image} from "react-native";
-import { useRef } from "react";
+import React, { useRef } from "react";
+import { View, Text, Image } from "react-native";
+import { useNavigation } from '@react-navigation/native'; 
 
 import { styles } from "./styles";
 import { useForm } from "react-hook-form";
-
 import { Input } from "../../components/InputCadastro/index";
 import { Button } from "../../components/ButtonCadastro/index";
 import Logo from '../../../../assets/images/Logo.png'
 
 
-export default function FormCadastro(){
-    const {control, handleSubmit,formState:{errors},getValues} = useForm();
-    
+export default function FormCadastro() {
+  const navigation = useNavigation(); 
+  const { control, handleSubmit, formState: { errors }, getValues } = useForm();
 
-    function handleNextStep(data){
-        console.log(data);
-    }
+  function handleNextStep(data) {
+    console.log(data);
+    navigation.replace('TabRoutes'); 
+  }
 
-    function validationPassword(ConfirmPassword){
-        const { Password } = getValues();
-
-        return Password === ConfirmPassword || "As senhas devem ser iguais.";
-    }
+  function validationPassword(ConfirmPassword) {
+    const { Password } = getValues();
+    return Password === ConfirmPassword || "As senhas devem ser iguais.";
+  }
 
     const emailRef = useRef(null);
     const senhaRef = useRef(null);
