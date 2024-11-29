@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native'; 
 
 import { styles } from "./styles";
@@ -7,15 +7,53 @@ import { useForm } from "react-hook-form";
 import { Input } from "../../components/InputCadastro/index";
 import { Button } from "../../components/ButtonCadastro/index";
 import Logo from '../../../../assets/images/Logo.png'
+import {auth} from '../../services/apiService'
+
 
 
 export default function FormCadastro() {
   const navigation = useNavigation(); 
   const { control, handleSubmit, formState: { errors }, getValues } = useForm();
 
-  function handleNextStep(data) {
-    console.log(data);
-    navigation.replace('TabRoutes'); 
+  async function handleNextStep(data) {
+    console.log(data.name)
+    console.log(data.email)
+    console.log(data.Password)
+    try{
+        const userData = {
+            nome: data.name,
+            email: data.email,
+            senha: data.Password,
+            userType: "Student"
+        }
+
+        const response = await auth(userData)
+        Alert.alert('Sucesso', `Bem-vindo, ${response.nome}`)
+        console.log(data);
+        navigation.replace('LoginScreen'); 
+    }catch(error){
+        if (error.response) {
+            const status = error.response.status;
+            const message = error.response.data.message || 'Erro desconhecido';
+    
+            if (status === 400) {
+              Alert.alert('Erro de Validação', message);
+            } else if(status == 409){
+                Alert.alert('Erro de Validação', message);
+            } 
+            else if(status = 403){
+                Alert.alert('Erro de permissão', message);
+            }
+            else if (status === 500) {
+              Alert.alert('Erro no Servidor', message);
+            } else {
+              Alert.alert('Erro', message);
+            }
+          } else {
+            Alert.alert('Erro', 'Não foi possível conectar ao servidor. Verifique sua conexão com a internet.');
+          }
+          console.error("Erro no cadastro:", error);
+      }
   }
 
   function validationPassword(ConfirmPassword) {
@@ -26,7 +64,7 @@ export default function FormCadastro() {
     const emailRef = useRef(null);
     const senhaRef = useRef(null);
     const confirmSenhaRef = useRef(null);
-    
+
     return(
         <View style={styles.container}>
              <Image 
