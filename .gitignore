@@ -6,6 +6,7 @@
 /src/backend/InstitutoCopacabanaAPI/appsettings.Development.json
 /src/backend/InstitutoCopacabanaAPI
 /bin/obj
+obj/Debug/net8.0
 
 # User-specific files
 *.rsuser
