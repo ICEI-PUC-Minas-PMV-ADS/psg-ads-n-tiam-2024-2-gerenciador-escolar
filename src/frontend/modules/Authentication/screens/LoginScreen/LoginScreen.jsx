@@ -73,7 +73,6 @@ function Credentials() {
     try{
       const response = await login(email,password)
       console.log("Login bem-sucedido");
-      Alert.alert('Sucesso', `Bem-vindo, ${response.email}`)
       await AsyncStorage.setItem('userSession', JSON.stringify(response))
       navigation.replace('Turma')
     } catch(error){

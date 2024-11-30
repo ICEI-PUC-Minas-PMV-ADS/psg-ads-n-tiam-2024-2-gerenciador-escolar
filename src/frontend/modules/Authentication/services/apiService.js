@@ -3,7 +3,8 @@ import api from './apiIEC';
 
 export const auth = async (data) => {
     try {
-      const response = await api.post('User/CreateUser', { data });
+      console.log(data)
+      const response = await api.post('User/CreateUser', data);
       return response.data;
     } catch (error) {
       console.error("Erro no cadastro", error.response ? error.response.data : error.message);
@@ -27,6 +28,16 @@ export const auth = async (data) => {
       return response.data;
     } catch (error) {
       console.error("Erro na sessão", error.response ? error.response.data : error.message);
+      throw error;
+    }
+  };
+
+  export const logout = async () => {
+    try {
+      const response = await api.post('Login/Logout'); 
+      return response.data;
+    } catch (error) {
+      console.error("Falha ao realizar logout", error.response ? error.response.data : error.message);
       throw error;
     }
   };
