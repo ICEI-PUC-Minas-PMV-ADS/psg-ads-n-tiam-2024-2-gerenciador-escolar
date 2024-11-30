@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../../components/Button';
 import { Button } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { black, white } from 'react-native-paper/src/styles/themes/v2/colors';
 import Logo from '../../../../assets/images/Logo.png'
-import {login} from '../../services/login'
+import {login, session} from '../../services/apiService'
 import {
   validateEmailFormat, 
   validateEmailLength, 
@@ -17,6 +18,22 @@ import {
 
 
 export default function LoginScreen({navigation}) {
+
+  useEffect(() =>{
+    const checkSession = async () => {
+      try{
+        const sessionData = await session();
+        if(sessionData){
+          navigation.replace('Turma')
+        }
+      }catch (error) {
+        console.error("Erro ao verificar sessão:", error);
+      }
+    }
+
+    checkSession()
+
+  }, [navigation])
 
   return (
     <View style={styles.container}>
@@ -56,7 +73,7 @@ function Credentials() {
     try{
       const response = await login(email,password)
       console.log("Login bem-sucedido");
-      Alert.alert('Sucesso', `Bem-vindo, ${response.email}`)
+      await AsyncStorage.setItem('userSession', JSON.stringify(response))
       navigation.replace('Turma')
     } catch(error){
       console.error("Erro no login:", error);
