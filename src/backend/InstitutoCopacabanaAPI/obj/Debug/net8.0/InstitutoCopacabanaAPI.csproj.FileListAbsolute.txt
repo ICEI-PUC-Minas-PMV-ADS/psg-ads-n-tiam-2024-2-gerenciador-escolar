@@ -56,7 +56,6 @@ C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-g
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\System.ServiceModel.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\System.Security.Permissions.dll
-C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
@@ -130,3 +129,7 @@ C:\TIAM 12\src\backend\InstitutoCopacabanaAPI\obj\Debug\net8.0\ref\InstitutoCopa
 C:\TIAM 12\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\serviceAccountKey.json
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\InstitutoCopacabanaAPI.staticwebassets.endpoints.json
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\obj\Debug\net8.0\staticwebassets\msbuild.InstitutoCopacabanaAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

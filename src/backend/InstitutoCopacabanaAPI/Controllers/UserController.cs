@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using FirebaseAdmin.Auth;
 using Google.Cloud.Firestore;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Models;
@@ -219,6 +220,9 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                         //Excluir do firestore
                         await docRef.DeleteAsync();
+
+                        //Excluir do Authentication
+                        await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.DeleteUserAsync(id);
 
                         snapshot = await docRef.GetSnapshotAsync();
                         if (snapshot.Exists)
