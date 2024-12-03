@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|solutionrelative:controllers\\gradecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|c:\\users\\caisi\\onedrive\\\u00E1rea de trabalho\\faculdade\\tiam\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\institutocopacabanaapi\\controllers\\classcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|solutionrelative:controllers\\classcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|c:\\users\\caisi\\onedrive\\\u00E1rea de trabalho\\faculdade\\tiam\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\institutocopacabanaapi\\services\\classes\\gradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|solutionrelative:services\\classes\\gradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|c:\\users\\caisi\\onedrive\\\u00E1rea de trabalho\\faculdade\\tiam\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\institutocopacabanaapi\\services\\interfaces\\igradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|solutionrelative:services\\interfaces\\igradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|c:\\users\\caisi\\onedrive\\\u00E1rea de trabalho\\faculdade\\tiam\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\institutocopacabanaapi\\controllers\\classcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|solutionrelative:controllers\\classcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{67DE930E-330B-4C93-B545-51F8669DA1FD}|InstitutoCopacabanaAPI.csproj|c:\\users\\caisi\\onedrive\\\u00E1rea de trabalho\\faculdade\\tiam\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\institutocopacabanaapi\\models\\trimestergrademodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,26 +66,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "GradeService.cs",
               "DocumentMoniker": "C:\\Users\\caisi\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\Services\\Classes\\GradeService.cs",
               "RelativeDocumentMoniker": "Services\\Classes\\GradeService.cs",
               "ToolTip": "C:\\Users\\caisi\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\Services\\Classes\\GradeService.cs",
               "RelativeToolTip": "Services\\Classes\\GradeService.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAADwv0QAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAswBMAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-02T17:55:30.433Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "IGradeService.cs",
               "DocumentMoniker": "C:\\Users\\caisi\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\Services\\Interfaces\\IGradeService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\IGradeService.cs",
               "ToolTip": "C:\\Users\\caisi\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\Services\\Interfaces\\IGradeService.cs",
               "RelativeToolTip": "Services\\Interfaces\\IGradeService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-02T17:55:16.137Z",
               "EditorCaption": ""
@@ -98,20 +98,20 @@
               "RelativeDocumentMoniker": "Controllers\\GradeController.cs",
               "ToolTip": "C:\\Users\\caisi\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\Controllers\\GradeController.cs",
               "RelativeToolTip": "Controllers\\GradeController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAADwvzgAAABZAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-02T17:26:49.561Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ClassController.cs",
               "DocumentMoniker": "C:\\Users\\caisi\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\Controllers\\ClassController.cs",
               "RelativeDocumentMoniker": "Controllers\\ClassController.cs",
               "ToolTip": "C:\\Users\\caisi\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\TIAM\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\Controllers\\ClassController.cs",
               "RelativeToolTip": "Controllers\\ClassController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAowFsAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwFsAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-02T17:30:08.907Z",
               "EditorCaption": ""
@@ -126,8 +126,7 @@
               "RelativeToolTip": "Services\\Classes\\ClassService.cs",
               "ViewState": "AgIAADgAAAAAAAAAAAAIwAwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T17:56:59.931Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T17:56:59.931Z"
             },
             {
               "$type": "Document",
@@ -139,8 +138,7 @@
               "RelativeToolTip": "Models\\StudentModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T17:28:05.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T17:28:05.723Z"
             },
             {
               "$type": "Document",
@@ -152,8 +150,7 @@
               "RelativeToolTip": "Models\\TrimesterGradeModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T17:27:59.045Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T17:27:59.045Z"
             }
           ]
         }

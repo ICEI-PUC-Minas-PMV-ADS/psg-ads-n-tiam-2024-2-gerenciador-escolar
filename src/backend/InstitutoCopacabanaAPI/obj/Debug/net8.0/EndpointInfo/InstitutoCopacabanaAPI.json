@@ -76,6 +76,41 @@
         }
       }
     },
+    "/api/Grade/GetStudentGrade": {
+      "get": {
+        "tags": [
+          "Grade"
+        ],
+        "parameters": [
+          {
+            "name": "className",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "studentName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Grade/SubmitGrade": {
       "put": {
         "tags": [
@@ -90,7 +125,7 @@
             }
           },
           {
-            "name": "StudentName",
+            "name": "studentName",
             "in": "query",
             "schema": {
               "type": "string"

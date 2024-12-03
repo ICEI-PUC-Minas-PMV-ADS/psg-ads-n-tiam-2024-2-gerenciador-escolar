@@ -17,8 +17,8 @@ namespace InstitutoCopacabanaAPI.Controllers
             _gradeService = gradeService;
         }
 
-        [HttpPut("SubmitGrade")]
-        public async Task<ActionResult> SubmitGrade(string className, string StudentName, string subject, double grade)
+        [HttpGet("GetStudentGrade")]
+        public async Task<ActionResult> GetStudentGrade(string className, string studentName, string subject)
         {
             try
             {
@@ -30,7 +30,51 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                     if (session.UserType != "Student")
                     {
-                        string response = await _gradeService.SubmitGrade(className, StudentName, subject, grade);
+                        double response = await _gradeService.GetGrade(className, studentName, subject);
+
+                        if (response == -1)
+                            return BadRequest("Essa turma não existe.");
+
+                        if (response == -2)
+                            return BadRequest("Esse aluno não existe.");
+
+                        if (response == -3)
+                            return BadRequest("Essa matéria não existe.");
+
+                        if (response == -4)
+                            return BadRequest("Nenhum aluno está matriculado nessa turma.");
+
+                        if (response == -5)
+                            return BadRequest("Não foi possível retornar a nota.");
+
+                        return Ok(response);
+                    }
+
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
+
+        [HttpPut("SubmitGrade")]
+        public async Task<ActionResult> SubmitGrade(string className, string studentName, string subject, double grade)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType != "Student")
+                    {
+                        string response = await _gradeService.SubmitGrade(className, studentName, subject, grade);
 
                         if (response == "Success")
                             return StatusCode(201, "Nota alterada com sucesso.");
