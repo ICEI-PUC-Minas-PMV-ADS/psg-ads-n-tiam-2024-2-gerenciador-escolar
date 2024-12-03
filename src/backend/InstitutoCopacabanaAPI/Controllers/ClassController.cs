@@ -8,17 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InstitutoCopacabanaAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ClassController : ControllerBase
     {
-        private readonly FirestoreDb _fireaseClient;
+        private readonly FirestoreDb _firebaseClient;
         private readonly ISessionService _sessionService;
         private readonly IClassService _classService;
 
         public ClassController(ContextDb contextDb, ISessionService sessionService, IClassService classService) 
         {
-            _fireaseClient = contextDb.GetClient();
+            _firebaseClient = contextDb.GetClient();
             _sessionService = sessionService;
             _classService = classService;
         }
@@ -30,7 +30,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             {
                 if (HttpContext.Session.GetString("_userToken") != null)
                 {
-                    CollectionReference classesRef = _fireaseClient.Collection("classes");
+                    CollectionReference classesRef = _firebaseClient.Collection("classes");
 
                     QuerySnapshot snapshot = await classesRef.GetSnapshotAsync();
 

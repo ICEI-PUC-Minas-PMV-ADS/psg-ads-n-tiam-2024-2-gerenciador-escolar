@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Google.Cloud.Firestore;
 using InstitutoCopacabanaAPI.Services.Interfaces;
 using InstitutoCopacabanaAPI.Models;
+using InstitutoCopacabanaAPI.Data;
 
 namespace InstitutoCopacabanaAPI.Controllers
 {
@@ -14,17 +15,52 @@ namespace InstitutoCopacabanaAPI.Controllers
     [Route("api/[controller]")]
     public class AttendanceController : ControllerBase
     {
+        private readonly FirestoreDb _firebaseClient;
         private readonly ISessionService _sessionService;
-        private readonly FirestoreDb _firestoreClient;
+        private readonly IClassService _classService;
 
-        public AttendanceController(ISessionService sessionService, FirestoreDb firestoreClient)
+        public AttendanceController(ContextDb contextDb, ISessionService sessionService, IClassService classService)
         {
+            _firebaseClient = contextDb.GetClient();
             _sessionService = sessionService;
-            _firestoreClient = firestoreClient;
+            _classService = classService;
         }
 
+        [HttpGet("GetAttendances")]
+        public async Task<ActionResult> GetAttendances(string studentName)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Student")
+                    {
+                        List<AttendanceModel> attendance = await _classService.GetAttendanceByStudentName(studentName);
+
+                        if (attendance.Count == 0)
+                            return NotFound("Não foi possível localizar as presenças do aluno.");
+
+                        return Ok(attendance);
+                    }
+
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro do servidor: " + ex.Message);
+            }
+        }
+
+
         [HttpPost("RegisterAttendance")]
-        public async Task<IActionResult> RegisterAttendance([FromBody] AttendanceModel attendance)
+        public async Task<IActionResult> RegisterAttendance(AttendanceModel attendance)
         {
             try
             {
@@ -33,7 +69,7 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                 if (token == null)
                 {
-                    return Unauthorized("Usuário não autorizado para registrar presença.");
+                    return NotFound("Nenhum usuário conectado foi encontrado.");
                 }
 
                 //  sessão do usuário
@@ -43,43 +79,60 @@ namespace InstitutoCopacabanaAPI.Controllers
                     return Unauthorized("Usuário não autorizado para registrar presença.");
                 }
 
+                UserModel? student = await _classService.GetStudentByName(attendance.StudentName);
+
+                if (student == null)
+                    return NotFound("Não foi possível localizar o aluno.");
+
+                attendance.StudentId = student.Id;
+
                 // Valida a presença
-                if (attendance == null || string.IsNullOrEmpty(attendance.StudentId))
+                if (attendance == null || string.IsNullOrEmpty(attendance.StudentName))
                 {
                     return BadRequest("Dados de presença inválidos.");
                 }
 
-                 attendance.IsPresent = true;
-                 
                 // Adc o usr que registrou
-                attendance.RecordedBy = session.UserId;
+                attendance.RecordedBy = session.Name;
 
                 // Ref à coleção do Firestore
-                CollectionReference attendanceRef = _firestoreClient.Collection("attendance");
+                CollectionReference attendanceRef = _firebaseClient.Collection("attendance");
 
-                // Adcou atualiza o documento no Firestore
+                // Adc ou atualiza o documento no Firestore
                 await attendanceRef.Document(attendance.Id).SetAsync(attendance);
 
                 return StatusCode(201, "Presença registrada com sucesso.");
             }
             catch (Exception ex)
             {
-                return BadRequest($"Erro ao registrar presença: {ex.Message}");
+                return StatusCode(500, $"Erro ao registrar presença: {ex.Message}");
             }
         }
-                [HttpPost("JustifyAttendance")]
+        [HttpPost("JustifyAttendance")]
         public async Task<IActionResult> JustifyAttendance(string attendanceId, [FromBody] string justification)
         {
             try
             {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token == null)
+                {
+                    return NotFound("Nenhum usuário conectado foi encontrado.");
+                }
+
+                var session = await _sessionService.GetConnectedUser(token);
+
+                if (session.UserType != "Student")
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
+
                 // Valida se a justificativa foi feita
                 if (string.IsNullOrEmpty(justification))
                 {
                     return BadRequest("A justificativa é obrigatória.");
                 }
 
-                // Refao Firestore
-                CollectionReference attendanceRef = _firestoreClient.Collection("attendance");
+                // Ref ao Firestore
+                CollectionReference attendanceRef = _firebaseClient.Collection("attendance");
                 DocumentReference docRef = attendanceRef.Document(attendanceId);
 
                 // Ve se o documento existe

@@ -1,5 +1,58 @@
 [
   {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.AttendanceController",
+    "Method": "GetAttendances",
+    "RelativePath": "api/Attendance/GetAttendances",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "studentName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.AttendanceController",
+    "Method": "JustifyAttendance",
+    "RelativePath": "api/Attendance/JustifyAttendance",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "attendanceId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "justification",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.AttendanceController",
+    "Method": "RegisterAttendance",
+    "RelativePath": "api/Attendance/RegisterAttendance",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "attendance",
+        "Type": "InstitutoCopacabanaAPI.Models.AttendanceModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.ClassController",
     "Method": "CreateClass",
     "RelativePath": "api/Class/CreateClass",

@@ -11,20 +11,18 @@ namespace InstitutoCopacabanaAPI.Models
     {
         [FirestoreProperty]
         public string Id { get; set; } = Guid.NewGuid().ToString("N");
-
         [FirestoreProperty]
-public required string StudentId { get; set; }
-
-
+        public required string StudentId { get; set; }
         [FirestoreProperty]
-        public DateTime Date { get; set; }
-
+        public required string StudentName { get; set; }
+        [FirestoreProperty]
+        public required string Subject { get; set; }
+        [FirestoreProperty]
+        public DateTime Date { get; set; } = DateTime.UtcNow;
         [FirestoreProperty]
         public bool IsPresent { get; set; }
-
         [FirestoreProperty]
         public string? Justification { get; set; }
-
         [FirestoreProperty]
         public required string RecordedBy { get; set; } // Id do professor ou secretário que registrou
     }
