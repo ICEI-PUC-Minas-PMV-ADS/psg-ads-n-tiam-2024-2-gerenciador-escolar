@@ -48,6 +48,112 @@
         }
       }
     },
+    "/api/Class/InsertStudent": {
+      "put": {
+        "tags": [
+          "Class"
+        ],
+        "parameters": [
+          {
+            "name": "className",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "studentName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Grade/GetStudentGrade": {
+      "get": {
+        "tags": [
+          "Grade"
+        ],
+        "parameters": [
+          {
+            "name": "className",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "studentName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Grade/SubmitGrade": {
+      "put": {
+        "tags": [
+          "Grade"
+        ],
+        "parameters": [
+          {
+            "name": "className",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "studentName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "grade",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Login/Login": {
       "post": {
         "tags": [
@@ -253,13 +359,6 @@
           "name": {
             "type": "string",
             "nullable": true
-          },
-          "students": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/StudentModel"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -273,98 +372,6 @@
           },
           "password": {
             "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "StudentModel": {
-        "type": "object",
-        "properties": {
-          "studentId": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "subjects": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SubjectModel"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "SubjectModel": {
-        "type": "object",
-        "properties": {
-          "português": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrimesterGradeModel"
-            },
-            "nullable": true
-          },
-          "matemática": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrimesterGradeModel"
-            },
-            "nullable": true
-          },
-          "inglês": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrimesterGradeModel"
-            },
-            "nullable": true
-          },
-          "história": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrimesterGradeModel"
-            },
-            "nullable": true
-          },
-          "geografia": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrimesterGradeModel"
-            },
-            "nullable": true
-          },
-          "ciências": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrimesterGradeModel"
-            },
-            "nullable": true
-          },
-          "artes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrimesterGradeModel"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "TrimesterGradeModel": {
-        "type": "object",
-        "properties": {
-          "grade": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "attendance": {
-            "type": "number",
-            "format": "double",
             "nullable": true
           }
         },
