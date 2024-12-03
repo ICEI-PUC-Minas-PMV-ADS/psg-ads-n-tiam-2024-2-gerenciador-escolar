@@ -45,7 +45,25 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             }
 
             return null;
-        }     
+        }
+
+        public async Task<List<AttendanceModel>> GetAttendanceByStudentName(string studentName)
+        {
+            CollectionReference attendanceRef = _firebaseClient.Collection("attendance");
+
+            Query query = attendanceRef.WhereEqualTo("StudentName", studentName);
+            QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+
+            List<AttendanceModel> attendanceList = new List<AttendanceModel>();
+
+            foreach (DocumentSnapshot document in querySnapshot.Documents)
+            {
+                AttendanceModel attendance = document.ConvertTo<AttendanceModel>();
+                attendanceList.Add(attendance);
+            }
+
+            return attendanceList;
+        }
 
         public async Task<ClassModel> CreateClass(ClassModel schoolClass)
         {

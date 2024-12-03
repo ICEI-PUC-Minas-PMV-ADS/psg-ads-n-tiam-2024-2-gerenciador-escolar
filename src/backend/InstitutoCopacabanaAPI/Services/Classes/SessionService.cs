@@ -32,13 +32,15 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             {
                 var name = snapshot.GetValue<string>("Name");
                 var email = snapshot.GetValue<string>("Email");
-                var userType = snapshot.GetValue<string>("UserType");
+                var userType = snapshot.GetValue<string>("UserType"); 
+                var userId = snapshot.GetValue<string>("Id");
 
                 return new SessionModel
                 {
                     Name = name,
                     Email = email,
-                    UserType = userType
+                    UserType = userType,
+                    UserId = userId
                 };
             }
 
