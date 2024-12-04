@@ -1,43 +1,42 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity, Alert } from "react-native";
 import { Button } from "../../components/ButtonCadastro";
 import Logo from "../../../../assets/images/Logo.png";
-import { logout } from "../../services/apiService";
+import { logout,getClasses } from "../../services/apiService";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import api from "../../services/apiIEC";
+import { useNavigation } from "@react-navigation/native";
 
 
 
-export default class Turma extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      turmas: [
-        { id: 1, nome: "Turma 001", alunos: 32 },
-        { id: 2, nome: "Turma 002", alunos: 28 },
-        { id: 3, nome: "Turma 003", alunos: 20 },
-        { id: 4, nome: "Turma 004", alunos: 18 },
-        { id: 5, nome: "Turma 005", alunos: 36 },
-        { id: 6, nome: "Turma 006", alunos: 40 },
-        { id: 7, nome: "Turma 007", alunos: 42 },
-        { id: 8, nome: "Turma 008", alunos: 31 },
-        { id: 9, nome: "Turma 009", alunos: 33 },
-        { id: 10, nome: "Turma 010", alunos: 38 },
-    ]
-
+export default function Turma(){
+ 
+  const [turmasData, setTurmasData] = useState([]);
+  const navigation = useNavigation();
    
-  componentDidMount() {
-    this.checkSession();
-  }
+  useEffect(()=>{
+    checkSession();
+    getTurmas();
+  },[]);
+  
+  const getTurmas = async()=>{
+    try{
+      const response = await getClasses();
+      setTurmasData(response);
+    }catch(error){
+      console.log("Erro ao recuperar as turmas",error);
+    }
+  };
 
   checkSession = async () => {
     try {
       const sessionData = await AsyncStorage.getItem("userSession");
       if (!sessionData) {
-        this.props.navigation.replace("LoginScreen");
+        navigation.replace("LoginScreen");
       }
     } catch (error) {
       console.error("Erro ao verificar sessão:", error);
-      this.props.navigation.replace("LoginScreen");
+      navigation.replace("LoginScreen");
     }
   };
 
@@ -46,33 +45,33 @@ export default class Turma extends Component {
       await logout();
       await AsyncStorage.removeItem("userSession");
       Alert.alert("Sucesso", "Você foi deslogado com sucesso.");
-      this.props.navigation.replace("LoginScreen");
+      navigation.replace("LoginScreen");
     } catch (error) {
       console.error("Erro ao realizar logout:", error);
       Alert.alert("Erro", "Falha ao realizar logout.");
     }
   };
 
+
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this.handleLogout}>
+        <TouchableOpacity onPress={handleLogout}>
           <Image style={styles.logo} source={Logo} />
         </TouchableOpacity>
         <Text style={styles.titleTela}>Turmas</Text>
         <FlatList
-          data={this.state.turmas}
+          data={turmasData}
+          keyExtractor={item => item.id}
           renderItem={({ item }) => (
             <View style={styles.containerTurmas}>
-              <Text style={styles.titleTurmas}>{item.nome}</Text>
-              <Text style={styles.titleAlunos}>{item.alunos} Alunos</Text>
-              <Button title="Acessar" style={styles.buttonStyle}></Button>
+              <Text style={styles.titleTurmas}>{item.name}</Text>
+              <Text style={styles.titleAlunos}> Alunos</Text>
+              <Button title="Acessar" style={styles.buttonStyle} onPress={()=> navigation.navigate('Detalhes',{turma:item})}></Button>
             </View>
           )}
         />
       </View>
-    );
-  }
-}
+    );}
 
 const styles = StyleSheet.create({
   container: {
