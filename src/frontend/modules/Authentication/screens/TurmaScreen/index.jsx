@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity, Alert } from "react-native";
 import { Button } from "../../components/ButtonCadastro";
 import Logo from "../../../../assets/images/Logo.png";
@@ -22,10 +22,9 @@ export default class Turma extends Component {
         { id: 8, nome: "Turma 008", alunos: 31 },
         { id: 9, nome: "Turma 009", alunos: 33 },
         { id: 10, nome: "Turma 010", alunos: 38 },
-      ],
-    };
-  }
+    ]
 
+   
   componentDidMount() {
     this.checkSession();
   }
@@ -54,7 +53,6 @@ export default class Turma extends Component {
     }
   };
 
-  render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this.handleLogout}>
