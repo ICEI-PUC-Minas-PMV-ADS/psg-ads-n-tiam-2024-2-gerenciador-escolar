@@ -97,6 +97,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
+
         [HttpPut("InsertStudent")]
         public async Task<ActionResult> InsertStudentToClass(string className, string studentName)
         {
@@ -139,6 +140,113 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
-        
+        [HttpPut("UpdateClass/{id}")]
+        public async Task<ActionResult> UpdateClass(string id, ClassModel updatedClass)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Secretary")
+                    {
+                        if (!ModelState.IsValid)
+                            return BadRequest("Todos os campos são obrigatórios.");
+
+                        var documentRef = _firebaseClient.Collection("classes").Document(id);
+                        var document = await documentRef.GetSnapshotAsync();
+
+                        if (!document.Exists)
+                            return NotFound($"Classe com ID '{id}' não foi encontrada.");
+
+                        await documentRef.SetAsync(updatedClass);
+
+                        return Ok("Classe atualizada com sucesso.");
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteClass/{id}")]
+        public async Task<ActionResult> DeleteClass(string id)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Secretary")
+                    {
+                        var documentRef = _firebaseClient.Collection("classes").Document(id);
+                        var document = await documentRef.GetSnapshotAsync();
+
+                        if (!document.Exists)
+                            return NotFound($"Classe com ID '{id}' não foi encontrada.");
+
+                        await documentRef.DeleteAsync();
+
+                        return Ok("Classe excluída com sucesso.");
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetClass/{id}")]
+        public async Task<ActionResult> GetClass(string id)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Secretary")
+                    {
+                        var documentRef = _firebaseClient.Collection("classes").Document(id);
+                        var document = await documentRef.GetSnapshotAsync();
+
+                        if (!document.Exists)
+                            return NotFound($"Classe com ID '{id}' não foi encontrada.");
+
+                        var schoolClass = document.ConvertTo<ClassModel>();
+
+                        return Ok(schoolClass);
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
+
     }
 }

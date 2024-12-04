@@ -403,3 +403,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/src/backend/InstitutoCopacabanaAPI/serviceAccountKey.json
