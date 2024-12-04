@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using FirebaseAdmin.Auth;
 using Google.Cloud.Firestore;
 using InstitutoCopacabanaAPI.Data;
 using InstitutoCopacabanaAPI.Models;
@@ -57,7 +58,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                         return StatusCode(200, usersList);
                     }
                     
-                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
                 }
 
                 return NotFound("Nenhum usuário conectado foi encontrado.");
@@ -96,7 +97,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                         return Ok(user);
                     }
 
-                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
                 }
 
                 return NotFound("Nenhum usuário conectado foi encontrado.");
@@ -142,7 +143,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                         return Conflict("Este e-mail já está sendo utilizado.");
                     }
 
-                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
                 }
 
                 return NotFound("Nenhum usuário conectado foi encontrado.");
@@ -186,7 +187,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                         return Conflict("Este e-mail já está sendo utilizado.");
                     }
 
-                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
                 }
 
                 return NotFound("Nenhum usuário conectado foi encontrado.");
@@ -220,6 +221,9 @@ namespace InstitutoCopacabanaAPI.Controllers
                         //Excluir do firestore
                         await docRef.DeleteAsync();
 
+                        //Excluir do Authentication
+                        await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.DeleteUserAsync(id);
+
                         snapshot = await docRef.GetSnapshotAsync();
                         if (snapshot.Exists)
                             return StatusCode(500, "Falha ao deletar o usuário.");
@@ -227,7 +231,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                         return StatusCode(204, "Usuário deletado com sucesso.");
                     }
 
-                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
                 }
 
                 return NotFound("Nenhum usuário conectado foi encontrado.");
