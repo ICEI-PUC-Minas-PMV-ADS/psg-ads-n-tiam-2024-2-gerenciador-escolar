@@ -4,6 +4,7 @@ using Google.Cloud.Firestore;
 using InstitutoCopacabanaAPI.Models;
 using InstitutoCopacabanaAPI.Services.Interfaces;
 using Firebase.Auth;
+using Google.Protobuf.WellKnownTypes;
 
 namespace InstitutoCopacabanaAPI.Services.Classes
 {
@@ -45,7 +46,10 @@ namespace InstitutoCopacabanaAPI.Services.Classes
         public async Task<UserModel> PostUser(UserModel user)
         {
             //Registra a autenticação com o UID igual ao Id do banco de dados
-            await CreateAuthentication(user);                    
+            await CreateAuthentication(user);
+
+            //A senha irá ficar vazia no firestore, já que o Firebase Authenticantion cuida da parte do acesso de usuário
+            user.Password = String.Empty;
 
             DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);            
 
@@ -57,7 +61,10 @@ namespace InstitutoCopacabanaAPI.Services.Classes
         public async Task<UserModel> PutUser(UserModel user)
         {
             //Atualiza a autenticação com o UID igual ao Id do banco de dados
-            await UpdateAuthentication(user);                       
+            await UpdateAuthentication(user);
+
+            //A senha irá ficar vazia no firestore, já que o Firebase Authenticantion cuida da parte do acesso de usuário
+            user.Password = String.Empty;
 
             DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);
 

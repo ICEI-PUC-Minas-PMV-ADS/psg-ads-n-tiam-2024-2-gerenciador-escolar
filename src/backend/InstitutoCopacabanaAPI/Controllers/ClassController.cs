@@ -8,17 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InstitutoCopacabanaAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ClassController : ControllerBase
     {
-        private readonly FirestoreDb _fireaseClient;
+        private readonly FirestoreDb _firebaseClient;
         private readonly ISessionService _sessionService;
         private readonly IClassService _classService;
 
         public ClassController(ContextDb contextDb, ISessionService sessionService, IClassService classService) 
         {
-            _fireaseClient = contextDb.GetClient();
+            _firebaseClient = contextDb.GetClient();
             _sessionService = sessionService;
             _classService = classService;
         }
@@ -30,7 +30,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             {
                 if (HttpContext.Session.GetString("_userToken") != null)
                 {
-                    CollectionReference classesRef = _fireaseClient.Collection("classes");
+                    CollectionReference classesRef = _firebaseClient.Collection("classes");
 
                     QuerySnapshot snapshot = await classesRef.GetSnapshotAsync();
 
@@ -97,6 +97,7 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
+
         [HttpPut("InsertStudent")]
         public async Task<ActionResult> InsertStudentToClass(string className, string studentName)
         {
@@ -139,6 +140,113 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
-        
+        [HttpPut("UpdateClass/{id}")]
+        public async Task<ActionResult> UpdateClass(string id, ClassModel updatedClass)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Secretary")
+                    {
+                        if (!ModelState.IsValid)
+                            return BadRequest("Todos os campos são obrigatórios.");
+
+                        var documentRef = _firebaseClient.Collection("classes").Document(id);
+                        var document = await documentRef.GetSnapshotAsync();
+
+                        if (!document.Exists)
+                            return NotFound($"Classe com ID '{id}' não foi encontrada.");
+
+                        await documentRef.SetAsync(updatedClass);
+
+                        return Ok("Classe atualizada com sucesso.");
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteClass/{id}")]
+        public async Task<ActionResult> DeleteClass(string id)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Secretary")
+                    {
+                        var documentRef = _firebaseClient.Collection("classes").Document(id);
+                        var document = await documentRef.GetSnapshotAsync();
+
+                        if (!document.Exists)
+                            return NotFound($"Classe com ID '{id}' não foi encontrada.");
+
+                        await documentRef.DeleteAsync();
+
+                        return Ok("Classe excluída com sucesso.");
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetClass/{id}")]
+        public async Task<ActionResult> GetClass(string id)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType == "Secretary")
+                    {
+                        var documentRef = _firebaseClient.Collection("classes").Document(id);
+                        var document = await documentRef.GetSnapshotAsync();
+
+                        if (!document.Exists)
+                            return NotFound($"Classe com ID '{id}' não foi encontrada.");
+
+                        var schoolClass = document.ConvertTo<ClassModel>();
+
+                        return Ok(schoolClass);
+                    }
+
+                    return Unauthorized("Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
+
     }
 }
