@@ -16,16 +16,16 @@ export default function Detalhes(){
                 style={styles.logo}
                 source={Logo}
             />
-            <Text style={styles.titleTela}>Turma 00{turma.id}</Text>
+            <Text style={styles.titleTela}>{turma.name}</Text>
                 <View style={styles.containerTurma}>
                     <Text style={styles.titleTurma}> Lista de Presença</Text>
-                    <Text style={styles.titleAlunos}>{turma.alunos} Alunos</Text>
+                    <Text style={styles.titleAlunos}> Alunos</Text>
                     <Button title="Acessar" style={styles.buttonStyle}></Button>
                 </View>
                 <View style={styles.containerTurma}>
                     <Text style={styles.titleTurma}> Lançamento de Notas</Text>
-                    <Text style={styles.titleAlunos}>{turma.alunos} Alunos</Text>
-                    <Button title="Acessar" style={styles.buttonStyle}></Button>
+                    <Text style={styles.titleAlunos}> Alunos</Text>
+                    <Button title="Acessar" style={styles.buttonStyle} onPress={()=> navigation.navigate('DetalhesNotas')}></Button>
                 </View>
         </View>
     )}

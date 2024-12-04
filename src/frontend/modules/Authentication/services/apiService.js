@@ -41,3 +41,12 @@ export const auth = async (data) => {
       throw error;
     }
   };
+  export const getClasses = async () => {
+    try {
+      const response = await api.get('Class/GetClasses'); 
+      return response.data;
+    } catch (error) {
+      console.error("Falha ao realizar logout", error.response ? error.response.data : error.message);
+      throw error;
+    }
+  };
