@@ -70,6 +70,38 @@
   },
   {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.ClassController",
+    "Method": "DeleteClass",
+    "RelativePath": "api/Class/DeleteClass/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.ClassController",
+    "Method": "GetClass",
+    "RelativePath": "api/Class/GetClass/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.ClassController",
     "Method": "GetClasses",
     "RelativePath": "api/Class/GetClasses",
     "HttpMethod": "GET",
@@ -95,6 +127,27 @@
         "Name": "studentName",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InstitutoCopacabanaAPI.Controllers.ClassController",
+    "Method": "UpdateClass",
+    "RelativePath": "api/Class/UpdateClass/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedClass",
+        "Type": "InstitutoCopacabanaAPI.Models.ClassModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
