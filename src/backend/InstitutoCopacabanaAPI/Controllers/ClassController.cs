@@ -56,6 +56,39 @@ namespace InstitutoCopacabanaAPI.Controllers
             }
         }
 
+        [HttpGet("GetStudents")]
+        public async Task<ActionResult> GetStudents(string className)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token != null)
+                {
+                    var session = await _sessionService.GetConnectedUser(token);
+
+                    if (session.UserType != "Student")
+                    {
+
+                        List<StudentModel> studentsList = await _classService.GetStudentsByClassName(className);
+
+                        if (studentsList.Count == 0)
+                            return NotFound("Não foi possível encontrar nenhum aluno nessa classe.");
+
+                        return Ok(studentsList);
+                    }
+
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                return NotFound("Nenhum usuário conectado foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+        }
+
         [HttpPost("CreateClass")]
         public async Task<ActionResult> CreateClass(ClassModel schoolClass)
         {
