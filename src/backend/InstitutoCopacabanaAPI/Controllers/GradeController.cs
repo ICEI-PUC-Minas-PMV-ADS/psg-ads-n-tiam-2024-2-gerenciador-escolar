@@ -1,6 +1,8 @@
 ﻿using InstitutoCopacabanaAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using InstitutoCopacabanaAPI.Data;
+using InstitutoCopacabanaAPI.Models;
 using System;
 using System.Threading.Tasks;
 
