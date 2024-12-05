@@ -7053,24 +7053,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sixsa\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\NuGetPackages": {}
+    "C:\\Users\\gustavo.reis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\TIAM(37)\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
+      "projectUniqueName": "C:\\Users\\gustavo.reis\\Tiaw\\psg-ads-n-tiam-2024-2-gerenciador-escolar-3\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
       "projectName": "InstitutoCopacabanaAPI",
-      "projectPath": "C:\\TIAM(37)\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
-      "packagesPath": "C:\\Users\\sixsa\\.nuget\\packages\\",
-      "outputPath": "C:\\TIAM(37)\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\obj\\",
+      "projectPath": "C:\\Users\\gustavo.reis\\Tiaw\\psg-ads-n-tiam-2024-2-gerenciador-escolar-3\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
+      "packagesPath": "C:\\Users\\gustavo.reis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gustavo.reis\\Tiaw\\psg-ads-n-tiam-2024-2-gerenciador-escolar-3\\src\\backend\\InstitutoCopacabanaAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\sixsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\gustavo.reis\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7150,7 +7145,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
