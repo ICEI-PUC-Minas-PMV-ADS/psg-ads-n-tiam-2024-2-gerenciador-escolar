@@ -133,5 +133,34 @@ namespace InstitutoCopacabanaAPI.Services.Classes
 
             return "Failed";
         }
+        public async Task<object> GetStudentReportAsync(int studentId)
+        {
+            
+            try
+            {
+                
+                var documentReference = _firestoreDb.Collection("students").Document(studentId.ToString());
+                var documentSnapshot = await documentReference.GetSnapshotAsync();
+
+                if (!documentSnapshot.Exists)
+                {
+                       return new { Message = "Relatório não encontrado.", StudentId = studentId, Grades = new List<object>() };
+                }
+
+               
+                var studentData = documentSnapshot.ToDictionary();
+                return new
+                {
+                    StudentId = studentId,
+                    Name = studentData["Name"],
+                    Grades = studentData.ContainsKey("Grades") ? studentData["Grades"] : new List<object>()
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao obter o relatório do aluno: " + ex.Message);
+            }
+        }
+
     }
 }
