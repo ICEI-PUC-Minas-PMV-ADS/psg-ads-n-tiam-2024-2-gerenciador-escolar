@@ -47,6 +47,47 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             return null;
         }
 
+        public async Task<List<StudentModel>> GetStudentsByClassName(string className)
+        {
+            ClassModel? classRef = await GetClassByName(className);
+
+            List<StudentModel> studentsList = new List<StudentModel>();
+
+            if (classRef == null)
+                return studentsList;
+
+            DocumentReference docRef = _firebaseClient.Collection("classes").Document(classRef.Id);
+
+            DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+
+            if (snapshot.Exists)
+            {
+                if (snapshot.ContainsField("Students"))
+                {
+                    var studentsArray = snapshot.GetValue<IEnumerable<object>>("Students");
+
+                    if (studentsArray != null)
+                    {
+                        foreach (var studentData in studentsArray)
+                        {
+                            if (studentData is Dictionary<string, object> studentDict)
+                            {
+                                StudentModel student = new StudentModel
+                                {
+                                    StudentId = studentDict.TryGetValue("StudentId", out var studentIdValue) ? studentIdValue?.ToString() ?? string.Empty : "Não foi possível localizar",
+                                    Name = studentDict.TryGetValue("Name", out var nameValue) ? nameValue?.ToString() ?? string.Empty : "Não foi possível localizar", 
+                                };
+
+                                studentsList.Add(student);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return studentsList;
+        }
+
         public async Task<List<AttendanceModel>> GetAttendanceByStudentName(string studentName)
         {
             CollectionReference attendanceRef = _firebaseClient.Collection("attendance");
