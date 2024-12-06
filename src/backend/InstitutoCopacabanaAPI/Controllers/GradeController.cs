@@ -122,8 +122,8 @@ namespace InstitutoCopacabanaAPI.Controllers
 
         }
 
-        [HttpGet("report/{studentId}")]
-        public async Task<IActionResult> GetStudentReport(int studentId, [FromQuery] bool downloadPdf = false)
+        [HttpGet("Report")]
+        public async Task<IActionResult> GetStudentReport(string studentName, string className, [FromQuery] bool downloadPdf = false)
         {
             try
             {
@@ -136,17 +136,17 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                 var session = await _sessionService.GetConnectedUser(token);
 
-                if (session.UserType == "Student")
+                if (session.UserType == "Teacher")
                 {
                     return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
                 }
 
                 // Busca os dados do rel
-                var reportData = await _gradeService.GetStudentReportAsync(studentId);
+                var reportData = await _gradeService.GetStudentReportAsync(studentName, className);
 
                 if (reportData == null)
                 {
-                    return NotFound(new { message = "Relatório não encontrado para o aluno especificado." });
+                    return NotFound("Relatório não encontrado para o aluno especificado.");
                 }
 
                 if (downloadPdf)
@@ -154,7 +154,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                     // Gera o PDF
                     var pdfBytes = _pdfService.GeneratePdf(reportData);
 
-                    return File(pdfBytes, "application/pdf", $"Relatorio_Aluno_{studentId}.pdf");
+                    return File(pdfBytes, "application/pdf", $"Relatorio_Aluno_{studentName}.pdf");
                 }
 
                 // Retorna os dados em JSON

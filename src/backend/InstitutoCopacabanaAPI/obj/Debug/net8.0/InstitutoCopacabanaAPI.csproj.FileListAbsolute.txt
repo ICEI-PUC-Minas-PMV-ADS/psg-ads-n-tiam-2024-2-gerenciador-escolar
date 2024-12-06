@@ -198,3 +198,17 @@ C:\TIAM(37)\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopac
 C:\TIAM(37)\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\obj\Debug\net8.0\InstitutoCopacabanaAPI.pdb
 C:\TIAM(37)\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\obj\Debug\net8.0\InstitutoCopacabanaAPI.genruntimeconfig.cache
 C:\TIAM(37)\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\obj\Debug\net8.0\ref\InstitutoCopacabanaAPI.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.barcodes.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.bouncy-castle-connector.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.forms.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.io.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.kernel.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.layout.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.pdfa.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.pdfua.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.sign.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.styledxmlparser.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.svg.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\itext.commons.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\caisi\OneDrive\Área de Trabalho\Faculdade\TIAM\psg-ads-n-tiam-2024-2-gerenciador-escolar\src\backend\InstitutoCopacabanaAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
