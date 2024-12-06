@@ -352,6 +352,50 @@
         }
       }
     },
+    "/api/Grade/report/{studentId}": {
+      "get": {
+        "tags": [
+          "Grade"
+        ],
+        "parameters": [
+          {
+            "name": "studentName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "className",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "downloadPdf",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "studentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Login/Login": {
       "post": {
         "tags": [

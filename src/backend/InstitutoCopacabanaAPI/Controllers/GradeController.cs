@@ -1,6 +1,10 @@
 ﻿using InstitutoCopacabanaAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using InstitutoCopacabanaAPI.Data;
+using InstitutoCopacabanaAPI.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace InstitutoCopacabanaAPI.Controllers
 {
@@ -10,11 +14,13 @@ namespace InstitutoCopacabanaAPI.Controllers
     {
         private readonly ISessionService _sessionService;
         private readonly IGradeService _gradeService;
+        private readonly IPdfService _pdfService;
 
-        public GradeController(ISessionService sessionService, IGradeService gradeService)
+        public GradeController(ISessionService sessionService, IGradeService gradeService, IPdfService pdfService)
         {
             _sessionService = sessionService;
             _gradeService = gradeService;
+            _pdfService = pdfService;
         }
 
         [HttpGet("GetStudentGrade")]
@@ -112,6 +118,55 @@ namespace InstitutoCopacabanaAPI.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, "Erro interno do servidor: " + ex.Message);
+            }
+
+        }
+
+        [HttpGet("Report")]
+        public async Task<IActionResult> GetStudentReport(string studentName, string className, [FromQuery] bool downloadPdf = false)
+        {
+            try
+            {
+                var token = HttpContext.Session.GetString("_userToken");
+
+                if (token == null)
+                {
+                    return NotFound("Nenhum usuário conectado foi encontrado.");
+                }
+
+                var session = await _sessionService.GetConnectedUser(token);
+
+                if (session.UserType == "Teacher")
+                {
+                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
+                }
+
+                // Busca os dados do rel
+                var reportData = await _gradeService.GetStudentReportAsync(studentName, className);
+
+                if (reportData == null)
+                {
+                    return NotFound("Relatório não encontrado para o aluno especificado.");
+                }
+
+                if (downloadPdf)
+                {
+                    // Gera o PDF
+                    var pdfBytes = _pdfService.GeneratePdf(reportData);
+
+                    return File(pdfBytes, "application/pdf", $"Relatorio_Aluno_{studentName}.pdf");
+                }
+
+                // Retorna os dados em JSON
+                return Ok(reportData);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(403, new { message = "Você não tem permissão para acessar este relatório." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erro interno no servidor.", details = ex.Message });
             }
         }
     }
