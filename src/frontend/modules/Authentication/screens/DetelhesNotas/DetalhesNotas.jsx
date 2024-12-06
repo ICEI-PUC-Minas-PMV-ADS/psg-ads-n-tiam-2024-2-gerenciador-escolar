@@ -6,12 +6,12 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 export default function DetalhesNotas() {
   const route = useRoute();
-  const turma = route.params?.turma;
+  const turma = route.params?.item;
   const navigation = useNavigation();
   
 
   function ListaAlunos(turma) {
-    const qtalunos = turma.alunos;
+    const qtalunos = 20;
     const listaDeNomes = [];
   
     for (let i = 0; i < qtalunos; i++) { 
@@ -24,7 +24,7 @@ export default function DetalhesNotas() {
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.logo} source={Logo} />
-      <Text style={styles.titleTela}>Turma 00{turma.id}</Text>
+      <Text style={styles.titleTela}>{turma.name}</Text>
       <SafeAreaView style={styles.containerTurma}>
         <FlatList
             data={listaNomes}
