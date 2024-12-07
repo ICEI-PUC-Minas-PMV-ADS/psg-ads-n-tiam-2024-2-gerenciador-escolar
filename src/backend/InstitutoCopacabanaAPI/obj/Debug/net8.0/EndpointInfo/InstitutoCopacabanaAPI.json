@@ -352,7 +352,7 @@
         }
       }
     },
-    "/api/Grade/report/{studentId}": {
+    "/api/Grade/Report": {
       "get": {
         "tags": [
           "Grade"
@@ -378,14 +378,6 @@
             "schema": {
               "type": "boolean",
               "default": false
-            }
-          },
-          {
-            "name": "studentId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],

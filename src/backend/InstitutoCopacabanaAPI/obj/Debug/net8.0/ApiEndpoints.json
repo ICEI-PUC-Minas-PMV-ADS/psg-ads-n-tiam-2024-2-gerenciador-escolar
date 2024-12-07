@@ -197,7 +197,7 @@
   {
     "ContainingType": "InstitutoCopacabanaAPI.Controllers.GradeController",
     "Method": "GetStudentReport",
-    "RelativePath": "api/Grade/report/{studentId}",
+    "RelativePath": "api/Grade/Report",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -216,11 +216,6 @@
         "Name": "downloadPdf",
         "Type": "System.Boolean",
         "IsRequired": false
-      },
-      {
-        "Name": "studentId",
-        "Type": "",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": []
