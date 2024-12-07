@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Turma from '../modules/Authentication/screens/TurmaScreen';  
+import Turmas from '../modules/Authentication/screens/TurmaScreen';  
 import Relatorio from '../modules/Authentication/screens/RelatorioScreen'; 
 import Cadastro from '../modules/Authentication/screens/CadastroScreen';
 import { Feather } from '@expo/vector-icons';
@@ -17,8 +17,8 @@ export default function TabRoutes() {
             }
         }}>
         <Tab.Screen
-            name="Turma" 
-            component={Turma}
+            name="Turmas" 
+            component={Turmas}
             options={{
                 tabBarIcon: ({color,size})=> <Feather name='users' color={color} size={size}/>
             }}
