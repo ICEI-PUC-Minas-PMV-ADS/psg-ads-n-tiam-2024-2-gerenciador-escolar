@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect}from 'react';
 import { StyleSheet, Text, View, Image,FlatList, SafeAreaView } from 'react-native';
 import { Button } from '../../components/ButtonCadastro';
 import Logo from '../../../../assets/images/Logo.png';
