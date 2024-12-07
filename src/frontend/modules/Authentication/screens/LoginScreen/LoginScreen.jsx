@@ -74,7 +74,7 @@ function Credentials() {
       const response = await login(email,password)
       console.log("Login bem-sucedido");
       await AsyncStorage.setItem('userSession', JSON.stringify(response))
-      navigation.replace('TurmaPrincipal')
+      navigation.replace('Turma')
     } catch(error){
       console.error("Erro no login:", error);
       Alert.alert('Erro', 'Falha no login.')

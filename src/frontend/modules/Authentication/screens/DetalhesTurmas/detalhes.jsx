@@ -20,7 +20,7 @@ export default function Detalhes(){
                 <View style={styles.containerTurma}>
                     <Text style={styles.titleTurma}> Lista de Presença</Text>
                     <Text style={styles.titleAlunos}> Alunos</Text>
-                    <Button title="Acessar" style={styles.buttonStyle}></Button>
+                    <Button title="Acessar" style={styles.buttonStyle} onPress={()=> navigation.navigate('ListaPresenca',{item:turma})}></Button>
                 </View>
                 <View style={styles.containerTurma}>
                     <Text style={styles.titleTurma}> Lançamento de Notas</Text>
