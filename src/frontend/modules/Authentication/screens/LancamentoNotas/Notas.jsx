@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import { Text,StyleSheet,View,TextInput } from "react-native";
+import { Text,StyleSheet,View, TextInput } from "react-native";
 import { Button } from '../../components/ButtonCadastro';
 import { useRoute } from '@react-navigation/native';
 import { TextInputMask } from 'react-native-masked-text';
