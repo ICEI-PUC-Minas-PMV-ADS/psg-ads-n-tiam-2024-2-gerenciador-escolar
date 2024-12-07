@@ -41,12 +41,25 @@ export const auth = async (data) => {
       throw error;
     }
   };
+
   export const getClasses = async () => {
     try {
       const response = await api.get('Class/GetClasses'); 
       return response.data;
     } catch (error) {
       console.error("Falha ao realizar logout", error.response ? error.response.data : error.message);
+      throw error;
+    }
+  };
+
+  export const getStudents = async (className) => {
+    try {
+      const response = await api.get('Class/GetStudents', {
+        params: { className }
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Falha ao recuperar alunos", error.response ? error.response.data : error.message);
       throw error;
     }
   };
