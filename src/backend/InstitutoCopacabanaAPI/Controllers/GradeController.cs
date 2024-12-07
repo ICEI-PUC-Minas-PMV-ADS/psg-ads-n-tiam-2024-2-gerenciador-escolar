@@ -14,13 +14,11 @@ namespace InstitutoCopacabanaAPI.Controllers
     {
         private readonly ISessionService _sessionService;
         private readonly IGradeService _gradeService;
-        private readonly IPdfService _pdfService;
 
-        public GradeController(ISessionService sessionService, IGradeService gradeService, IPdfService pdfService)
+        public GradeController(ISessionService sessionService, IGradeService gradeService)
         {
             _sessionService = sessionService;
             _gradeService = gradeService;
-            _pdfService = pdfService;
         }
 
         [HttpGet("GetStudentGrade")]
@@ -123,7 +121,7 @@ namespace InstitutoCopacabanaAPI.Controllers
         }
 
         [HttpGet("Report")]
-        public async Task<IActionResult> GetStudentReport(string studentName, string className, [FromQuery] bool downloadPdf = false)
+        public async Task<IActionResult> GetStudentReport(string studentName, string className)
         {
             try
             {
@@ -147,14 +145,6 @@ namespace InstitutoCopacabanaAPI.Controllers
                 if (reportData == null)
                 {
                     return NotFound("Relatório não encontrado para o aluno especificado.");
-                }
-
-                if (downloadPdf)
-                {
-                    // Gera o PDF
-                    var pdfBytes = _pdfService.GeneratePdf(reportData);
-
-                    return File(pdfBytes, "application/pdf", $"Relatorio_Aluno_{studentName}.pdf");
                 }
 
                 // Retorna os dados em JSON
