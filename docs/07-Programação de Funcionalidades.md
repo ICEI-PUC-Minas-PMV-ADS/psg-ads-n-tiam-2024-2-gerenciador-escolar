@@ -2,7 +2,7 @@
 
 ## Banco de Dados
 
-Nosso banco de dados está sendo desenvolvido inteiramente no Firebase, uitlizando o `Firestore Database` para armazenar os dados da aplicação e o `Firebase Authentication` para armazenar os acessos dos usuários.
+Nosso banco de dados está sendo desenvolvido inteiramente no Firebase, utilizando o `Firestore Database` para armazenar os dados da aplicação e o `Firebase Authentication` para armazenar os acessos dos usuários.
 
 ![image](https://github.com/user-attachments/assets/0b2ad4a1-72ed-4b7d-94ac-d00f64003eec)
 ![image](https://github.com/user-attachments/assets/f910335e-7398-4a63-8033-dc2b871b605c)
