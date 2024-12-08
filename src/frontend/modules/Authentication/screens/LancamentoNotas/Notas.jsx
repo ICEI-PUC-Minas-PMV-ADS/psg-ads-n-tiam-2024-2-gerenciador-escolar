@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Text, StyleSheet, View, TextInput, ActivityIndicator, FlatList, Button } from "react-native";
+import { Text, StyleSheet, View, TextInput, ActivityIndicator, FlatList, Button, TouchableOpacity } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { getGrades } from "../../services/apiService";
 import { submitGrades } from "../../services/apiService";
+import { Ionicons } from '@expo/vector-icons';
+
 
 
 export default function Notas() {
@@ -110,13 +112,12 @@ export default function Notas() {
                 value={item.value.toString()}
                 onChangeText={(text) => handleInputChange(item.name, text)}
               />
-              <Button
-              title="Enviar"
-              placeholder="Enviar"
-              style={styles.button}
+              <TouchableOpacity
+              style={styles.ButtonStyle}
               onPress={() => handleSubmitGrade(turma, aluno.name, item.name, parseFloat(item.value))}
               >  
-              </Button>
+                <Ionicons name="paper-plane" size={16} color="white" />
+              </TouchableOpacity>
             </View>
           )}
         />
@@ -162,20 +163,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     backgroundColor: "grey",
     borderRadius: 5,
-    width: 180,
+    width: 140,
     height: 35,
     textAlign: "center",
     lineHeight: 35,
-    marginRight: 110,
+    marginRight: 150,
     margin: -6,
-  },
-  button: {
-    backgroundColor: "blue",
-    height: 50,
-    width: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
   },
   input: {
     backgroundColor: "white",
@@ -183,12 +176,19 @@ const styles = StyleSheet.create({
     height: 35,
     borderRadius: 5,
     marginBottom: 30,
-    marginLeft: 200,
+    marginLeft: 90,
     bottom: 30,
     textAlign: "center",
   },
-  sendIcon: {
-    marginLeft: 10,
-    marginTop: 5,
-  },
+  ButtonStyle:{
+   backgroundColor:"blue",
+   height:30,
+   width: 60,
+   justifyContent:'center',
+   alignItems:'center',
+   marginLeft: 250,
+   bottom: 92,
+   borderRadius: 8,
+   
+  }
 });

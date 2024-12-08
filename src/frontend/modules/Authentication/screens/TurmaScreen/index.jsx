@@ -4,7 +4,6 @@ import { Button } from "../../components/ButtonCadastro";
 import Logo from "../../../../assets/images/Logo.png";
 import { logout,getClasses } from "../../services/apiService";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import api from "../../services/apiIEC";
 import { useNavigation } from "@react-navigation/native";
 
 
