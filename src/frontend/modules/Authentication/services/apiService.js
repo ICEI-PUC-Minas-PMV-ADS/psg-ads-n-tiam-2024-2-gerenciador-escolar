@@ -106,6 +106,7 @@ export const registerAttendance = async (data) => {
       throw error;
   }
 };
+
 export const getReport = async (studentName, className) => {
   try {
     const response = await api.get('Grade/Report', {
@@ -118,5 +119,39 @@ export const getReport = async (studentName, className) => {
   } catch (error) {
     console.error("Falha ao recuperar relatórios", error.response ? error.response.data : error.message);
     throw error;
+  }
+
+export const createClass = async (data) => {
+  try {
+      const response = await api.post('Class/CreateClass', data) 
+      return response.data;
+  } catch (error) {
+      console.error("Erro ao criar a turma", error.response ? error.response.data : error.message);
+      throw error;
+  }
+};
+
+export const deleteClass = async (id) => {
+  try {
+      const response = await api.delete(`Class/DeleteClass/${id}`) 
+      return response.data;
+  } catch (error) {
+    console.error("Erro ao excluir a turma", error.response ? error.response.data : error.message);
+    throw error;
+  }
+};
+
+export const insertStudent = async (className, studentName) => {
+  try {
+      const response = await api.put('Class/InsertStudent', null, {
+          params: {
+              className,
+              studentName,
+          }
+      });
+      return response.data;
+  } catch (error) {
+      console.error("Erro ao inserir aluno", error.response ? error.response.data : error.message);
+      throw error;
   }
 };
