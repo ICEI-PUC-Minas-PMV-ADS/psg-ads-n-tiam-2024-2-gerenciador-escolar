@@ -7,7 +7,7 @@ Inclua todas as referências (livros, artigos, sites, etc) utilizados no desenvo
 
 ## Instituto Educacional Copacabana
 
-- **Facebook.** *Facebook perfil*. Disponível em: [https://www.facebook.com/colegiocopacabanagenteinocente/?locale=pt_BR](https://www.facebook.com/colegiocopacabanagenteinocente/?locale=pt_BR)](https://www.facebook.com/colegiocopacabanagenteinocente/?locale=pt_BR). Acesso em: 8 dez. 2024.
+- **Facebook.** *Facebook perfil*. Disponível em: [https://www.facebook.com/colegiocopacabanagenteinocente/?locale=pt_BR](https://www.facebook.com/colegiocopacabanagenteinocente/?locale=pt_BR). Acesso em: 8 dez. 2024.
 (Perfil oficial do Instituto Educacional Copacabana disponibilizado no Facebook, com suas descrições e postagens).
 
 - **Instagram.** *Instagram perfil*. Disponível em: [https://www.instagram.com/institutoeducacionalcopacabana](https://www.instagram.com/institutoeducacionalcopacabana/). Acesso em: 8 dez. 2024.
