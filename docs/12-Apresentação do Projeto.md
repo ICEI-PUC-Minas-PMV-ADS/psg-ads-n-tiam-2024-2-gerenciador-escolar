@@ -21,11 +21,11 @@ O grupo deve ter o cuidado em utilizar figuras, imagens, e cores dentro do conte
 
 Logo abaixo está o link para download do arquivo .pdf da apresentação de slides do projeto.
 
-[Baixar Apresentação do Gerenciador Escolar em PDF](link-para-o-arquivo.pdf)
+[Baixar Apresentação do Gerenciador Escolar](link-para-o-arquivo.pdf)
 
 Caso queira visualizar o .pdf pelo navegador, o link para esta finalidade está logo abaixo.
 
-[Visualizar Apresentação](link-para-o-arquivo.pdf)
+[Visualizar Apresentação do Gerenciador Escolar](link-para-o-arquivo.pdf)
 
 
 O grupo deve distribuir de forma coerente o conteúdo a ser apresentado, dentro do tempo determinado. Importante ressaltar a importância da descrição clara de todo o andamento do projeto, insumos gerados e requisitos atendidos.
