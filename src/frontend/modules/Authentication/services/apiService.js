@@ -63,3 +63,46 @@ export const auth = async (data) => {
       throw error;
     }
   };
+
+  export const getGrades = async (className, studentName, subject) => {
+    try {
+      const response = await api.get('Grade/GetStudentGrade', {
+        params: { 
+          className,
+          studentName,
+          subject
+         }
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Falha ao recuperar alunos", error.response ? error.response.data : error.message);
+      throw error;
+    }
+  };
+
+  export const submitGrades = async (className, studentName, subject, grade ) => {
+    try {
+        const response = await api.put('Grade/SubmitGrade', null, {
+            params: {
+                className,
+                studentName,
+                subject,
+                grade
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Erro ao enviar a nota", error.response ? error.response.data : error.message);
+        throw error;
+    }
+};
+
+export const registerAttendance = async (data) => {
+  try {
+      const response = await api.post('Attendance/RegisterAttendance', data) 
+      return response.data;
+  } catch (error) {
+      console.error("Erro ao enviar a nota", error.response ? error.response.data : error.message);
+      throw error;
+  }
+};

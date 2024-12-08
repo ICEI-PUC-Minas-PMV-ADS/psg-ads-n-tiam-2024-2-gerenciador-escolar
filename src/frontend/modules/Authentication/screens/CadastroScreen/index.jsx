@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { View, Text, Image, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import RNPickerSelect from 'react-native-picker-select'
-import { styles, pickerSelectStyles } from "./styles";
+import { styles} from "./styles";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/InputCadastro/index";
 import { Button } from "../../components/ButtonCadastro/index";
@@ -12,7 +12,7 @@ import { auth } from "../../services/apiService";
 
 export default function FormCadastro() {
   const navigation = useNavigation();
-  const [userType, setUserType] = useState("Student"); // Estado para o tipo de usuário
+  const [userType, setUserType] = useState("Student"); 
   const {
     control,
     handleSubmit,
@@ -174,13 +174,13 @@ export default function FormCadastro() {
         }}
       />
       <RNPickerSelect
+        style={styles.input}
         onValueChange={(value) => setUserType(value)}
         items={[
           { label: 'Student', value: 'Student' },
           { label: 'Teacher', value: 'Teacher' },
           { label: 'Secretary', value: 'Secretary' },
         ]}
-        style={pickerSelectStyles}
         value={userType} 
         placeholder={{ label: "Selecione o tipo de usuário", value: null }}
       />

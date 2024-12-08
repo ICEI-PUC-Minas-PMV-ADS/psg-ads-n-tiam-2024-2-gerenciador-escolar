@@ -3,23 +3,27 @@ import { StyleSheet, Text, View, Image,FlatList, SafeAreaView } from 'react-nati
 import { Button } from '../../components/ButtonCadastro';
 import Logo from '../../../../assets/images/Logo.png';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { getStudents } from "../../services/apiService";
 
 export default function DetalhesNotas() {
   const route = useRoute();
   const turma = route.params?.item;
   const navigation = useNavigation();
-  
+  const [listaNotas,setListaNotas] = useState([]);
 
-  function ListaAlunos(turma) {
-    const qtalunos = 20;
-    const listaDeNomes = [];
-  
-    for (let i = 0; i < qtalunos; i++) { 
-      listaDeNomes.push({id: i+1, nome: `Aluno ${i + 1}` });
-    }
-    return listaDeNomes;
-  }
-  const listaNomes = ListaAlunos(turma);
+    useEffect(()=>{
+      getAlunos();
+    },[]);
+    
+    const getAlunos = async()=>{
+      try{
+        console.log(turma.name)
+        const response = await getStudents(turma.name);
+        setListaNotas(response);
+      }catch(error){
+        console.log("Erro ao recuperar as turmas",error);
+      }
+    };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,12 +31,12 @@ export default function DetalhesNotas() {
       <Text style={styles.titleTela}>{turma.name}</Text>
       <SafeAreaView style={styles.containerTurma}>
         <FlatList
-            data={listaNomes}
+            data={listaNotas}
             keyExtractor={item => item.id}
             renderItem={({item}) => (
                 <View style={styles.containerAluno}>
-                    <Text style={styles.titleAlunos}>{item.nome}</Text>
-                    <Button title="Lançar Nota" style={styles.buttonStyle} onPress={()=> navigation.navigate('Notas',{nome: item.nome})}></Button>
+                    <Text style={styles.titleAlunos}>{item.name}</Text>
+                    <Button title="Lançar Nota" style={styles.buttonStyle} onPress={()=> navigation.navigate('Notas',{nome: item, turma: turma.name})}></Button>
                 </View>
             )}
         />

@@ -46,10 +46,10 @@ export default function Dropdown({ data, placeholder, onChange }) {
           <FlatList
             data={data}
             keyExtractor={(item) => item.value.toString()}
-            renderItem={({ item }) => (
+            renderItem={({ item, index }) => (
               <TouchableOpacity
                 style={styles.option}
-                onPress={() => handleSelect(item)}
+                onPress={() => handleSelect(item, index)}
               >
                 <Text style={styles.optionText}>{item.label}</Text>
               </TouchableOpacity>
