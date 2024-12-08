@@ -30,6 +30,7 @@
     "react-dom": "18.3.1",
     "react-hook-form": "^7.53.1",
     "react-native": "^0.76.3",
+    "react-native-dialog": "^9.3.0",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-get-random-values": "^1.11.0",
     "react-native-masked-text": "^1.12.5",
