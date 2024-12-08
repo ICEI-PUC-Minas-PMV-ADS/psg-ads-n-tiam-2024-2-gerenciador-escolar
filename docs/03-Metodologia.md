@@ -42,8 +42,8 @@ A equipe está organizada com base em metodologias ágeis, especificamente o Scr
 
 - **Scrum Master:** Gabriel Penido
 - **Product Owner:** Gustavo Coelho
-- **Equipe de Desenvolvimento Front:** Gabriel Penido, Luiz Felipe
-- **Equipe de Desenvolvimento Back:** David Silva, João Pedro, Sávio Gama
+- **Equipe de Desenvolvimento Front:** Gabriel Penido, João Pedro, Luiz Felipe
+- **Equipe de Desenvolvimento Back:** David Silva, Sávio Gama
 
 Cada membro da equipe tem responsabilidades específicas e encontros ativos nas reuniões de planejamento e revisão de sprints para garantir o progresso contínuo do projeto.
 
