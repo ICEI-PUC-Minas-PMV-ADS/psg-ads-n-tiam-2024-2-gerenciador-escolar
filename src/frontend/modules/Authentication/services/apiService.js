@@ -107,6 +107,20 @@ export const registerAttendance = async (data) => {
   }
 };
 
+export const getReport = async (studentName, className) => {
+  try {
+    const response = await api.get('Grade/Report', {
+      params: { 
+        studentName,
+        className
+       }
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Falha ao recuperar relatórios", error.response ? error.response.data : error.message);
+    throw error;
+  }
+
 export const createClass = async (data) => {
   try {
       const response = await api.post('Class/CreateClass', data) 
