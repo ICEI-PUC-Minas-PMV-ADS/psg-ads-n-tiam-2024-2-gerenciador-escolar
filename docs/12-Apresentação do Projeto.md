@@ -8,6 +8,7 @@ Conjunto de slides em um arquivo PowerPoint ou PDF com a apresentação do proje
 
 Gerenciador Escolar - Instituto Educacional Copacabana
 ## Identidade Visual (Marca, Design)
+Se baseando na logo e em demais postagens do Instituto Educacional Copacabana, a paleta de cores do sistema, assim como a apresentação via slides, exibe padrões de cores em tons de verde, azul como complemento e uso de cores terciarias (preto, branco e escalas de cinza) como padrão de cores do projeto como um todo.
 
 O grupo deve ter o cuidado em utilizar figuras, imagens, e cores dentro do contexto da solução proposta, de forma a manter a temática do problema.
 
