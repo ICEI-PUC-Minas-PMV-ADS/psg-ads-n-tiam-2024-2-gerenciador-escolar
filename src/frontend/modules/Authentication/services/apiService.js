@@ -120,6 +120,7 @@ export const getReport = async (studentName, className) => {
     console.error("Falha ao recuperar relatórios", error.response ? error.response.data : error.message);
     throw error;
   }
+}
 
 export const createClass = async (data) => {
   try {
@@ -153,5 +154,16 @@ export const insertStudent = async (className, studentName) => {
   } catch (error) {
       console.error("Erro ao inserir aluno", error.response ? error.response.data : error.message);
       throw error;
+  }
+};
+
+export const requestPassword = async (email) => {
+  try {
+    console.log(email)
+    const response = await api.post(`Login/RequestPassword?email=${encodeURIComponent(email)}`); 
+    return response.email;
+  } catch (error) {
+    console.error("Falha ao realizar a redefinição de senha", error.response ? error.response.data : error.message);
+    throw error;
   }
 };
