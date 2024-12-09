@@ -1,16 +1,18 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { View, Text, Image, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
-import { styles } from "./styles";
+import RNPickerSelect from 'react-native-picker-select'
+import { styles} from "./styles";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/InputCadastro/index";
 import { Button } from "../../components/ButtonCadastro/index";
 import Logo from "../../../../assets/images/Logo.png";
 import { auth } from "../../services/apiService";
 
+
 export default function FormCadastro() {
   const navigation = useNavigation();
+  const [userType, setUserType] = useState("Student"); 
   const {
     control,
     handleSubmit,
@@ -24,12 +26,14 @@ export default function FormCadastro() {
         name: data.name,
         email: data.email,
         password: data.Password,
-        userType: "Student",
+        userType: userType,
       };
 
       console.log("nome", data.name);
       console.log("email", data.email);
       console.log("senha", data.Password);
+      console.log("userType", data.userType);
+
       const response = await auth(
         userData
     );
@@ -168,6 +172,17 @@ export default function FormCadastro() {
           placeholder: "Confirme a senha",
           secureTextEntry: true,
         }}
+      />
+      <RNPickerSelect
+        style={styles.input}
+        onValueChange={(value) => setUserType(value)}
+        items={[
+          { label: 'Student', value: 'Student' },
+          { label: 'Teacher', value: 'Teacher' },
+          { label: 'Secretary', value: 'Secretary' },
+        ]}
+        value={userType} 
+        placeholder={{ label: "Selecione o tipo de usuário", value: null }}
       />
       <Button title="Cadastrar" onPress={handleSubmit(handleNextStep)} />
     </View>

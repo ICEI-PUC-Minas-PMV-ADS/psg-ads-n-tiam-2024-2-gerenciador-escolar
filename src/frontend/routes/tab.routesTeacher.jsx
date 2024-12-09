@@ -3,12 +3,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Turmas from '../modules/Authentication/screens/TurmaScreen';  
 import Relatorio from '../modules/Authentication/screens/RelatorioScreen'; 
-import Cadastro from '../modules/Authentication/screens/CadastroScreen';
 import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-export default function TabRoutes() {
+export default function RoutesTeacher() {
   return (
     <Tab.Navigator screenOptions={{
         headerShown:false,
@@ -31,16 +30,6 @@ export default function TabRoutes() {
                 tabBarIcon: ({color,size})=> <Feather name='file-text' color={color} size={size}/>
             }}
         />
-
-         <Tab.Screen 
-            name="Cadastro" 
-            component={Cadastro}
-            options={{
-                tabBarIcon: ({color,size})=> <Feather name='file-text' color={color} size={size}/>
-            }}
-        />
-
-
     </Tab.Navigator>
   );
 }

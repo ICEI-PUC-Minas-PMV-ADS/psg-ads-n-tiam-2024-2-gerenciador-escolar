@@ -17,5 +17,17 @@ export const styles = StyleSheet.create({
     logo:{
         marginBottom: 10,
         marginLeft: 102
-    }
+    },
+    input: {
+      fontSize: 16,
+      paddingVertical: 12,
+      paddingHorizontal: 10,
+      borderWidth: 1,
+      borderColor: 'black',
+      borderRadius: 4,
+      color: 'black',
+      paddingRight: 30, 
+      marginBottom: 20,
+    },
 })
+

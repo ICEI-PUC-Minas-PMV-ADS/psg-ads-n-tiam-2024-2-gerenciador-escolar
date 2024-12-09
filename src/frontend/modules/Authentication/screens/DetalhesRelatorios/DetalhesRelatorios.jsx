@@ -5,11 +5,11 @@ import Logo from '../../../../assets/images/Logo.png';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { getStudents } from "../../services/apiService";
 
-export default function DetalhesNotas() {
+export default function DetalhesRelatorios() {
   const route = useRoute();
-  const turma = route.params?.item;
+  const turma = route.params?.turma;
   const navigation = useNavigation();
-  const [listaNotas,setListaNotas] = useState([]);
+  const [listaAlunos,setListaAlunos] = useState([]);
 
     useEffect(()=>{
       getAlunos();
@@ -19,7 +19,7 @@ export default function DetalhesNotas() {
       try{
         console.log(turma.name)
         const response = await getStudents(turma.name);
-        setListaNotas(response);
+        setListaAlunos(response);
       }catch(error){
         console.log("Erro ao recuperar as turmas",error);
       }
@@ -31,12 +31,12 @@ export default function DetalhesNotas() {
       <Text style={styles.titleTela}>{turma.name}</Text>
       <SafeAreaView style={styles.containerTurma}>
         <FlatList
-            data={listaNotas}
+            data={listaAlunos}
             keyExtractor={item => item.name}
             renderItem={({item}) => (
                 <View style={styles.containerAluno}>
                     <Text style={styles.titleAlunos}>{item.name}</Text>
-                    <Button title="Lançar Nota" style={styles.buttonStyle} onPress={()=> navigation.navigate('Notas',{nome: item, turma: turma.name})}></Button>
+                    <Button title="Acessar" style={styles.buttonStyle} onPress={()=> navigation.navigate('RelatorioAluno',{nomeAluno: item.name, nomeTurma: turma.name})}></Button>
                 </View>
             )}
         />

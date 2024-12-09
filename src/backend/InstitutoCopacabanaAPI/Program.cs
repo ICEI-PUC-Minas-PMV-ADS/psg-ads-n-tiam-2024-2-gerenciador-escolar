@@ -41,6 +41,7 @@ namespace InstitutoCopacabanaAPI
             builder.Services.AddScoped<ISessionService, SessionService>();
             builder.Services.AddScoped<IClassService, ClassService>();
             builder.Services.AddScoped<IGradeService, GradeService>();
+            builder.Services.AddScoped<IPdfService, PdfService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
