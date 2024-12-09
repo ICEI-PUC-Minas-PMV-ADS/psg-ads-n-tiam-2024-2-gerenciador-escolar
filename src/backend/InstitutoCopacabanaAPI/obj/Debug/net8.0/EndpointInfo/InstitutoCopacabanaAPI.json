@@ -371,14 +371,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "downloadPdf",
-            "in": "query",
-            "schema": {
-              "type": "boolean",
-              "default": false
-            }
           }
         ],
         "responses": {

@@ -134,10 +134,7 @@ namespace InstitutoCopacabanaAPI.Controllers
 
                 var session = await _sessionService.GetConnectedUser(token);
 
-                if (session.UserType == "Teacher")
-                {
-                    return StatusCode(403, "Este usuário não pode acessar essa funcionalidade.");
-                }
+                
 
                 // Busca os dados do rel
                 var reportData = await _gradeService.GetStudentReportAsync(studentName, className);

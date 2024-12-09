@@ -211,11 +211,6 @@
         "Name": "className",
         "Type": "System.String",
         "IsRequired": false
-      },
-      {
-        "Name": "downloadPdf",
-        "Type": "System.Boolean",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
