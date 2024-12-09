@@ -1,9 +1,6 @@
 # Referências
-Inclua todas as referências (livros, artigos, sites, etc) utilizados no desenvolvimento do trabalho.
 
-> **Links Úteis**:
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
+Enfim, a seguir está todas as referências utilizadas durante o desenvolvimento da aplicação.
 
 ## Instituto Educacional Copacabana
 
