@@ -51,7 +51,6 @@ export default function ListaPresenca() {
 
   const getAlunos = async () => {
     try {
-      console.log(turma.name);
       const response = await getStudents(turma.name);
       setListaPresenca(response);
     } catch (error) {
@@ -67,7 +66,7 @@ export default function ListaPresenca() {
         <FlatList
           data={listaPresenca}
           keyExtractor={(item, index) => `${item.id || index}`}
-          renderItem={({ item, index }) => (
+          renderItem={({ item }) => (
             <View style={styles.containerAluno}>
               <Text style={styles.titleAlunos}>{item.name}</Text>
               <Dropdown
@@ -78,6 +77,7 @@ export default function ListaPresenca() {
                 ]}
                 placeholder="Opção"
                 onChange={(selectedItem) => {
+                  console.log("Selecionado:", selectedItem);
                   setAttendanceStudent((prevState) => {
                       const updatedState = prevState.filter(
                           (student) => student.studentName !== item.name

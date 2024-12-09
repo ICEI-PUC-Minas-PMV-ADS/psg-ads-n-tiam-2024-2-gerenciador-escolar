@@ -36,19 +36,28 @@ export default function RelatorioAluno() {
           <Text style={styles.titleAlunos}>{nomeAluno}</Text>
         </View>
         <View style={styles.containerRelatorio}>
-          {relatorioData.length > 0 ? (
-            relatorioData.map((item, index) => (
-              <View key={index} style={styles.relatorioItem}>
-                <Text  style={styles.materia}>{item.subject}</Text>
-                <Text>Notas: {item.grades}</Text>
-                <Text>Presença: {item.attendance}</Text>
-              </View>
-            ))
-          ) : (
-            <Text>Aguardando dados...</Text>
-          )}
-        </View>
-        <Button title="Baixar" style={styles.Button}></Button>
+            {relatorioData.length > 0 ? (
+                <>
+                <Text style={styles.faltas}>
+                    Total de Faltas:{" "}
+                    {(
+                    relatorioData.filter((item) => item.attendance === 0).length *
+                    2.5
+                    ).toFixed(2)}%
+                </Text>
+
+                {relatorioData.map((item, index) => (
+                    <View key={index} style={styles.relatorioItem}>
+                    <Text style={styles.materia}>{item.subject}</Text>
+                    <Text>Notas: {item.grades}</Text>
+                    </View>
+                ))}
+                </>
+            ) : (
+                <Text>Aguardando dados...</Text>
+            )}
+            </View>
+
       </View>
     </View>
   );
@@ -86,7 +95,7 @@ const styles = StyleSheet.create({
   },
   containerRelatorio: {},
   relatorioItem: {
-    marginBottom: 10,
+    marginBottom: 20,
     marginLeft:40
   },
   Button:{
@@ -103,5 +112,9 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center',
     fontSize: 17
+  },
+  faltas:{
+    marginLeft: 200,
+    top: 495
   }
 });
