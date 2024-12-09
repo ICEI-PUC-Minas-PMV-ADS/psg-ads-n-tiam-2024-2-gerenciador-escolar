@@ -19,11 +19,11 @@ O grupo deve ter o cuidado em utilizar figuras, imagens, e cores dentro do conte
 
 ## Conjunto de Slides (Estrutura)
 
-Logo abaixo está o link para download do arquivo .pdf da apresentação de slides do projeto.
+A seguir está o link para download do arquivo .pdf da apresentação de slides do projeto.
 
 [Baixar Apresentação do Gerenciador Escolar](link-para-o-arquivo.pdf)
 
-Caso queira visualizar o .pdf pelo navegador, o link para esta finalidade está logo abaixo.
+Caso queira visualizar o .pdf da apresentação pelo navegador o link para esta finalidade está logo abaixo.
 
 [Visualizar Apresentação do Gerenciador Escolar](link-para-o-arquivo.pdf)
 
