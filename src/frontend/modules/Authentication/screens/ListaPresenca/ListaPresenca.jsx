@@ -6,13 +6,13 @@ import {
   SafeAreaView,
   FlatList,
   Image,
-  Button,
   Alert,
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Logo from "../../../../assets/images/Logo.png";
 import Dropdown from "../../components/DropDown";
 import { getStudents, registerAttendance } from "../../services/apiService";
+import { Button } from "../../components/ButtonCadastro";
 
 export default function ListaPresenca() {
   const route = useRoute();
@@ -96,7 +96,8 @@ export default function ListaPresenca() {
           )}
         />
         <Button
-          title="Lançar nota"
+          title="Lançar Presença"
+          style={styles.buttonStyle}
           onPress={() => submitStudentAttendence(attendanceStudent)}
         />
       </SafeAreaView>
@@ -134,14 +135,11 @@ const styles = StyleSheet.create({
     width: 60,
   },
   buttonStyle: {
-    backgroundColor: "blue",
-    height: 30,
-    width: 80,
+    backgroundColor: "#96CA5E",
+    height: 40,
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
-    position: "absolute",
-    right: 20,
-    top: 75,
+    borderRadius: 8,
   },
 });

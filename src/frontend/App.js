@@ -12,6 +12,8 @@ import Notas from './modules/Authentication/screens/LancamentoNotas/Notas';
 import ListaPresenca from './modules/Authentication/screens/ListaPresenca/ListaPresenca';
 import DetalhesRelatorios from './modules/Authentication/screens/DetalhesRelatorios/DetalhesRelatorios';
 import RelatorioAluno from './modules/Authentication/screens/RelatorioAluno/RelatorioAluno';
+import RoutesTeacher from './routes/tab.routesTeacher';
+import RoutesStudents from './routes/tab.routesStudents';
 
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +32,8 @@ export default function App() {
         <Stack.Screen name='ListaPresenca' component={ListaPresenca}/>
         <Stack.Screen name='DetalhesRelatorios' component={DetalhesRelatorios}/>
         <Stack.Screen name='RelatorioAluno' component={RelatorioAluno}/>
+        <Stack.Screen name='RoutesTeacher' component={RoutesTeacher}/>
+        <Stack.Screen name='RoutesStudents' component={RoutesStudents}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

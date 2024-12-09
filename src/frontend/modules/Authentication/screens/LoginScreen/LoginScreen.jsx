@@ -19,12 +19,21 @@ import {
 
 export default function LoginScreen({navigation}) {
 
+  const [responsestring,setResponsestring] = useState('');
+
   useEffect(() =>{
     const checkSession = async () => {
       try{
         const sessionData = await session();
         if(sessionData){
-          navigation.replace('Turma')
+          if(responsestring === "Secretary"){
+            navigation.replace('Turma')
+          }else if(responsestring === 'Teacher'){
+            navigation.replace('RoutesTeacher')
+          }else{
+            navigation.replace('RoutesStudents')
+          }
+          
         }
       }catch (error) {
         console.error("Erro ao verificar sessão:", error);
@@ -33,7 +42,7 @@ export default function LoginScreen({navigation}) {
 
     checkSession()
 
-  }, [navigation])
+  }, [navigation,responsestring])
 
   return (
     <View style={styles.container}>
@@ -42,7 +51,7 @@ export default function LoginScreen({navigation}) {
       source={Logo}
       />
       <TitleText />
-      <Credentials />
+      <Credentials setResponsestring={setResponsestring}/>
       <GhostButton/>
     </View>
 
@@ -117,9 +126,7 @@ function GhostButton({}){
   );
 }
 
-
-function Credentials() {
-
+function Credentials({ setResponsestring }) {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -131,7 +138,14 @@ function Credentials() {
       const response = await login(email,password)
       console.log("Login bem-sucedido");
       await AsyncStorage.setItem('userSession', JSON.stringify(response))
-      navigation.replace('Turma')
+      if(response === "Secretary"){
+        navigation.replace('Turma')
+      }else if(response === 'Teacher'){
+        navigation.replace('RoutesTeacher')
+      }else{
+        navigation.replace('RoutesStudents')
+      }
+      setResponsestring(response)
     } catch(error){
       console.error("Erro no login:", error);
       Alert.alert('Erro', 'Falha no login.')

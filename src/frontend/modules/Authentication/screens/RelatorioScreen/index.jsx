@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react';
-import { StyleSheet , Text , View , Image, FlatList} from 'react-native';
+import { StyleSheet , Text , View , Image, FlatList,TouchableOpacity,Alert} from 'react-native';
 import Logo from "../../../../assets/images/Logo.png";
-import { getClasses } from "../../services/apiService";
+import { getClasses,logout } from "../../services/apiService";
 import { Button } from "../../components/ButtonCadastro";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Relatorio(){
 
@@ -12,6 +14,7 @@ export default function Relatorio(){
 
     useEffect(()=>{
         getTurmas();
+        checkSession();
       },[]);
       
       const getTurmas = async()=>{
@@ -23,9 +26,34 @@ export default function Relatorio(){
         }
       };
 
+    const handleLogout = async () => {
+        try {
+          await logout();
+          await AsyncStorage.removeItem("userSession");
+          Alert.alert("Sucesso", "Você foi deslogado com sucesso.");
+          navigation.replace("LoginScreen");
+        } catch (error) {
+          console.error("Erro ao realizar logout:", error);
+          Alert.alert("Erro", "Falha ao realizar logout.");
+        }
+      };
+      checkSession = async () => {
+        try {
+          const sessionData = await AsyncStorage.getItem("userSession");
+          if (!sessionData) {
+            navigation.replace("LoginScreen");
+          }
+        } catch (error) {
+          console.error("Erro ao verificar sessão:", error);
+          navigation.replace("LoginScreen");
+        }
+      };
+
     return(
         <View style={styles.container}>
-          <Image style={styles.logo} source={Logo} />
+            <TouchableOpacity onPress={handleLogout} style={styles.logo}>
+            <Ionicons name="log-out-outline" size={35} color="black"/>
+            </TouchableOpacity>
         <Text style={styles.titleTela}>Relatório</Text>
         <FlatList
           data={turmasData}
@@ -67,7 +95,7 @@ const styles = StyleSheet.create({
         top: 80,
       },
       buttonStyle: {
-        backgroundColor: "blue",
+        backgroundColor: "#96CA5E",
         height: 30,
         width: 80,
         justifyContent: "center",
