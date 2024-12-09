@@ -156,3 +156,14 @@ export const insertStudent = async (className, studentName) => {
       throw error;
   }
 };
+
+export const requestPassword = async (email) => {
+  try {
+    console.log(email)
+    const response = await api.post(`Login/RequestPassword?email=${encodeURIComponent(email)}`); 
+    return response.email;
+  } catch (error) {
+    console.error("Falha ao realizar a redefinição de senha", error.response ? error.response.data : error.message);
+    throw error;
+  }
+};
