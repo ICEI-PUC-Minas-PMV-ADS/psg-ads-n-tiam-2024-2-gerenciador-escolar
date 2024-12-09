@@ -120,6 +120,7 @@ export const getReport = async (studentName, className) => {
     console.error("Falha ao recuperar relatórios", error.response ? error.response.data : error.message);
     throw error;
   }
+};
 
 export const createClass = async (data) => {
   try {

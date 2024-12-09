@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   ButtonStyle:{
-   backgroundColor:"blue",
+   backgroundColor:"#96CA5E",
    height:30,
    width: 60,
    justifyContent:'center',

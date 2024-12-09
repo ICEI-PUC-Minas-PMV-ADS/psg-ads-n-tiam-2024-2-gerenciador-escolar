@@ -15,6 +15,7 @@ export default function RelatorioAluno() {
     getRelatorios();
   }, []);
 
+
   const getRelatorios = async () => {
     try {
       const response = await getReport(nomeAluno, nomeTurma);
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   Button:{
     justifyContent:'center',
     alignItems:'center',
-    backgroundColor:'blue',
+    backgroundColor:'#96CA5E',
     height:40,
     width: 110,
     borderRadius: 12,

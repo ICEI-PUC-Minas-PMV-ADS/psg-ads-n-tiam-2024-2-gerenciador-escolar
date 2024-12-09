@@ -1,10 +1,10 @@
 import React, { useEffect,useState } from "react";
 import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity, Alert, Button, Modal, TextInput } from "react-native";
 import { Button as ButtonPers } from "../../components/ButtonCadastro";
-import Logo from "../../../../assets/images/Logo.png";
 import { logout,getClasses, createClass, deleteClass, insertStudent } from "../../services/apiService";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -123,15 +123,15 @@ export default function Turma(){
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={handleLogout}>
-          <Image style={styles.logo} source={Logo} />
+        <TouchableOpacity onPress={handleLogout} style={styles.IconSair}>
+          <Ionicons name="log-out-outline" size={35} color="black"/>
         </TouchableOpacity>
         <Text style={styles.titleTela}>Turmas</Text>
-        <Button 
-        title="Adicionar Turma" 
-        style={styles.addButtonStyle} 
-        onPress={() => setModalVisible(true)} 
-        />
+        <TouchableOpacity 
+          style={styles.addButtonStyle} 
+          onPress={() => setModalVisible(true)}>
+          <Text style={{ color: 'white'}}>Adicionar Turma</Text>
+        </TouchableOpacity>
         <FlatList
           data={turmasData}
           keyExtractor={item => item.id}
@@ -139,7 +139,7 @@ export default function Turma(){
             <View style={styles.containerTurmas}>
               <Text style={styles.titleTurmas}>{item.name}</Text>
               <ButtonPers 
-              title="Aluno" 
+              title={<Ionicons name="add-outline" size={25} color="white"/>} 
               style={styles.buttonStyleInsert} 
               onPress={()=> {
               setSelectedClassName(item.name);
@@ -147,7 +147,7 @@ export default function Turma(){
             }}
               />
               <ButtonPers title="Acessar" style={styles.buttonStyle} onPress={()=> navigation.navigate('Detalhes',{turma:item})}></ButtonPers>
-              <ButtonPers title="Excluir" style={styles.buttonStyleDelete} onPress={() => handleDeleteTurma(item.id)}></ButtonPers>
+              <ButtonPers title={<Ionicons name="trash-outline" size={20} color="white" />} style={styles.buttonStyleDelete} onPress={() => handleDeleteTurma(item.id)}></ButtonPers>
             </View>
           )}
         />
@@ -173,7 +173,6 @@ export default function Turma(){
           </View>
         </View>
       </Modal>
-        {/* Modal para adicionar aluno */}
         <Modal
         animationType="slide"
         transparent={true}
@@ -215,12 +214,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   addButtonStyle: {
-    backgroundColor: "green",
+    backgroundColor: "#96CA5E",
     height: 40,
+    width: "95%",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 20,
+    marginLeft: 10,
   },
   modalContent: {
     width: "80%",
@@ -256,7 +257,7 @@ const styles = StyleSheet.create({
     top: 80,
   },
   buttonStyle: {
-    backgroundColor: "blue",
+    backgroundColor: "#96CA5E",
     height: 30,
     width: 80,
     justifyContent: "center",
@@ -267,7 +268,7 @@ const styles = StyleSheet.create({
     top: 75,
   },
   buttonStyleInsert: {
-    backgroundColor: "green",
+    backgroundColor: "#3941ff",
     height: 30,
     width: 80,
     justifyContent: "center",
@@ -278,7 +279,7 @@ const styles = StyleSheet.create({
     top: 75,
   },
   buttonStyleDelete: {
-    backgroundColor: "red",
+    backgroundColor: "#de2c4b",
     height: 30,
     width: 80,
     justifyContent: "center",
@@ -293,8 +294,8 @@ const styles = StyleSheet.create({
     marginBottom: 33,
     marginTop: 30,
   },
-  logo: {
-    marginLeft: 310,
+  IconSair: {
+    marginLeft: 335,
     height: 50,
     width: 60,
     top: 10,
