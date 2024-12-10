@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Relatorio from '../modules/Authentication/screens/RelatorioScreen'; 
+import Relatorio from '../modules/Authentication/screens/RelatorioAluno/RelatorioAluno'; 
 import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();

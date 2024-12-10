@@ -1,35 +1,79 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import Logo from '../../../../assets/images/Logo.png';
-import { getReport } from "../../services/apiService";
+import { getReport,session, logout } from "../../services/apiService";
 import { Button } from '../../components/ButtonCadastro';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function RelatorioAluno() {
   const route = useRoute();
   const nomeAluno = route.params?.nomeAluno;
   const nomeTurma = route.params?.nomeTurma;
+  const navigation = useNavigation();
   const [relatorioData, setRelatorioData] = useState([]);
+  const [sessionData, setSessionData] = useState([]);
+  
 
   useEffect(() => {
-    getRelatorios();
+    getSession();
+    checkSession();
   }, []);
-
-
-  const getRelatorios = async () => {
+  
+  useEffect(() => {
+    if (sessionData?.name && sessionData?.className) {
+      getRelatorios(sessionData.name, sessionData.className);
+    }
+  }, [sessionData]);
+  
+  const getSession = async () => {
     try {
-      const response = await getReport(nomeAluno, nomeTurma);
+      const response = await session();
+      setSessionData(response);
+    } catch (error) {
+      console.log("Erro ao recuperar o usuário", error);
+    }
+  };
+
+  const getRelatorios = async (name, className) => {
+    try {
+      const response = await getReport(name, className);
       setRelatorioData(response.report);
     } catch (error) {
       console.log("Erro ao recuperar os relatórios", error);
     }
+  }; 
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      await AsyncStorage.removeItem("userSession");
+      Alert.alert("Sucesso", "Você foi deslogado com sucesso.");
+      navigation.replace("LoginScreen");
+    } catch (error) {
+      console.error("Erro ao realizar logout:", error);
+      Alert.alert("Erro", "Falha ao realizar logout.");
+    }
   };
 
-  console.log(relatorioData);
+  const checkSession = async () => {
+    try {
+      const sessionData = await AsyncStorage.getItem("userSession");
+      if (!sessionData) {
+        navigation.replace("LoginScreen");
+      }
+    } catch (error) {
+      console.error("Erro ao verificar sessão:", error);
+      navigation.replace("LoginScreen");
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <Image style={styles.logo} source={Logo} />
+      <TouchableOpacity onPress={handleLogout} style={styles.logo}>
+            <Ionicons name="log-out-outline" size={35} color="black"/>
+            </TouchableOpacity>
       <Text style={styles.titleTela}>Relatório</Text>
       <View style={styles.containerTurma}>
         <View style={styles.containerAluno}>

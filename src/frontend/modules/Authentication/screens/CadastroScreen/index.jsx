@@ -27,12 +27,14 @@ export default function FormCadastro() {
         email: data.email,
         password: data.Password,
         userType: userType,
+        className: ''
       };
 
       console.log("nome", data.name);
       console.log("email", data.email);
-      console.log("senha", data.Password);
+      console.log("senha", data.Password);      
       console.log("userType", data.userType);
+
 
       const response = await auth(
         userData

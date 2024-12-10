@@ -16,5 +16,8 @@ namespace InstitutoCopacabanaAPI.Models
         public string Password { get; set; } = string.Empty;
         [FirestoreProperty]
         public string UserType { get; set; } = string.Empty;
+
+        [FirestoreProperty]
+        public string? ClassName { get; set; }
     }
 }
