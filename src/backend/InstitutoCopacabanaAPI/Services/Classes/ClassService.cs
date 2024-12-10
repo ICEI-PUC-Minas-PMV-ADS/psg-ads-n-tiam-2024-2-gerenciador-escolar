@@ -114,9 +114,25 @@ namespace InstitutoCopacabanaAPI.Services.Classes
 
             return schoolClass;
         }
-
-        public async Task<StudentModel> InsertStudent(string classId, UserModel user)
+        public async Task UpdateStudentClassName(string className, UserModel user)
         {
+            user.ClassName = className;
+
+            DocumentReference studentRef = _firebaseClient.Collection("users").Document(user.Id);
+            
+            Dictionary<string, object> updateData = new Dictionary<string, object>
+            {
+                { "ClassName", className }
+            };
+
+            await studentRef.UpdateAsync(updateData);
+        }
+
+
+        public async Task<StudentModel> InsertStudent(string classId, UserModel user, string className)
+        {
+            await UpdateStudentClassName(className, user);
+
             StudentModel student = new StudentModel
             {
                 StudentId = user.Id,

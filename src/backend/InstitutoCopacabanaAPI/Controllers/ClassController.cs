@@ -157,7 +157,7 @@ namespace InstitutoCopacabanaAPI.Controllers
                         if (student.UserType != "Student")
                             return StatusCode(403, "Apenas alunos podem ser inseridos nas turmas.");
 
-                        var insertedStudent = await _classService.InsertStudent(classDocument.Id, student);
+                        var insertedStudent = await _classService.InsertStudent(classDocument.Id, student, className);
 
                         return StatusCode(201, "Aluno inserido com sucesso.");
                     }

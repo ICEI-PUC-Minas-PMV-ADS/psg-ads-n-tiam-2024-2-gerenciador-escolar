@@ -24,7 +24,7 @@ export default function LoginScreen({navigation}) {
   useEffect(() =>{
     const checkSession = async () => {
       try{
-        const sessionData = await session();
+        const sessionData = await session();                
         if(sessionData){
           if(responsestring === "Secretary"){
             navigation.replace('Turma')

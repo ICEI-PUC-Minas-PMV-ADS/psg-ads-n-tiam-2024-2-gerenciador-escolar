@@ -8291,23 +8291,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Luiz Victor\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\sixsa\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Luiz Victor\\OneDrive\\Documentos\\João Pedro\\TI-Mobile\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
+      "projectUniqueName": "C:\\Users\\sixsa\\OneDrive\\Área de Trabalho\\Trabalho Final Mobile\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
       "projectName": "InstitutoCopacabanaAPI",
-      "projectPath": "C:\\Users\\Luiz Victor\\OneDrive\\Documentos\\João Pedro\\TI-Mobile\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
-      "packagesPath": "C:\\Users\\Luiz Victor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Luiz Victor\\OneDrive\\Documentos\\João Pedro\\TI-Mobile\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\obj\\",
+      "projectPath": "C:\\Users\\sixsa\\OneDrive\\Área de Trabalho\\Trabalho Final Mobile\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\InstitutoCopacabanaAPI.csproj",
+      "packagesPath": "C:\\Users\\sixsa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sixsa\\OneDrive\\Área de Trabalho\\Trabalho Final Mobile\\psg-ads-n-tiam-2024-2-gerenciador-escolar\\src\\backend\\InstitutoCopacabanaAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Luiz Victor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sixsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8316,6 +8316,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8332,9 +8333,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -8392,60 +8392,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'Microsoft.NETCore.Jit' 1.0.2 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-xcvr-qv8h-m7xw",
-      "libraryId": "Microsoft.NETCore.Jit",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'System.Net.Http' 4.1.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-7jgj-8wvc-jh57",
-      "libraryId": "System.Net.Http",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'System.Security.Cryptography.X509Certificates' 4.1.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-7mfr-774f-w5r9",
-      "libraryId": "System.Security.Cryptography.X509Certificates",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'System.Security.Cryptography.Xml' 4.5.0 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-vh55-786g-wjwj",
-      "libraryId": "System.Security.Cryptography.Xml",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1904",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'System.Text.Encodings.Web' 4.5.0 tem uma crítico vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-ghhp-997w-qr28",
-      "libraryId": "System.Text.Encodings.Web",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

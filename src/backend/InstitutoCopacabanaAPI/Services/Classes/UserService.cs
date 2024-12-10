@@ -51,6 +51,11 @@ namespace InstitutoCopacabanaAPI.Services.Classes
             //A senha irá ficar vazia no firestore, já que o Firebase Authenticantion cuida da parte do acesso de usuário
             user.Password = String.Empty;
 
+            if(user.UserType != "Student")
+            {
+                user.ClassName = null;
+            }
+
             DocumentReference docRef = _firebaseClient.Collection("users").Document(user.Id);            
 
             await docRef.SetAsync(user);            
