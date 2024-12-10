@@ -1,5 +1,5 @@
-import React, {useState, useEffect}from 'react';
-import { StyleSheet, Text, View, Image,FlatList, SafeAreaView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Image, FlatList, SafeAreaView } from 'react-native';
 import { Button } from '../../components/ButtonCadastro';
 import Logo from '../../../../assets/images/Logo.png';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -9,21 +9,21 @@ export default function DetalhesRelatorios() {
   const route = useRoute();
   const turma = route.params?.turma;
   const navigation = useNavigation();
-  const [listaAlunos,setListaAlunos] = useState([]);
+  const [listaAlunos, setListaAlunos] = useState([]);
 
-    useEffect(()=>{
-      getAlunos();
-    },[]);
-    
-    const getAlunos = async()=>{
-      try{
-        console.log(turma.name)
-        const response = await getStudents(turma.name);
-        setListaAlunos(response);
-      }catch(error){
-        console.log("Erro ao recuperar as turmas",error);
-      }
-    };
+  useEffect(() => {
+    getAlunos();
+  }, []);
+
+  const getAlunos = async () => {
+    try {
+      console.log(turma.name)
+      const response = await getStudents(turma.name);
+      setListaAlunos(response);
+    } catch (error) {
+      console.log("Erro ao recuperar as turmas", error);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -31,14 +31,14 @@ export default function DetalhesRelatorios() {
       <Text style={styles.titleTela}>{turma.name}</Text>
       <SafeAreaView style={styles.containerTurma}>
         <FlatList
-            data={listaAlunos}
-            keyExtractor={item => item.name}
-            renderItem={({item}) => (
-                <View style={styles.containerAluno}>
-                    <Text style={styles.titleAlunos}>{item.name}</Text>
-                    <Button title="Acessar" style={styles.buttonStyle} onPress={()=> navigation.navigate('RelatorioAluno',{nomeAluno: item.name, nomeTurma: turma.name})}></Button>
-                </View>
-            )}
+          data={listaAlunos}
+          keyExtractor={item => item.name}
+          renderItem={({ item }) => (
+            <View style={styles.containerAluno}>
+              <Text style={styles.titleAlunos}>{item.name}</Text>
+              <Button title="Acessar" style={styles.buttonStyle} onPress={() => navigation.navigate('RelatorioProfessor', { nomeAluno: item.name, nomeTurma: turma.name })}></Button>
+            </View>
+          )}
         />
       </SafeAreaView>
     </SafeAreaView>
@@ -57,9 +57,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: 600
   },
-  containerAluno:{
+  containerAluno: {
     margin: 20,
-   
+
   },
   titleAlunos: {
     fontSize: 20

@@ -668,6 +668,10 @@
           "userType": {
             "type": "string",
             "nullable": true
+          },
+          "className": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
