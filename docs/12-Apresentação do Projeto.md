@@ -13,8 +13,8 @@ Se baseando na logo e em demais postagens do Instituto Educacional Copacabana, a
 
 A seguir está o link para download do arquivo .pdf da apresentação de slides do projeto.
 
-[Baixar Apresentação do Gerenciador Escolar](link-para-o-arquivo.pdf)
+[Baixar Apresentação do Gerenciador Escolar](presentation/Apresentação Trabalho Interdisciplinar Aplicação Móvel - Gerenciador Escolar.pdf)
 
 Caso queira visualizar o .pdf da apresentação pelo navegador o link para esta finalidade está logo abaixo.
 
-[Visualizar Apresentação do Gerenciador Escolar](link-para-o-arquivo.pdf)
+[Visualizar Apresentação do Gerenciador Escolar](presentation/Apresentação Trabalho Interdisciplinar Aplicação Móvel - Gerenciador Escolar.pdf)
