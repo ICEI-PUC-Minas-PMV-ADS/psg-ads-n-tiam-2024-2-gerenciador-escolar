@@ -11,10 +11,6 @@ Se baseando na logo e em demais postagens do Instituto Educacional Copacabana, a
 
 ## Conjunto de Slides (Estrutura)
 
-A seguir está o link para download do arquivo .pdf da apresentação de slides do projeto.
+A seguir está o link para visualização e download do arquivo .pdf da apresentação de slides do projeto.
 
 [Baixar Apresentação do Gerenciador Escolar](https://github.com/ICEI-PUC-Minas-PMV-ADS/psg-ads-n-tiam-2024-2-gerenciador-escolar/blob/main/presentation/Apresenta%C3%A7%C3%A3o%20Trabalho%20Interdisciplinar%20Aplica%C3%A7%C3%A3o%20M%C3%B3vel%20-%20Gerenciador%20Escolar.pdf)
-
-Caso queira visualizar o .pdf da apresentação pelo navegador o link para esta finalidade está logo abaixo.
-
-[Visualizar Apresentação do Gerenciador Escolar](https://github.com/ICEI-PUC-Minas-PMV-ADS/psg-ads-n-tiam-2024-2-gerenciador-escolar/blob/main/presentation/Apresenta%C3%A7%C3%A3o%20Trabalho%20Interdisciplinar%20Aplica%C3%A7%C3%A3o%20M%C3%B3vel%20-%20Gerenciador%20Escolar.pdf)
